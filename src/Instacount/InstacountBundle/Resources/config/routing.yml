@@ -1,3 +1,5 @@
-instacount_instacount_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: InstacountInstacountBundle:Default:index }
+InstacountInstacountBundle_homepage:
+    pattern:  /
+    defaults: { _controller: InstacountInstacountBundle:Page:index }
+    requirements:
+        _method:  GET
