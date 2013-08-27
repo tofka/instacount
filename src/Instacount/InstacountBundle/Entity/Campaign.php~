@@ -31,11 +31,6 @@ class Campaign
     protected $name;
 
     /**
- 	* @ORM\ManyToOne(targetEntity="User", inversedBy="user")
- 	* @ORM\JoinColumn(name="user_id", referencedColumnName="id")
- 	*/
-	protected $user;
-    /**
      * Get id
      *
      * @return integer 

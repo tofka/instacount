@@ -28,11 +28,6 @@ class Counter
     protected $timestamp;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Campaign", inversedBy="campaign")
-    * @ORM\JoinColumn(name="campaign_id", referencedColumnName="id")
-    */
-    protected $campaign;
-    /**
      * Get id
      *
      * @return integer 

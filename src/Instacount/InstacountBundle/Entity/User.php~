@@ -7,9 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="Role")
+ * @ORM\Table(name="User")
  */
-class Role
+class User
 {
 	/**
      * @ORM\Id
@@ -21,6 +21,16 @@ class Role
      * @ORM\Column(type="string")
      */
     protected $name;
+        /**
+     * @ORM\Column(type="string")
+     */
+    protected $password;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Role", inversedBy="user")
+     * @ORM\JoinColumn(name="role_id", referencedColumnName="id")
+     */
+    protected $role;
 
 
     /**
@@ -37,7 +47,7 @@ class Role
      * Set name
      *
      * @param string $name
-     * @return Role
+     * @return User
      */
     public function setName($name)
     {
@@ -54,5 +64,28 @@ class Role
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     * @return User
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string 
+     */
+    public function getPassword()
+    {
+        return $this->password;
     }
 }
