@@ -3,3 +3,68 @@ InstacountInstacountBundle_homepage:
     defaults: { _controller: InstacountInstacountBundle:Page:index }
     requirements:
         _method:  GET
+
+InstacountInstacountBundle_campaign:
+    pattern:  /campaign
+    defaults: { _controller: InstacountInstacountBundle:Campaign:index }
+    requirements:
+        _method:  GET
+
+InstacountInstacountBundle_campaign_show:
+    pattern:  /campaign/show
+    defaults: { _controller: InstacountInstacountBundle:Campaign:show }
+    requirements:
+        _method:  GET
+
+InstacountInstacountBundle_campaign_new:
+    pattern:  /campaign/new
+    defaults: { _controller: InstacountInstacountBundle:Campaign:new }
+    requirements:
+        _method:  GET
+
+InstacountInstacountBundle_campaign_edit:
+    pattern:  /campaign/edit
+    defaults: { _controller: InstacountInstacountBundle:Campaign:edit }
+    requirements:
+        _method:  GET
+
+InstacountInstacountBundle_user:
+    pattern:  /user
+    defaults: { _controller: InstacountInstacountBundle:User:index }
+    requirements:
+        _method:  GET
+
+InstacountInstacountBundle_user_show:
+    pattern:  /user/show
+    defaults: { _controller: InstacountInstacountBundle:User:show }
+    requirements:
+        _method:  GET
+
+InstacountInstacountBundle_user_new:
+    pattern:  /user/new
+    defaults: { _controller: InstacountInstacountBundle:User:new }
+    requirements:
+        _method:  GET
+
+InstacountInstacountBundle_user_edit:
+    pattern:  /user/edit
+    defaults: { _controller: InstacountInstacountBundle:User:edit }
+    requirements:
+        _method:  GET
+
+
+InstacountInstacountBundle_counter:
+    pattern:  /counter
+    defaults: { _controller: InstacountInstacountBundle:Counter:index }
+    requirements:
+        _method:  GET
+
+InstacountInstacountBundle_user:
+    pattern:  /user
+    defaults: { _controller: InstacountInstacountBundle:User:index }
+    requirements:
+        _method:  GET
+
+
+
+

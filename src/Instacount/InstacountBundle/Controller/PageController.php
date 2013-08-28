@@ -1,7 +1,7 @@
 <?php
 // src/Instacount/InstacountBundle/Controller/PageController.php
 
-namespace INstacount\InstacountBundle\Controller;
+namespace Instacount\InstacountBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -11,4 +11,6 @@ class PageController extends Controller
     {
         return $this->render('InstacountInstacountBundle:Page:index.html.twig');
     }
+
+
 }

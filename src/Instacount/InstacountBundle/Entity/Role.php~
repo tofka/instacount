@@ -23,6 +23,8 @@ class Role
     protected $name;
 
 
+    
+
     /**
      * Get id
      *

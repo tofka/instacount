@@ -26,12 +26,11 @@ class User
      */
     protected $password;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Role", inversedBy="user")
-     * @ORM\JoinColumn(name="role_id", referencedColumnName="id")
-     */
-    protected $role;
 
+   
+
+
+   
 
     /**
      * Get id
