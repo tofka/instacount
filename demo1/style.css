@@ -1,0 +1,76 @@
+html {
+	font-size: 125%;
+}
+
+body {
+	font-size: 50%;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.styla {
+	background-color: #000;
+}
+.ui-content .ui-body-b{
+	background-color: #fff;
+}
+
+.tag {
+	text-align: center;
+	font-size: 3em;
+	background-color: #f2f2f2;
+}
+
+.instagram {
+	text-align: center;
+	font-size: 2em;
+}
+
+.count {
+	font-size: 8em;
+	text-align: center;
+}
+
+.list-item p {
+	font-size: 2em;
+	text-align: left;	
+}
+
+.admin {
+	clear: both;
+	background-color: #f2f2f2;
+	font-size: 1.6em;
+	text-align: left;	
+	height: 42px;
+	line-height: 2em;
+}
+
+.admin:nth-child(even) {
+	background-color: #ccc;
+}
+
+.admin a {
+	float: right;
+	line-height: 100%;
+		
+}
+
+
+#w3, #w4 {
+	text-align: center;
+}
+
+h3 {
+	font-size: 2em;
+	display: inline;
+	
+}
+
+.plus {
+float: right;
+}
+
+
