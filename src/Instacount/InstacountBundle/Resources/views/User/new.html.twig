@@ -1,16 +1,8 @@
-
 {% extends 'InstacountInstacountBundle::layout.html.twig' %}
 
+{% block title %}Add User{% endblock%}
+
 {% block body %}
-    <div class="content" data-theme="b" data-role="content">
-			
-<h2>User-new</h2>
-	<form action="{{ path('InstacountInstacountBundle_user_new') }}" method="post" {{ form_enctype(form) }} class="instacount">
-	    {{ form_widget(form) }}
-	    <p>
-	        <input type="submit" value="Submit">
-	    </p>
-	</form>
-</div>		
-				
+    <h1>Add user</h1>
+    {% include 'InstacountInstacountBundle:User:form_create.html.twig' with { 'form': form } %}
 {% endblock %}

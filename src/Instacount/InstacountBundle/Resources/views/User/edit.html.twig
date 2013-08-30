@@ -3,7 +3,14 @@
 {% block body %}
     <div class="content" data-theme="b" data-role="content">
 			
-<h2>User-edit</h2>
+<h2>Edit {{ user.name }} med id {{ user.id }}</h2>
+<form action="{{ path('InstacountInstacountBundle_user_update', { 'id' : user.id }) }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+
+        <input type="submit" value="Submit">
+    </p>
+</form>
 	</div>		
 				
 {% endblock %}

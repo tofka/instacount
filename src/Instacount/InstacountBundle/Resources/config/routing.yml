@@ -35,10 +35,11 @@ InstacountInstacountBundle_user:
         _method:  GET
 
 InstacountInstacountBundle_user_show:
-    pattern:  /user/show
+    pattern:  /user/{id}
     defaults: { _controller: InstacountInstacountBundle:User:show }
     requirements:
         _method:  GET
+        id: \d+
 
 InstacountInstacountBundle_user_new:
     pattern:  /user/new
@@ -46,8 +47,22 @@ InstacountInstacountBundle_user_new:
     requirements:
         _method:  GET
 
+InstacountInstacountBundle_user_create:
+    pattern:  /user/create
+    defaults: { _controller: InstacountInstacountBundle:User:create }
+    requirements:
+        _method:  POST
+        
+
+InstacountInstacountBundle_user_update:
+    pattern:  /user/{id}/update
+    defaults: { _controller: InstacountInstacountBundle:User:update }
+    requirements:
+        _method:  POST
+        
+
 InstacountInstacountBundle_user_edit:
-    pattern:  /user/edit
+    pattern:  /user/{id}/edit
     defaults: { _controller: InstacountInstacountBundle:User:edit }
     requirements:
         _method:  GET
