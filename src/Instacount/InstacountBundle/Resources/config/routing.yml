@@ -67,6 +67,11 @@ InstacountInstacountBundle_user_edit:
     requirements:
         _method:  GET
 
+InstacountInstacountBundle_user_delete:
+    pattern:  /user/{id}/delete
+    defaults: { _controller: InstacountInstacountBundle:User:delete }
+    requirements:
+        _method:  GET
 
 InstacountInstacountBundle_counter:
     pattern:  /counter
