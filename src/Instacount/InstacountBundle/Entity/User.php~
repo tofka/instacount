@@ -26,11 +26,12 @@ class User
      */
     protected $password;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Role", inversedBy="user")
+     * @ORM\JoinColumn(name="role_id", referencedColumnName="id")
+     */
+    protected $role;
 
-   
-
-
-   
 
     /**
      * Get id
@@ -87,4 +88,32 @@ class User
     {
         return $this->password;
     }
+
+    /**
+     * Set role
+     *
+     * @param \Instacount\InstacountBundle\Entity\Role $role
+     * @return User
+     */
+    public function setRole(\Instacount\InstacountBundle\Entity\Role $role = null)
+    {
+        $this->role = $role;
+    
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return \Instacount\InstacountBundle\Entity\Role 
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    public function __toString()
+{
+    return $this->getName();
+}
 }

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class UserType extends AbstractType
+class CampaignType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -15,9 +15,11 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('start_date')
+            ->add('end_date')
             ->add('name')
-            ->add('password')
-            ->add('role')
+            ->add('tag')
+            ->add('user')
         ;
     }
     
@@ -27,7 +29,7 @@ class UserType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Instacount\InstacountBundle\Entity\User'
+            'data_class' => 'Instacount\InstacountBundle\Entity\Campaign'
         ));
     }
 
@@ -36,6 +38,6 @@ class UserType extends AbstractType
      */
     public function getName()
     {
-        return 'instacount_instacountbundle_user';
+        return 'instacount_instacountbundle_campaign';
     }
 }

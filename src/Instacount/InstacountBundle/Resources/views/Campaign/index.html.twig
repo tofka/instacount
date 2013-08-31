@@ -3,7 +3,19 @@
 {% block body %}
     <div class="content" data-theme="b" data-role="content">
 			
-<h2>Campaign-index</h2>
+<h2>Kampanjer</h2>
+
+
+{% for campaign in campaigns %}
+        
+    <p><a href=" {{ path('InstacountInstacountBundle_campaign_show', { 'id' : campaign.id }) }} ">{{ campaign.id }} {{ campaign.name }} {{ campaign.user }} </a></p>        
+      
+
+           
+            
+        
+   
+    {% endfor %}
 	</div>		
 				
 {% endblock %}

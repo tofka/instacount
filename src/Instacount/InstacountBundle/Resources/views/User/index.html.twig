@@ -8,7 +8,7 @@
 
 {% for user in users %}
         
-    <p>{{ user.name }}</p>        
+    <p><a href=" {{ path('InstacountInstacountBundle_user_show', { 'id' : user.id }) }} ">{{ user.id }} {{ user.name }} {{ user.role }} </a></p>        
       
 
            

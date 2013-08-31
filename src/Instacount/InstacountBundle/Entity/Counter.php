@@ -87,4 +87,27 @@ class Counter
     {
         return $this->timestamp;
     }
+
+    /**
+     * Set campaign
+     *
+     * @param \Instacount\InstacountBundle\Entity\Campaign $campaign
+     * @return Counter
+     */
+    public function setCampaign(\Instacount\InstacountBundle\Entity\Campaign $campaign = null)
+    {
+        $this->campaign = $campaign;
+    
+        return $this;
+    }
+
+    /**
+     * Get campaign
+     *
+     * @return \Instacount\InstacountBundle\Entity\Campaign 
+     */
+    public function getCampaign()
+    {
+        return $this->campaign;
+    }
 }

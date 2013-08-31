@@ -32,8 +32,6 @@ class Counter
     * @ORM\JoinColumn(name="campaign_id", referencedColumnName="id")
     */
     protected $campaign;
-   
-
     /**
      * Get id
      *

@@ -31,6 +31,11 @@ class Campaign
     protected $name;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    protected $tag;
+
+    /**
  	* @ORM\ManyToOne(targetEntity="User", inversedBy="user")
  	* @ORM\JoinColumn(name="user_id", referencedColumnName="id")
  	*/
@@ -112,5 +117,51 @@ class Campaign
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Instacount\InstacountBundle\Entity\User $user
+     * @return Campaign
+     */
+    public function setUser(\Instacount\InstacountBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Instacount\InstacountBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set tag
+     *
+     * @param string $tag
+     * @return Campaign
+     */
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
+    
+        return $this;
+    }
+
+    /**
+     * Get tag
+     *
+     * @return string 
+     */
+    public function getTag()
+    {
+        return $this->tag;
     }
 }

@@ -1,9 +1,12 @@
 {% extends 'InstacountInstacountBundle::layout.html.twig' %}
 
 {% block body %}
-    <div class="content" data-theme="b" data-role="content">
-			
-<h2>Campaign-new</h2>
-	</div>		
-				
+<div class="content" data-theme="b" data-role="content">			
+	<h2>Skapa ny kampanj</h2>
+	<form action="{{ path('InstacountInstacountBundle_campaign_create') }}" method="post" {{ form_enctype(form) }}>
+	    {{ form_widget(form) }}
+	    <input type="submit" value="Spara">
+        
+	</form>
+</div>				
 {% endblock %}
