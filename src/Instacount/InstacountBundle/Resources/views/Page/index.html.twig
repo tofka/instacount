@@ -2,15 +2,20 @@
 {% extends 'InstacountInstacountBundle::layout.html.twig' %}
 
 {% block body %}
+	<div data-role="page">
+        <header data-position="fixed" data-role="header">
+            <h1>Instacount</h1><a href="{{ path('InstacountInstacountBundle_campaign')}}" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right" data-transition="flip">Admin</a>
+        </header>
     <div class="content" data-theme="b" data-role="content">
-			
-				<select id="tag_form">
-					<option selected>Välj företag</option>
-					<option value="smarteyes">Smarteyes</option>
-					<option value="fjäråskupan">Fjäråskupan</option>
-					<option value="arkenzoo">Arken zoo</option>
-				</select>
-				<a href="#w2" data-transition="flip"><button class="submit">Skicka</button></a>
-			</div>		
-				
+    	{#Denna form skickas till counter create. Det ska skapas ett räknemoment baserat på detta campaign-id. Men hur får jag id:t till countercontroller? Det skickas via post på någe vis. En osynlig form med counterType som skickar id:t? #}
+    	<form action="{{path('InstacountInstacountBundle_counter_create')}}" method="post">
+    		<select id="tag_form">
+				<option selected>Välj företag</option>
+				{% for campaign in campaigns %}      	
+				<option value="{{campaign.id}}">{{campaign.name}}</option>
+		    	{% endfor %}
+			</select>
+			<input type="submit" value="Skicka" />
+		</form>
+	</div>						
 {% endblock %}

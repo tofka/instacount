@@ -18,11 +18,11 @@ class Campaign
      */
     protected $id;
        /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     protected $start_date;
        /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     protected $end_date;
     /**
@@ -140,5 +140,28 @@ class Campaign
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set tag
+     *
+     * @param string $tag
+     * @return Campaign
+     */
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
+    
+        return $this;
+    }
+
+    /**
+     * Get tag
+     *
+     * @return string 
+     */
+    public function getTag()
+    {
+        return $this->tag;
     }
 }

@@ -38,7 +38,7 @@ class UserController extends Controller {
         }
         $form = $this->createForm(new UserType(), $user);       
         return $this->render('InstacountInstacountBundle:User:edit.html.twig', array(
-            'user'      => $user,
+            'user'   => $user,
             'form'   => $form->createView(),           
         ));
     }

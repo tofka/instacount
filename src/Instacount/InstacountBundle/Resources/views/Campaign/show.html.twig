@@ -1,9 +1,18 @@
 {% extends 'InstacountInstacountBundle::layout.html.twig' %}
 
 {% block body %}
-    <div class="content" data-theme="b" data-role="content">
-			
-<h2>{{ campaign.name }}</h2>
+	<div data-role="page" data-add-back-btn="true">
+    	<header data-position="fixed" data-role="header">
+            <h1>Instacount</h1><a href="{{ path('InstacountInstacountBundle_homepage')}}" data-transition="flip" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right">Logga ut</a>
+        </header>	
+        <div class="content" data-theme="b" data-role="content">		
+		<h2>{{ campaign.name }}</h2>
+		<div class="admin">Kampanj-id: {{ campaign.id }} </div>
+		<div class="admin">Namn: {{ campaign.name }} </div>
+		<div class="admin">Tag: #{{ campaign.tag }} </div>
+		<div class="admin">Startdatum: {#{{ campaign.start_date|date('YYYY-mm-dd') }} #}åååå-mm-dd</div>
+		<div class="admin">Slutdatum: {#{{ campaign.start_date|date('YYYY-mm-dd') }} #}åååå-mm-dd</div>
+		<a href="{{path('InstacountInstacountBundle_campaign_edit', { 'id' : campaign.id }) }}" data-transition="flip" data-theme="red" data-role="button" class="ui-btn-right" >Redigera</a>
 	</div>		
 				
 {% endblock %}

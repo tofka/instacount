@@ -1,21 +1,19 @@
 {% extends 'InstacountInstacountBundle::layout.html.twig' %}
 
 {% block body %}
-    <div class="content" data-theme="b" data-role="content">
-			
-<h2>User-index</h2>
-
-
-{% for user in users %}
-        
-    <p><a href=" {{ path('InstacountInstacountBundle_user_show', { 'id' : user.id }) }} ">{{ user.id }} {{ user.name }} {{ user.role }} </a></p>        
-      
-
-           
-            
-        
-   
-    {% endfor %}
-	</div>		
-				
+    <div data-role="page" data-add-back-btn="true">
+	    <header data-position="fixed" data-role="header">
+	        <h1>Instacount</h1>
+	        <a href="{{ path('InstacountInstacountBundle_homepage')}}" data-transition="flip" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right">Logga ut</a>
+	    </header>
+    	<div class="content" data-theme="b" data-role="content">				
+			<h2>User-index</h2>
+			{% for user in users %}        
+    			<ul data-role="listview" data-inset="true">
+    				<li>
+    					<a href=" {{ path('InstacountInstacountBundle_user_show', { 'id' : user.id }) }} ">{{ user.id }} {{ user.name }} {{ user.role }} </a>
+    				</li>
+    			</ul>  
+    		{% endfor %}
+		</div>					
 {% endblock %}

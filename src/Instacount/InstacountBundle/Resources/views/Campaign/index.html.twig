@@ -1,21 +1,21 @@
 {% extends 'InstacountInstacountBundle::layout.html.twig' %}
 
 {% block body %}
-    <div class="content" data-theme="b" data-role="content">
+<div data-role="page">
+    <header data-position="fixed" data-role="header">
+        <h1>Instacount</h1>
+        <a href="{{ path('InstacountInstacountBundle_homepage')}}" data-transition="flip" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right">Logga ut</a>
+    </header>
+    <div class="content" data-theme="b" data-role="content">			
+		<h2>Kampanjer</h2>		
+		<a href="{{path('InstacountInstacountBundle_campaign_new')}}" class="plus ui-btn-right" data-role="button" data-icon="plus" data-iconpos="notext"></a>
+		{% for campaign in campaigns %}  
+			<ul data-role="listview" data-inset="true">      
+    			<li>
+    				<a href=" {{ path('InstacountInstacountBundle_campaign_show', { 'id' : campaign.id }) }} ">{{ campaign.id }} {{ campaign.name }} {{ campaign.user }} </a>
+    			</li>
+    		</ul>        
+    	{% endfor %}
+	</div>	
 			
-<h2>Kampanjer</h2>
-
-
-{% for campaign in campaigns %}
-        
-    <p><a href=" {{ path('InstacountInstacountBundle_campaign_show', { 'id' : campaign.id }) }} ">{{ campaign.id }} {{ campaign.name }} {{ campaign.user }} </a></p>        
-      
-
-           
-            
-        
-   
-    {% endfor %}
-	</div>		
-				
 {% endblock %}

@@ -18,11 +18,11 @@ class Campaign
      */
     protected $id;
        /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     protected $start_date;
        /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     protected $end_date;
     /**
@@ -164,4 +164,9 @@ class Campaign
     {
         return $this->tag;
     }
+    
+        public function __toString()
+{
+    return $this->getName();
+}
 }
