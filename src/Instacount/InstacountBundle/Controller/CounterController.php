@@ -10,9 +10,25 @@ use Instacount\InstacountBundle\Form\CounterType;
 
 class CounterController extends Controller
 {
-    public function indexAction(Request $request) {
+    public function indexAction() {
 
-    	$counter  = new Counter();
+
+    return $this->render('InstacountInstacountBundle:Counter:index.html.twig');
+
+    }
+
+    public function showAction($id) {
+        $em = $this->getDoctrine()->getEntityManager();
+        $counter = $em->getRepository('InstacountInstacountBundle:Counter')->find($id);
+        if (!$counter) {
+            throw $this->createNotFoundException('Unable to find counter.');
+        }
+
+        return $this->render('InstacountInstacountBundle:Counter:show.html.twig', array(
+            'counter' => $counter));
+    }
+    public function createAction(Request $request) {
+        $counter  = new Counter();
         $form = $this->createForm(new CounterType(), $counter);
         $form->bind($request);      
         if ($form->isValid()) {
@@ -20,13 +36,11 @@ class CounterController extends Controller
             $em->persist($counter);
             $em->flush();
          
-            return $this->redirect($this->generateUrl('InstacountInstacountBundle_homepage'));
+             return $this->redirect($this->generateUrl('InstacountInstacountBundle_counter_show', array(
+                'id' => $counter->getId()))
+            );
+            
+            
         }
-
-    }
-
-    public function createAction(Request $request) {
-        $this->get('request')->request->get('name');
-        return $this->redirect($this->generateUrl('InstacountInstacountBundle_homepage'));
     }
 }

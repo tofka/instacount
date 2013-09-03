@@ -7,16 +7,15 @@
             <h1>Instacount</h1><a href="{{ path('InstacountInstacountBundle_campaign')}}" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right" data-transition="flip">Admin</a>
         </header>
     <div class="content" data-theme="b" data-role="content">
-    	{#Denna form skickas till counter create. Det ska skapas ett räknemoment baserat på detta campaign-id. Men hur får jag id:t till countercontroller? Det skickas via post på någe vis. En osynlig form med counterType som skickar id:t? #}
 
-    	<form action="{{ path('InstacountInstacountBundle_counter_create') }}" method="post" >
-            <select>
-                <option selected value="">Välj en kampanj</option>
-                {% for campaign in campaigns %}
-                <option value="{{ campaign.id }}">{{ campaign.name }}</option>    	
-    	       {% endfor %}
-           </select>
-           <input type="submit" value="Skicka" />
-    	</form>
+    <form action="{{ path('InstacountInstacountBundle_counter_create') }}" method="post" {{ form_enctype(form) }} >
+        {% form_theme form _self %}
+        {{ form_errors(form) }}
+        {{ form_row(form.campaign) }} {#value här är id, inte name eller tag, hur får jag tag i dem?#}
+        {{ form_row(form.count, {'attr':{'class':'instagram'}}) }}
+        {{ form_rest(form) }}
+
+        <input class="submit" type="submit" value="Submit" />
+    </form>
 	</div>						
 {% endblock %}

@@ -92,11 +92,18 @@ InstacountInstacountBundle_user_delete:
     requirements:
         _method:  GET
 
-InstacountInstacountBundle_counter:
-    pattern:  /counter
-    defaults: { _controller: InstacountInstacountBundle:Counter:index }
+InstacountInstacountBundle_counter_show:
+    pattern:  /counter/{id}
+    defaults: { _controller: InstacountInstacountBundle:Counter:show }
     requirements:
         _method:  GET
+        id: \d+
+
+InstacountInstacountBundle_counter_create:
+    pattern:  /counter/create
+    defaults: { _controller: InstacountInstacountBundle:Counter:create }
+    requirements:
+        _method:  POST
 
 
 
