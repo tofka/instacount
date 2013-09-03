@@ -15,11 +15,11 @@ class CampaignType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('start_date')
-            ->add('end_date')
+            //->add('start_date')
+            //->add('end_date')
             ->add('name')
-            ->add('tag')
-            ->add('user')
+            ->add('id')
+           // ->add('user')
         ;
     }
     

@@ -22,8 +22,11 @@ class CounterController extends Controller
          
             return $this->redirect($this->generateUrl('InstacountInstacountBundle_homepage'));
         }
-        //return $this->render('InstacountInstacountBundle:Page:index.html.twig', array(
-        	'counter' => $counter,
-            'form'   => $form->createView()));
+
+    }
+
+    public function createAction(Request $request) {
+        $this->get('request')->request->get('name');
+        return $this->redirect($this->generateUrl('InstacountInstacountBundle_homepage'));
     }
 }

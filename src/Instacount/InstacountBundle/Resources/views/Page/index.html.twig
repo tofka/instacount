@@ -8,14 +8,15 @@
         </header>
     <div class="content" data-theme="b" data-role="content">
     	{#Denna form skickas till counter create. Det ska skapas ett räknemoment baserat på detta campaign-id. Men hur får jag id:t till countercontroller? Det skickas via post på någe vis. En osynlig form med counterType som skickar id:t? #}
-    	<form action="{{path('InstacountInstacountBundle_counter_create')}}" method="post">
-    		<select id="tag_form">
-				<option selected>Välj företag</option>
-				{% for campaign in campaigns %}      	
-				<option value="{{campaign.id}}">{{campaign.name}}</option>
-		    	{% endfor %}
-			</select>
-			<input type="submit" value="Skicka" />
-		</form>
+
+    	<form action="{{ path('InstacountInstacountBundle_counter_create') }}" method="post" >
+            <select>
+                <option selected value="">Välj en kampanj</option>
+                {% for campaign in campaigns %}
+                <option value="{{ campaign.id }}">{{ campaign.name }}</option>    	
+    	       {% endfor %}
+           </select>
+           <input type="submit" value="Skicka" />
+    	</form>
 	</div>						
 {% endblock %}
