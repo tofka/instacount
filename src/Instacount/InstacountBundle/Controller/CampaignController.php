@@ -6,6 +6,7 @@ namespace Instacount\InstacountBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Instacount\InstacountBundle\Entity\Campaign;
+use Instacount\InstacountBundle\Entity\Counter;
 use Instacount\InstacountBundle\Form\CampaignType;
 
 class CampaignController extends Controller
@@ -71,6 +72,12 @@ class CampaignController extends Controller
                 'No campaign found for id '.$id
             );
         }       
+// Hämta alla counts för denna campaign och radera dem först.
+        $em = $this->getDoctrine()->getManager();
+        $counts = $em->getRepository('InstacountInstacountBundle:Counter')->findByCampaign($id);
+        foreach ($counts as $counter) {
+            $em->remove($counter);
+        }            
         $em->remove($campaign);
         $em->flush();            
 
@@ -78,7 +85,9 @@ class CampaignController extends Controller
     }
 
     public function newAction() {
-        $campaign = new Campaign();        
+        $campaign = new Campaign(); 
+        $campaign->setStartDate(new \DateTime('now'));  
+        $campaign->setEndDate(new \DateTime('now'));       
         $form   = $this->createForm(new CampaignType(), $campaign);
         return $this->render('InstacountInstacountBundle:Campaign:new.html.twig', array(
             'campaign' => $campaign,

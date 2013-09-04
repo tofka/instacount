@@ -29,8 +29,11 @@ body {
 	background-color: #fff;
 }
 
+
+
 .tag {
 	text-align: center;
+	display: block;
 	font-size: 3em;
 	background-color: #f2f2f2;
 }

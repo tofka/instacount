@@ -16,7 +16,7 @@ class CounterType extends AbstractType
     {
         $builder
             ->add('count')
-            //->add('timestamp')
+            ->add('timestamp')
             ->add('campaign')
         ;
     }

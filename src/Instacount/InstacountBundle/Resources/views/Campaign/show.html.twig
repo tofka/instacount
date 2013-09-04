@@ -13,6 +13,7 @@
 		<div class="admin">Startdatum: {#{{ campaign.start_date|date('YYYY-mm-dd') }} #}åååå-mm-dd</div>
 		<div class="admin">Slutdatum: {#{{ campaign.start_date|date('YYYY-mm-dd') }} #}åååå-mm-dd</div>
 		<a href="{{path('InstacountInstacountBundle_campaign_edit', { 'id' : campaign.id }) }}" data-transition="flip" data-theme="red" data-role="button" class="ui-btn-right" >Redigera</a>
+		<a href="{{path('InstacountInstacountBundle_campaign_delete', { 'id' : campaign.id }) }}" data-transition="flip" data-theme="del" data-role="button" class="ui-btn-right" >Radera</a>
 	</div>		
 				
 {% endblock %}

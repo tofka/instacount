@@ -69,7 +69,13 @@ class UserController extends Controller {
             throw $this->createNotFoundException(
                 'No user found for id '.$id
             );
-        }       
+        }     
+// Hämta alla campaigns som denna user lagt in och radera dem först.
+        $em = $this->getDoctrine()->getManager();
+        $campaigns = $em->getRepository('InstacountInstacountBundle:Campaign')->findByUser($id);
+        foreach ($campaigns as $campaign) {
+            $em->remove($campaign);
+        }   
         $em->remove($user);
         $em->flush();            
 
