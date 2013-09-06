@@ -6,13 +6,10 @@
 	        <h1>Instacount</h1>
 	        <a href="{{ path('InstacountInstacountBundle_homepage')}}" data-transition="flip" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right">Logga ut</a>
 	    </header>
-    	<div class="content" data-theme="b" data-role="content">	
-			
-		<h2>{{ user.name }}</h2>
-		<div class="admin">Användar-id: {{ user.id }} </div>
-		<div class="admin">Namn: {{ user.name }} </div>
-		<div class="admin">Användar-roll: {{ user.role }} </div>
-		
-		<a href="{{path('InstacountInstacountBundle_user_edit', { 'id' : user.id }) }}" data-transition="flip" data-theme="red" data-role="button" class="ui-btn-right" >Redigera</a>
-				</div>
+    	<div class="content" data-theme="b" data-role="content">				
+			<h2>{{ user.username }}</h2>
+			<div class="admin">Användar-id: {{ user.id }} </div>
+			<div class="admin">Namn: {{ user.username }} </div>				
+			<a href="{{path('InstacountInstacountBundle_user_edit', { 'id' : user.id }) }}" data-transition="flip" data-theme="red" data-role="button" class="ui-btn-right" >Redigera</a>
+		</div>
 {% endblock %}

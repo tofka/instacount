@@ -7,7 +7,7 @@
 	        <a href="{{ path('InstacountInstacountBundle_homepage')}}" data-transition="flip" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right">Logga ut</a>
 	    </header>
     	<div class="content" data-theme="b" data-role="content">	
-	<h2>SKapa ny användare</h2>
+	<h2>Skapa ny användare</h2>
 	<form action="{{ path('InstacountInstacountBundle_user_create') }}" method="post" {{ form_enctype(form) }}>
 	    {{ form_widget(form) }}
 	    <input type="submit" value="Spara">

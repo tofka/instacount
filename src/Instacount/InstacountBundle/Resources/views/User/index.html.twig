@@ -11,7 +11,7 @@
 			{% for user in users %}        
     			<ul data-role="listview" data-inset="true">
     				<li>
-    					<a href=" {{ path('InstacountInstacountBundle_user_show', { 'id' : user.id }) }} ">{{ user.id }} {{ user.name }} {{ user.role }} </a>
+    					<a href=" {{ path('InstacountInstacountBundle_user_show', { 'id' : user.id }) }} ">{{ user.id }} {{ user.username }}  </a>
     				</li>
     			</ul>  
     		{% endfor %}

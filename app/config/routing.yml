@@ -2,5 +2,10 @@ instacount_instacount:
     resource: "@InstacountInstacountBundle/Resources/config/routing.yml"
     prefix:   /
 
+admin:
+    pattern:   /login
+    defaults:  { _controller: InstacountInstacountBundle:User:login }
+login_check:
+    pattern:   /login_check
 logout:
-    path:   /logout
+    pattern:   /logout
