@@ -2,3 +2,5 @@ instacount_instacount:
     resource: "@InstacountInstacountBundle/Resources/config/routing.yml"
     prefix:   /
 
+logout:
+    path:   /logout

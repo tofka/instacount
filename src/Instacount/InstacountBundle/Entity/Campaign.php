@@ -169,4 +169,5 @@ class Campaign
 {
     return $this->getName();
 }
+
 }

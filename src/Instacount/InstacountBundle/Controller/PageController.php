@@ -10,7 +10,7 @@ class PageController extends Controller {
     public function indexAction() {
         $counter = new Counter();    
         $counter->settimestamp(new \DateTime('now'));
-       
+              
         $form   = $this->createForm(new CounterType(), $counter);
         return $this->render('InstacountInstacountBundle:Page:index.html.twig', array(
             'counter' => $counter,

@@ -29,6 +29,7 @@ class CounterController extends Controller
     }
     public function createAction(Request $request) {
         $counter  = new Counter();
+
         $form = $this->createForm(new CounterType(), $counter);
         $form->bind($request);      
         if ($form->isValid()) {

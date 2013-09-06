@@ -2,87 +2,73 @@
 
 namespace Instacount\InstacountBundle\Entity;
 
-
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="User")
+ * Instacount\InstacountBundle\Entity\User
+ *
+ * @ORM\Table(name="acme_users")
+ * @ORM\Entity(repositoryClass="Instacount\InstacountBundle\Entity\UserRepository")
  */
-class User
+class User implements UserInterface, \Serializable
 {
-	/**
-     * @ORM\Id
+    /**
      * @ORM\Column(type="integer")
+     * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $name;
-        /**
-     * @ORM\Column(type="string")
-     */
-    protected $password;
+    private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Role", inversedBy="user")
-     * @ORM\JoinColumn(name="role_id", referencedColumnName="id")
+     * @ORM\Column(type="string", length=25, unique=true)
      */
-    protected $role;
-
+    private $username;
 
     /**
-     * Get id
-     *
-     * @return integer 
+     * @ORM\Column(type="string", length=32)
      */
-    public function getId()
+    private $salt;
+
+    /**
+     * @ORM\Column(type="string", length=40)
+     */
+    private $password;
+
+    /**
+     * @ORM\Column(type="string", length=60, unique=true)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $isActive;
+
+    public function __construct()
     {
-        return $this->id;
+        $this->isActive = true;
+        $this->salt = md5(uniqid(null, true));
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
-     * @return User
+     * @inheritDoc
      */
-    public function setName($name)
+    public function getUsername()
     {
-        $this->name = $name;
-    
-        return $this;
+        return $this->username;
     }
 
     /**
-     * Get name
-     *
-     * @return string 
+     * @inheritDoc
      */
-    public function getName()
+    public function getSalt()
     {
-        return $this->name;
+        return $this->salt;
     }
 
     /**
-     * Set password
-     *
-     * @param string $password
-     * @return User
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-    
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string 
+     * @inheritDoc
      */
     public function getPassword()
     {
@@ -90,30 +76,37 @@ class User
     }
 
     /**
-     * Set role
-     *
-     * @param \Instacount\InstacountBundle\Entity\Role $role
-     * @return User
+     * @inheritDoc
      */
-    public function setRole(\Instacount\InstacountBundle\Entity\Role $role = null)
+    public function getRoles()
     {
-        $this->role = $role;
-    
-        return $this;
+        return array('ROLE_USER');
     }
 
     /**
-     * Get role
-     *
-     * @return \Instacount\InstacountBundle\Entity\Role 
+     * @inheritDoc
      */
-    public function getRole()
+    public function eraseCredentials()
     {
-        return $this->role;
     }
 
-    public function __toString()
-{
-    return $this->getName();
-}
+    /**
+     * @see \Serializable::serialize()
+     */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+        ));
+    }
+
+    /**
+     * @see \Serializable::unserialize()
+     */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+        ) = unserialize($serialized);
+    }
 }

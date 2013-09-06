@@ -2,36 +2,113 @@
 
 namespace Instacount\InstacountBundle\Entity;
 
-
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="User")
+ * Instacount\InstacountBundle\Entity\User
+ *
+ * @ORM\Table(name="acme_users")
+ * @ORM\Entity(repositoryClass="Instacount\InstacountBundle\Entity\UserRepository")
  */
-class User
+class User implements UserInterface, \Serializable
 {
-	/**
-     * @ORM\Id
+    /**
      * @ORM\Column(type="integer")
+     * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $name;
-        /**
-     * @ORM\Column(type="string")
-     */
-    protected $password;
+    private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Role", inversedBy="user")
-     * @ORM\JoinColumn(name="role_id", referencedColumnName="id")
+     * @ORM\Column(type="string", length=25, unique=true)
      */
-    protected $role;
+    private $username;
 
+    /**
+     * @ORM\Column(type="string", length=32)
+     */
+    private $salt;
+
+    /**
+     * @ORM\Column(type="string", length=40)
+     */
+    private $password;
+
+    /**
+     * @ORM\Column(type="string", length=60, unique=true)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $isActive;
+
+    public function __construct()
+    {
+        $this->isActive = true;
+        $this->salt = md5(uniqid(null, true));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function eraseCredentials()
+    {
+    }
+
+    /**
+     * @see \Serializable::serialize()
+     */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+        ));
+    }
+
+    /**
+     * @see \Serializable::unserialize()
+     */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+        ) = unserialize($serialized);
+    }
 
     /**
      * Get id
@@ -44,26 +121,29 @@ class User
     }
 
     /**
-     * Set name
+     * Set username
      *
-     * @param string $name
+     * @param string $username
      * @return User
      */
-    public function setName($name)
+    public function setUsername($username)
     {
-        $this->name = $name;
+        $this->username = $username;
     
         return $this;
     }
 
     /**
-     * Get name
+     * Set salt
      *
-     * @return string 
+     * @param string $salt
+     * @return User
      */
-    public function getName()
+    public function setSalt($salt)
     {
-        return $this->name;
+        $this->salt = $salt;
+    
+        return $this;
     }
 
     /**
@@ -80,40 +160,53 @@ class User
     }
 
     /**
-     * Get password
+     * Set email
      *
-     * @return string 
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Set role
-     *
-     * @param \Instacount\InstacountBundle\Entity\Role $role
+     * @param string $email
      * @return User
      */
-    public function setRole(\Instacount\InstacountBundle\Entity\Role $role = null)
+    public function setEmail($email)
     {
-        $this->role = $role;
+        $this->email = $email;
     
         return $this;
     }
 
     /**
-     * Get role
+     * Get email
      *
-     * @return \Instacount\InstacountBundle\Entity\Role 
+     * @return string 
      */
-    public function getRole()
+    public function getEmail()
     {
-        return $this->role;
+        return $this->email;
+    }
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     * @return User
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+    
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean 
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
     }
 
     public function __toString()
 {
-    return $this->getName();
+    return $this->getUsername();
 }
 }

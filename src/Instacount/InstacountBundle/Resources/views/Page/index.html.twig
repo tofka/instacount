@@ -3,11 +3,10 @@
 
 {% block body %}
 <div data-role="page">
-        <header data-position="fixed" data-role="header">
-            <h1>Instacount</h1><a href="{{ path('InstacountInstacountBundle_campaign')}}" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right" data-transition="flip">Admin</a>
-        </header>
+    <header data-position="fixed" data-role="header">
+        <h1>Instacount</h1><a href="{{ path('InstacountInstacountBundle_admin')}}" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right" data-transition="flip">Admin</a>
+    </header>
     <div class="content" data-theme="b" data-role="content">
-
     <form class="start" action="{{ path('InstacountInstacountBundle_counter_create') }}" method="post" {{ form_enctype(form) }} >
         {% form_theme form _self %}
         {{ form_errors(form) }}

@@ -5,89 +5,89 @@ InstacountInstacountBundle_homepage:
         _method:  GET
 
 InstacountInstacountBundle_campaign:
-    pattern:  /campaign
+    pattern:  /admin/campaign
     defaults: { _controller: InstacountInstacountBundle:Campaign:index }
     requirements:
         _method:  GET
 
 InstacountInstacountBundle_campaign_show:
-    pattern:  /campaign/{id}
+    pattern:  /admin/campaign/{id}
     defaults: { _controller: InstacountInstacountBundle:Campaign:show }
     requirements:
         _method:  GET
         id: \d+
 
 InstacountInstacountBundle_campaign_new:
-    pattern:  /campaign/new
+    pattern:  /admin/campaign/new
     defaults: { _controller: InstacountInstacountBundle:Campaign:new }
     requirements:
         _method:  GET
 
 InstacountInstacountBundle_campaign_create:
-    pattern:  /campaign/create
+    pattern:  /admin/campaign/create
     defaults: { _controller: InstacountInstacountBundle:Campaign:create }
     requirements:
         _method:  POST
 
 InstacountInstacountBundle_campaign_update:
-    pattern:  /campaign/{id}/update
+    pattern:  /admin/campaign/{id}/update
     defaults: { _controller: InstacountInstacountBundle:Campaign:update }
     requirements:
         _method:  POST
 
 InstacountInstacountBundle_campaign_edit:
-    pattern:  /campaign/{id}/edit
+    pattern:  /admin/campaign/{id}/edit
     defaults: { _controller: InstacountInstacountBundle:Campaign:edit }
     requirements:
         _method:  GET
 
 InstacountInstacountBundle_campaign_delete:
-    pattern:  /campaign/{id}/delete
+    pattern:  /admin/campaign/{id}/delete
     defaults: { _controller: InstacountInstacountBundle:Campaign:delete }
     requirements:
         _method:  GET
 
 InstacountInstacountBundle_user:
-    pattern:  /user
+    pattern:  /admin/user
     defaults: { _controller: InstacountInstacountBundle:User:index }
     requirements:
         _method:  GET
 
 InstacountInstacountBundle_user_show:
-    pattern:  /user/{id}
+    pattern:  /admin/user/{id}
     defaults: { _controller: InstacountInstacountBundle:User:show }
     requirements:
         _method:  GET
         id: \d+
 
 InstacountInstacountBundle_user_new:
-    pattern:  /user/new
+    pattern:  /admin/user/new
     defaults: { _controller: InstacountInstacountBundle:User:new }
     requirements:
         _method:  GET
 
 InstacountInstacountBundle_user_create:
-    pattern:  /user/create
+    pattern:  /admin/user/create
     defaults: { _controller: InstacountInstacountBundle:User:create }
     requirements:
         _method:  POST
         
 
 InstacountInstacountBundle_user_update:
-    pattern:  /user/{id}/update
+    pattern:  /admin/user/{id}/update
     defaults: { _controller: InstacountInstacountBundle:User:update }
     requirements:
         _method:  POST
         
 
 InstacountInstacountBundle_user_edit:
-    pattern:  /user/{id}/edit
+    pattern:  /admin/user/{id}/edit
     defaults: { _controller: InstacountInstacountBundle:User:edit }
     requirements:
         _method:  GET
 
 InstacountInstacountBundle_user_delete:
-    pattern:  /user/{id}/delete
+    pattern:  /admin/user/{id}/delete
     defaults: { _controller: InstacountInstacountBundle:User:delete }
     requirements:
         _method:  GET
@@ -104,6 +104,12 @@ InstacountInstacountBundle_counter_create:
     defaults: { _controller: InstacountInstacountBundle:Counter:create }
     requirements:
         _method:  POST
+
+InstacountInstacountBundle_admin:
+    pattern:  /admin
+    defaults: { _controller: InstacountInstacountBundle:Campaign:index }
+    requirements:
+        _method:  GET
 
 
 
