@@ -167,7 +167,7 @@ class Campaign
     
         public function __toString()
 {
-    return $this->getName();
+    return $this->getTag();
 }
 
 }
