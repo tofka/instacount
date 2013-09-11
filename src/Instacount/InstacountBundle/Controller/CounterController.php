@@ -79,11 +79,15 @@ class CounterController extends Controller {
             array('label' => 'timestamp', 'type' => 'date'),
             array('label' => 'count', 'type' => 'number')
         );
-        foreach($result as $r) {   
-            $date = $r->getTimestamp()->format('Y-m-d');
+        foreach($result as $r) { 
+            $date = "Date(";
+            $date .= $r->getTimestamp()->format('Y,m,d');
+            $date .= ")";
+            
+             
             $temp = array();
             $temp[] = array(
-                'v' => new \DateTime($date)); 
+                'v' => $date); 
             $temp[] = array(
                 'v' => $r->getCount()); 
             $rows[] = array('c' => $temp);
