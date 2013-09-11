@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Instacount\InstacountBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -30,17 +29,18 @@ class CounterController extends Controller {
         $form = $this->createForm(new CounterType(), $counter);
         $form->bind($request);      
         if ($form->isValid()) {
-        $em = $this->getDoctrine()->getEntityManager();       
-// Kolla om detta kampanj-id redan finns sparat i count denna dag inom visst intervall:               
+            $em = $this->getDoctrine()->getEntityManager();       
+// Kolla om detta kampanj-id redan finns sparat i count inom visst intervall:               
             $campaign_id = $form->get('campaign')->getData();
+            $now_minus = new \DateTime('-1 hour');
             $query = $em->createQuery(
                 'SELECT c
                 FROM InstacountInstacountBundle:Counter c
                 WHERE c.campaign = :campaign
-                AND c.timestamp > :timestamp')
+                AND c.timestamp > :time')
                 ->setParameters(array(
                     'campaign' => $campaign_id,
-                    'timestamp'  => new \DateTime('-1 hour')
+                    'time'  => $now_minus
                 )); 
             $check = $query->getResult();
             if (empty($check)) {
@@ -63,5 +63,34 @@ class CounterController extends Controller {
                 );
             }
         }
+    }
+
+    public function chartAction($campaign_id) {
+        $repository = $this->getDoctrine()
+        ->getRepository('InstacountInstacountBundle:Counter');
+        $query = $repository->createQueryBuilder('c')
+            ->where('c.campaign = :campaign_id')
+            ->setParameter('campaign_id', $campaign_id)            
+            ->getQuery();
+        $result = $query->getResult();
+        $rows = array();
+        $table = array();
+        $table['cols'] = array(
+            array('label' => 'timestamp', 'type' => 'date'),
+            array('label' => 'count', 'type' => 'number')
+        );
+        foreach($result as $r) {   
+            $date = $r->getTimestamp()->format('Y-m-d');
+            $temp = array();
+            $temp[] = array(
+                'v' => new \DateTime($date)); 
+            $temp[] = array(
+                'v' => $r->getCount()); 
+            $rows[] = array('c' => $temp);
+        }
+        $table['rows'] = $rows;
+        $jsonTable = json_encode($table);
+
+        return $response = new Response($jsonTable);
     }
 }

@@ -105,6 +105,13 @@ InstacountInstacountBundle_counter_create:
     requirements:
         _method:  POST
 
+InstacountInstacountBundle_counter_chart:
+    pattern:  /counter/chart/{campaign_id}
+    defaults: { _controller: InstacountInstacountBundle:Counter:chart }
+    requirements:
+        _method:  GET
+        id: \d+
+
 InstacountInstacountBundle_admin:
     pattern:  /admin
     defaults: { _controller: InstacountInstacountBundle:Campaign:index }
