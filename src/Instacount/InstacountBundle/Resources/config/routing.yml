@@ -70,15 +70,13 @@ InstacountInstacountBundle_user_create:
     pattern:  /admin/user/create
     defaults: { _controller: InstacountInstacountBundle:User:create }
     requirements:
-        _method:  POST
-        
+        _method:  POST        
 
 InstacountInstacountBundle_user_update:
     pattern:  /admin/user/{id}/update
     defaults: { _controller: InstacountInstacountBundle:User:update }
     requirements:
-        _method:  POST
-        
+        _method:  POST        
 
 InstacountInstacountBundle_user_edit:
     pattern:  /admin/user/{id}/edit
@@ -105,9 +103,16 @@ InstacountInstacountBundle_counter_create:
     requirements:
         _method:  POST
 
-InstacountInstacountBundle_counter_chart:
-    pattern:  /counter/chart/{campaign_id}
+InstacountInstacountBundle_campaign_chart:
+    pattern:  /campaign/{campaign_id}/chart
     defaults: { _controller: InstacountInstacountBundle:Counter:chart }
+    requirements:
+        _method:  GET
+        id: \d+
+
+InstacountInstacountBundle_campaign_json:
+    pattern:  /campaign/{campaign_id}/json
+    defaults: { _controller: InstacountInstacountBundle:Counter:json }
     requirements:
         _method:  GET
         id: \d+

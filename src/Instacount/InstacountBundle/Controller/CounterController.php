@@ -11,12 +11,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
 
 class CounterController extends Controller {
-
     public function showAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
         $counter = $em->getRepository('InstacountInstacountBundle:Counter')->find($id);
         if (!$counter) {
-            throw $this->createNotFoundException('Unable to find counter.');
+            throw $this->createNotFoundException('Kunde inte hitta räknare nr' . $id);
         }
 
         return $this->render('InstacountInstacountBundle:Counter:show.html.twig', array(
@@ -30,9 +29,9 @@ class CounterController extends Controller {
         $form->bind($request);      
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();       
-// Kolla om detta kampanj-id redan finns sparat i count inom visst intervall:               
+// Kolla om detta kampanj-id redan finns sparat i count inom visst intervall.
             $campaign_id = $form->get('campaign')->getData();
-            $now_minus = new \DateTime('-1 hour');
+            $now_sub = new \DateTime('-1 hour');
             $query = $em->createQuery(
                 'SELECT c
                 FROM InstacountInstacountBundle:Counter c
@@ -40,8 +39,9 @@ class CounterController extends Controller {
                 AND c.timestamp > :time')
                 ->setParameters(array(
                     'campaign' => $campaign_id,
-                    'time'  => $now_minus
+                    'time'  => $now_sub
                 )); 
+// Om $check är tom så sparas en ny count, annars visas den senaste.               
             $check = $query->getResult();
             if (empty($check)) {
                 $em = $this->getDoctrine()->getManager();
@@ -65,7 +65,7 @@ class CounterController extends Controller {
         }
     }
 
-    public function chartAction($campaign_id) {
+    public function jsonAction($campaign_id) {
         $repository = $this->getDoctrine()
         ->getRepository('InstacountInstacountBundle:Counter');
         $query = $repository->createQueryBuilder('c')
@@ -79,22 +79,28 @@ class CounterController extends Controller {
             array('label' => 'timestamp', 'type' => 'date'),
             array('label' => 'count', 'type' => 'number')
         );
-        foreach($result as $r) { 
-            $date = "Date(";
-            $date .= $r->getTimestamp()->format('Y,m,d');
-            $date .= ")";
-            
-             
+        foreach($result as $r) {
+            $date = "Date(" . $r->getTimestamp()->format('Y,m,d') . ")";   // Datumformat till googlechart-tabell 
+            $count = $r->getCount();          
             $temp = array();
-            $temp[] = array(
-                'v' => $date); 
-            $temp[] = array(
-                'v' => $r->getCount()); 
+            $temp[] = array('v' => $date); 
+            $temp[] = array('v' => $count); 
             $rows[] = array('c' => $temp);
         }
         $table['rows'] = $rows;
-        $jsonTable = json_encode($table);
+        //$jsonTable = json_encode($table);
+        //$response = new Response($jsonTable);
 
-        return $response = new Response($jsonTable);
+         return $this->render('InstacountInstacountBundle:Counter:json.json.twig', array(
+            'table' => $table));        
+    }
+
+    public function chartAction($campaign_id) {
+        $em = $this->getDoctrine()->getEntityManager();
+        $campaign = $em->getRepository('InstacountInstacountBundle:Campaign')->find($campaign_id);
+        
+        return $this->render('InstacountInstacountBundle:Counter:chart.html.twig', array(
+            'campaign_id' => $campaign_id,
+            'campaign' => $campaign));  
     }
 }
