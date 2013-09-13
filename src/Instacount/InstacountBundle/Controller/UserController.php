@@ -20,6 +20,35 @@ class UserController extends Controller {
         ));
     }
 
+    public function newAction() {
+        $user = new User();        
+        $form   = $this->createForm(new UserType(), $user);
+        return $this->render('InstacountInstacountBundle:User:new.html.twig', array(
+            'user' => $user,
+            'form'   => $form->createView()
+        ));
+    }
+
+    public function createAction(Request $request) {
+        $user  = new User();
+        $form = $this->createForm(new UserType(), $user);
+        $form->bind($request);      
+        if ($form->isValid()) {
+            $factory = $this->get('security.encoder_factory');
+            $encoder = $factory->getEncoder($user);
+            $password_from_form = $form->get('password')->getData();
+            $password = $encoder->encodePassword($password_from_form, $user->getSalt());
+            $user->setPassword($password);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+         
+            return $this->redirect($this->generateUrl('InstacountInstacountBundle_user_show', array(
+                'id' => $user->getId()))
+            );
+        }
+    }
+
     public function showAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
         $user = $em->getRepository('InstacountInstacountBundle:User')->find($id);
@@ -71,44 +100,13 @@ class UserController extends Controller {
                 'No user found for id '.$id
             );
         }     
-// Hämta alla campaigns som denna user lagt in och radera dem först.
-        $em = $this->getDoctrine()->getManager();
-        $campaigns = $em->getRepository('InstacountInstacountBundle:Campaign')->findByUser($id);
-        foreach ($campaigns as $campaign) {
-            $em->remove($campaign);
-        }   
         $em->remove($user);
         $em->flush();            
 
         return $this->redirect($this->generateUrl('InstacountInstacountBundle_user'));
-    }
+    }   
 
-    public function newAction() {
-        $user = new User();        
-        $form   = $this->createForm(new UserType(), $user);
-        return $this->render('InstacountInstacountBundle:User:new.html.twig', array(
-            'user' => $user,
-            'form'   => $form->createView()
-        ));
-    }
-
-    public function createAction(Request $request) {
-        $user  = new User();
-        $form = $this->createForm(new UserType(), $user);
-        $form->bind($request);      
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-         
-            return $this->redirect($this->generateUrl('InstacountInstacountBundle_user_show', array(
-                'id' => $user->getId()))
-            );
-        }
-    }
-
-    public function loginAction()
-    {
+    public function loginAction(){
         $request = $this->getRequest();
         $session = $request->getSession();
 
@@ -131,6 +129,4 @@ class UserController extends Controller {
             )
         );
     }
-
-
 }

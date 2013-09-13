@@ -4,7 +4,7 @@ $(document).ready(function(){
 	$('#instacount_instacountbundle_counter_count').parent().parent().hide();
 	$('.start label').hide();
 	$('#instacount_instacountbundle_counter_timestamp').parent().hide();
-	$('#instacount_instacountbundle_counter_campaign option:first-child').attr('selected', 'selected').text('Välj en kampanj i listan');
+	//$('#instacount_instacountbundle_counter_campaign option:first-child').attr('selected', 'selected').text('Välj en kampanj i listan');
 	$('#instacount_instacountbundle_counter_campaign option').click(function() {
 		var tagname = $(this).text();		
 		console.log(tagname);

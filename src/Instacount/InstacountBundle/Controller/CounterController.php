@@ -31,7 +31,7 @@ class CounterController extends Controller {
             $em = $this->getDoctrine()->getEntityManager();       
 // Kolla om detta kampanj-id redan finns sparat i count inom visst intervall.
             $campaign_id = $form->get('campaign')->getData();
-            $now_sub = new \DateTime('-1 hour');
+            $now_sub = new \DateTime('-1 day');
             $query = $em->createQuery(
                 'SELECT c
                 FROM InstacountInstacountBundle:Counter c
@@ -98,9 +98,15 @@ class CounterController extends Controller {
     public function chartAction($campaign_id) {
         $em = $this->getDoctrine()->getEntityManager();
         $campaign = $em->getRepository('InstacountInstacountBundle:Campaign')->find($campaign_id);
-        
+        $repository = $this->getDoctrine()->getRepository('InstacountInstacountBundle:Counter');
+        $counter = $repository->findOneByCampaign(
+                    array('campaign_id' => $campaign_id),
+                    array('id' => 'DESC')
+                );
         return $this->render('InstacountInstacountBundle:Counter:chart.html.twig', array(
             'campaign_id' => $campaign_id,
-            'campaign' => $campaign));  
+            'campaign' => $campaign,
+            'counter' => $counter->getId()
+            ));  
     }
 }

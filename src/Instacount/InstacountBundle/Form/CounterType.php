@@ -17,7 +17,10 @@ class CounterType extends AbstractType
         $builder
             ->add('count')
             //->add('timestamp')
-            ->add('campaign')
+            ->add('campaign', 'entity', array(
+                'class' => 'InstacountInstacountBundle:Campaign',
+                 'property' => 'tag'
+                )) 
         ;
     }
     

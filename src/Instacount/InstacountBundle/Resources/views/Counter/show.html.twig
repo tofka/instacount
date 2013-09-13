@@ -2,8 +2,8 @@
 {% block body %}
     <div data-role="page" data-add-back-btn="true">
         <header data-position="fixed" data-role="header">
+        	<a data-ajax="false" data-transition="flip" href=" {{ path('InstacountInstacountBundle_homepage') }}" data-role="button" data-icon="arrow-l" class="ui-btn-left" data-iconpos="notext"></a>
             <h1>Instacount</h1>
-            <a href="{{ path('InstacountInstacountBundle_admin')}}" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right" data-transition="flip">Admin</a>
         </header>
     <div class="content" data-theme="b" data-role="content">			
 		<h2 class="tag">#{{ counter.campaign.tag }} </h2>
@@ -12,7 +12,7 @@
 			<p><span class="count">{{ counter.count }}</span></p>
 			{{ counter.id }}
 		</div>	
-		<a data-role="button" href=" {{path('InstacountInstacountBundle_campaign_chart', { 'campaign_id' : counter.campaign.id }) }}">
+		<a data-ajax="false" data-transition="flip" data-role="button" href=" {{path('InstacountInstacountBundle_campaign_chart', { 'campaign_id' : counter.campaign.id }) }}">
 			Se diagram
 		</a>						
 	</div>				

@@ -1,13 +1,14 @@
 {% extends 'InstacountInstacountBundle::layout.html.twig' %}
 
 {% block body %}
-	<div data-role="page" data-add-back-btn="true">
+	<div data-role="page">
     	<header data-position="fixed" data-role="header">
-            <h1>Instacount</h1><a href="{{ path('InstacountInstacountBundle_homepage')}}" data-transition="flip" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right">Logga ut</a>
+    		<a href=" {{ path('InstacountInstacountBundle_campaign_show', {'id': campaign.id }) }}" data-role="button" data-icon="arrow-l" class="ui-btn-left" data-iconpos="notext"></a>
+            <h1>Instacount</h1><a href="{{ path('InstacountInstacountBundle_homepage')}}" data-transition="flip" data-ajax="false" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right">Logga ut</a>
         </header>	
         <div class="content" data-theme="b" data-role="content">		
-		<h2>Edit {{ campaign.name }} med id {{ campaign.id }}</h2>
-		<form action="{{ path('InstacountInstacountBundle_campaign_update', { 'id' : campaign.id }) }}" method="post" {{ form_enctype(form) }}>
+			<h2>Edit {{ campaign.name }} med id {{ campaign.id }}</h2>
+			<form action="{{ path('InstacountInstacountBundle_campaign_update', { 'id' : campaign.id }) }}" method="post" {{ form_enctype(form) }}>
 	    	{{ form_widget(form) }}
 	    	<input type="submit" value="Spara">
         	<a href=" {{ path('InstacountInstacountBundle_campaign_delete', { 'id' : campaign.id }) }} ">
@@ -15,7 +16,7 @@
 					Radera
 				</button>
 			</a>
-		</form>
-	</div>		
+			</form>
+		</div>		
 				
 {% endblock %}

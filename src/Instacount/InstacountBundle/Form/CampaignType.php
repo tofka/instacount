@@ -5,10 +5,11 @@ namespace Instacount\InstacountBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Security\Core\SecurityContext;
 
 class CampaignType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -17,8 +18,7 @@ class CampaignType extends AbstractType
         $builder
             ->add('start_date')
             ->add('end_date')
-            ->add('name')            
-            ->add('user')
+            ->add('name')   
             ->add('tag')
         ;
     }

@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name=viewport content="user-scalable=no,width=device-width" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link rel="apple-touch-startup-image" href="start.jpg" />
+		<link rel="apple-touch-icon" href="icon.jpg" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+		<link rel="stylesheet" href="style.css" />
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+		<title>Instacount</title>
+		<!-- För app-cache:
+		<link rel="stylesheet" href="jquery.mobile-1.3.2.min.css" />
+		<script src="jquery.js"></script>
+		<script src="jquery.mobile-1.3.2.min.js"></script> -->
+	</head>
+	<body>
+		<!-- Startsida -->
+		<div id="w1" data-role="page" data-theme="b">
+			<header data-position="fixed" data-role="header">
+				<h1>Instacount</h1>
+				<a href="#w3" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right" data-transition="flip">Admin</a>
+			</header>
+			<div class="content" data-role="content">
+			
+				<select id="tag_form">
+					<option selected>Välj företag</option>
+					<option value="smarteyes">Smarteyes</option>
+					<option value="fjäråskupan">Fjäråskupan</option>
+					<option value="arkenzoo">Arken zoo</option>
+				</select>
+				<a href="count.html" data-transition="flip"><button class="submit">Skicka</button></a>
+			</div>			 
+			<footer data-role="footer" data-position="fixed">
+				<h2>Sidfot</h2>
+			</footer>
+		</div>
+		
+		<!-- Campaign index -->
+		<div id="w3" data-role="page" data-theme="b">
+			<header data-position="fixed" data-role="header">
+				<h1>Instacount</h1>
+				<a href="#w1" data-transition="flip" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right">Logga ut</a>
+			</header>
+			<div data-role="content">
+				<h2>Hej Admin!</h2>
+				<h3>Sparade kampanjer</h3>
+				<a href="#" class="plus ui-btn-right" data-role="button" data-icon="plus" data-iconpos="notext"></a>
+				<ul data-role="listview" data-inset="true">	
+					<li>
+						<a href="#w4" data-transition="flip">	
+							Smarteyes
+						</a>				
+					</li>						
+					<li>						
+						<a href="#w4" data-transition="flip">	
+							Fjäråskupan
+						</a>
+					</li>					
+					<li>						
+						<a href="#w4" data-transition="flip">	
+							Arken Zoo
+						</a>						
+					</li>
+				</ul>								
+			</div>
+			<footer data-role="footer" data-position="fixed">
+				<h2>Sidfot</h2>
+			</footer>
+		</div>			
+		<!-- Campaign show -->
+		<div id="w4" data-role="page" data-theme="b" data-add-back-btn="true">
+			<header data-position="fixed" data-role="header">
+				<h1>Instacount</h1>
+				<a href="#w1" data-transition="flip" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right">Logga ut</a>
+			</header>
+			<div data-role="content">
+				<h2>Hej Admin!</h2>
+				<h3>Smarteyes</h3>
+					
+					<div class="admin">
+						Kampanj-id: 12
+						
+					</div>
+					<div class="admin">
+						Namn: Smarteyes
+						
+					</div>
+					<div class="admin">
+						Startdatum: 2013-08-20
+						
+					</div>
+
+					<div class="admin">
+						Slutdatum: 2013-09-30
+						
+					</div>
+				
+				<a href="#" data-theme="del" data-role="button" class="ui-btn-right">Radera</a>
+				<a href="#w5" data-transition="flip" data-theme="red" data-role="button" class="ui-btn-right" >Redigera</a>		
+			</div>
+			<footer data-role="footer" data-position="fixed">
+				<h2>Sidfot</h2>
+			</footer>
+		</div>	
+		<!-- Redigera -->
+				<div id="w5" data-role="page" data-theme="b" data-add-back-btn="true">
+			<header data-position="fixed" data-role="header">
+				<h1>Instacount</h1>
+				<a href="#w1" data-transition="flip" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right">Logga ut</a>
+			</header>
+			<div data-role="content">
+				<h2>Hej Admin!</h2>
+				<h3>Smarteyes</h3>
+					
+					
+					<label>
+						Namn:
+						<input type="text" value="Smarteyes" />
+					</label>
+					<label>
+						Startdatum:
+						<input type="text" value="2013-08-20" />
+					</label>
+
+					<label>
+						Slutdatum:
+						<input type="text" value="2013-09-30" />
+					</label>
+				
+				<a href="#" data-theme="del" data-role="button" class="ui-btn-right">Rensa</a>
+				<a href="#" data-theme="red" data-role="button" class="ui-btn-right" >Spara</a>		
+			</div>
+			<footer data-role="footer" data-position="fixed">
+				<h2>Sidfot</h2>
+			</footer>
+		</div>	
+		<script src="instacount.js"></script>
+	</body>
+</html>
