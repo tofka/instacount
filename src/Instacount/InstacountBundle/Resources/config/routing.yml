@@ -97,6 +97,13 @@ InstacountInstacountBundle_counter_show:
         _method:  GET
         id: \d+
 
+InstacountInstacountBundle_counter_index:
+    pattern:  /counter
+    defaults: { _controller: InstacountInstacountBundle:Counter:index }
+    requirements:
+        _method:  GET
+        id: \d+
+
 InstacountInstacountBundle_counter_create:
     pattern:  /counter/create
     defaults: { _controller: InstacountInstacountBundle:Counter:create }

@@ -13,8 +13,8 @@
 		<div class="admin">Tag: #{{ campaign.tag }} </div>
 		<div class="admin">Startdatum: {{ campaign.startDate|date('Y-m-d') }}</div>
 		<div class="admin">Slutdatum: {{ campaign.endDate|date('Y-m-d') }}</div>
-		<a data-ajax="false" href="{{path('InstacountInstacountBundle_campaign_edit', { 'id' : campaign.id }) }}" data-transition="flip" data-theme="red" data-role="button" class="ui-btn-right" >Redigera</a>
-		<a href="{{path('InstacountInstacountBundle_campaign_delete', { 'id' : campaign.id }) }}" data-transition="flip" data-theme="del" data-role="button" class="ui-btn-right" >Radera</a>
+		<a data-ajax="false" href="{{path('InstacountInstacountBundle_campaign_edit', { 'id' : campaign.id }) }}" data-transition="flip" data-role="button" class="ui-btn-right blue" >Redigera</a>
+		<a href="{{path('InstacountInstacountBundle_campaign_delete', { 'id' : campaign.id }) }}" data-transition="flip" data-role="button" class="ui-btn-right red" >Radera</a>
 	</div>		
 				
 {% endblock %}

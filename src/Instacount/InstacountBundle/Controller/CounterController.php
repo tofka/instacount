@@ -11,6 +11,32 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
 
 class CounterController extends Controller {
+
+    public function indexAction() {
+        // mySql: "select * from (select * from counter ORDER BY id DESC) AS x GROUP BY campaign_id"
+        // Denna plockar ut campaign_id som unika värden med det senaste id:t. Men jag kan inte skriva den
+        // i doctrine, så istället plockar jag ut hur många unika värden det finns för campaign_id och sätter
+        // den siffran som limit för hur många counts som ska plockas ut.
+        $em = $this->getDoctrine()->getEntityManager();
+        // mySql, måste joina för att campaign_id är fk i counter: SELECT DISTINCT campaign_id FROM counter INNER JOIN campaign ON counter.campaign_id = campaign.id  
+        $query = $em->createQuery('SELECT DISTINCT x.id FROM InstacountInstacountBundle:Campaign x 
+            join InstacountInstacountBundle:Counter c WHERE x.id = c.campaign');
+        $count = $query->getResult();
+        $limit = count($count);
+
+        $qb = $em->createQueryBuilder();
+        $qb->add('select', 'c')
+        ->add('from', 'InstacountInstacountBundle:Counter c')
+        ->add('orderBy', 'c.id DESC')
+        ->setMaxResults( $limit );
+        $counts = $qb->getQuery()->getResult();        
+
+        return $this->render('InstacountInstacountBundle:Counter:index.html.twig', array(
+            'counts' => $counts,
+            'limit' => $limit,
+            )
+        );
+    }
     public function showAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
         $counter = $em->getRepository('InstacountInstacountBundle:Counter')->find($id);
@@ -31,12 +57,13 @@ class CounterController extends Controller {
             $em = $this->getDoctrine()->getEntityManager();       
 // Kolla om detta kampanj-id redan finns sparat i count inom visst intervall.
             $campaign_id = $form->get('campaign')->getData();
-            $now_sub = new \DateTime('-1 day');
+            $today = new \DateTime();
+            $now_sub = $today->format("Y-m-d h:i:s");
             $query = $em->createQuery(
                 'SELECT c
                 FROM InstacountInstacountBundle:Counter c
                 WHERE c.campaign = :campaign
-                AND c.timestamp > :time')
+                AND c.timestamp = :time')
                 ->setParameters(array(
                     'campaign' => $campaign_id,
                     'time'  => $now_sub
