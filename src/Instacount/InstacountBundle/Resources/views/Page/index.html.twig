@@ -2,20 +2,40 @@
 {% extends 'InstacountInstacountBundle::layout.html.twig' %}
 
 {% block body %}
-<div data-role="page">
+<div id="test" data-role="page">
     <header data-position="fixed" data-role="header">
         <h1>Instacount</h1><a data-ajax="false" href="{{ path('InstacountInstacountBundle_admin')}}" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right" data-transition="flip">Admin</a>
     </header>
     <div class="content" data-theme="b" data-role="content">
-    <form class="start" data-transition="flip" action="{{ path('InstacountInstacountBundle_counter_create') }}" method="post" {{ form_enctype(form) }} >
-        {% form_theme form _self %}
-        {{ form_errors(form) }}
-         
-        {{ form_row(form.count, {'attr':{'class':'instagram'}}) }}
 
-        {{ form_rest(form) }}
+        <input class="search" type="text" placeholder="Skriv valfri tag" />
+        
+        <form class="start" data-transition="flip" action="{{ path('InstacountInstacountBundle_counter_create') }}" method="post" {{ form_enctype(form) }} >
+            {% form_theme form _self %}
+            {{ form_errors(form) }}         
+            {{ form_row(form.count, {'attr':{'class':'instagram'}}) }}
+            {{ form_rest(form) }} 
+            <input class="submit" type="submit" value="Testa!" />
+        </form>
+    </div>  
+    <footer data-role="footer" data-position="fixed">
+        <h2>&copy Karin Toft</h2>
+    </footer>
+</div>
+<div id="search-result" data-role="page">
+    <header data-position="fixed" data-role="header">
+        <h1>Instacount</h1><a data-ajax="false" data-transition="flip" href=" {{ path('InstacountInstacountBundle_homepage') }}" data-role="button" data-icon="arrow-l" class="ui-btn-left" data-iconpos="notext"></a>
+    </header>
+    <div class="content" data-theme="b" data-role="content">         
+        <h2 class="tag"></h2>
+        <div class="instagram"> 
+            <p>Taggar på Instagram:</p>     
+            <p><span class="count"></span></p>
+        </div>                           
+    </div>      
+    <footer data-role="footer" data-position="fixed">
+        <h2>&copy Karin Toft</h2>
+    </footer>
+</div>
 
-        <input class="submit" type="submit" value="Submit" />
-    </form>
-</div>  
 {% endblock %}

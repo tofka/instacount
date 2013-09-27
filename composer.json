@@ -20,7 +20,8 @@
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
         "doctrine/doctrine-migrations-bundle": "dev-master",
-        "doctrine/migrations": "dev-master"
+        "doctrine/migrations": "dev-master",
+        "leafo/lessphp": "0.3.9"
     },
     "scripts": {
         "post-install-cmd": [

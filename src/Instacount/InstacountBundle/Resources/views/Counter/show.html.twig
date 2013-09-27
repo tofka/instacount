@@ -2,18 +2,28 @@
 {% block body %}
     <div data-role="page" data-add-back-btn="true">
         <header data-position="fixed" data-role="header">
-        	<a data-ajax="false" data-transition="flip" href=" {{ path('InstacountInstacountBundle_homepage') }}" data-role="button" data-icon="arrow-l" class="ui-btn-left" data-iconpos="notext"></a>
+         <a data-ajax="false" data-transition="flip" href=" {{ path('InstacountInstacountBundle_homepage') }}" data-role="button" data-icon="arrow-l" class="ui-btn-left" data-iconpos="notext"></a>
             <h1>Instacount</h1>
         </header>
-    <div class="content" data-theme="b" data-role="content">			
-		<h2 class="tag">#{{ counter.campaign.tag }} </h2>
-		<div class="instagram">	
-			<p>Taggar på Instagram:</p>		
-			<p><span class="count">{{ counter.count }}</span></p>
-			{{ counter.id }}
-		</div>	
-		<a data-ajax="false" data-transition="flip" data-role="button" href=" {{path('InstacountInstacountBundle_campaign_chart', { 'campaign_id' : counter.campaign.id }) }}">
-			Se diagram
-		</a>						
-	</div>				
+    <div class="content" data-theme="b" data-role="content">    
+<h2 class="tag">#{{ counter.campaign.tag }} </h2>
+<div class="instagram"> 
+<p>Taggar på Instagram:</p> 
+<p><span class="count">{{ counter.count }}</span></p>
+{{ counter.id }}
+</div>  
+<a data-ajax="false" data-transition="flip" data-role="button" href=" {{path('InstacountInstacountBundle_campaign_chart', { 'campaign_id' : counter.campaign.id }) }}">
+Se diagram
+</a>    
+</div>
+    <footer data-role="footer" data-position="fixed">
+        <h2>&copy Karin Toft</h2>
+    </footer>
+</div>  
 {% endblock %}
+{% block javascripts %}
+            <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+            <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+            <script src="{{ asset('js/test.js') }}"></script>
+            <script src="{{ asset('js/instacount.js') }}"></script>
+        {% endblock %}

@@ -12,16 +12,14 @@ class CounterType extends AbstractType
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options){
         $builder
             ->add('count')
-            //->add('timestamp')
             ->add('campaign', 'entity', array(
                 'class' => 'InstacountInstacountBundle:Campaign',
-                 'property' => 'tag'
-                )) 
-        ;
+                'property' => 'tag',
+                'empty_value' => 'Välj en kampanj i listan!')
+            );
     }
     
     /**

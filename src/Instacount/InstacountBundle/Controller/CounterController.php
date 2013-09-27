@@ -58,12 +58,12 @@ class CounterController extends Controller {
 // Kolla om detta kampanj-id redan finns sparat i count inom visst intervall.
             $campaign_id = $form->get('campaign')->getData();
             $today = new \DateTime();
-            $now_sub = $today->format("Y-m-d h:i:s");
+            $now_sub = $today->format("Y-m-d 00:00:00");
             $query = $em->createQuery(
                 'SELECT c
                 FROM InstacountInstacountBundle:Counter c
                 WHERE c.campaign = :campaign
-                AND c.timestamp = :time')
+                AND c.timestamp > :time')
                 ->setParameters(array(
                     'campaign' => $campaign_id,
                     'time'  => $now_sub
@@ -104,10 +104,12 @@ class CounterController extends Controller {
         $table = array();
         $table['cols'] = array(
             array('label' => 'timestamp', 'type' => 'date'),
-            array('label' => 'count', 'type' => 'number')
+            array('label' => 'tags', 'type' => 'number')
         );
         foreach($result as $r) {
-            $date = "Date(" . $r->getTimestamp()->format('Y,m,d') . ")";   // Datumformat till googlechart-tabell 
+            $timestamp = $r->getTimestamp();
+            $date_modify = $timestamp->modify('-1 month');
+            $date = "Date(" . $date_modify->format('Y,m,d') . ")";   // Datumformat till googlechart-tabell 
             $count = $r->getCount();          
             $temp = array();
             $temp[] = array('v' => $date); 
@@ -115,10 +117,8 @@ class CounterController extends Controller {
             $rows[] = array('c' => $temp);
         }
         $table['rows'] = $rows;
-        //$jsonTable = json_encode($table);
-        //$response = new Response($jsonTable);
-
-         return $this->render('InstacountInstacountBundle:Counter:json.json.twig', array(
+        
+        return $this->render('InstacountInstacountBundle:Counter:json.json.twig', array(
             'table' => $table));        
     }
 

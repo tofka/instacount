@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "28eb9ddf9f58ee443c5280de11dfdd61",
+    "hash": "2fcc74d75718ec21d685759fbe1270c0",
     "packages": [
         {
             "name": "doctrine/common",
@@ -558,16 +558,16 @@
         },
         {
             "name": "leafo/lessphp",
-            "version": "dev-master",
+            "version": "v0.3.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/leafo/lessphp.git",
-                "reference": "9cfa4728e186f2679394b903bc2340926062990a"
+                "reference": "a11a6141b5715162b933c405379765d817891c5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/leafo/lessphp/zipball/9cfa4728e186f2679394b903bc2340926062990a",
-                "reference": "9cfa4728e186f2679394b903bc2340926062990a",
+                "url": "https://api.github.com/repos/leafo/lessphp/zipball/a11a6141b5715162b933c405379765d817891c5d",
+                "reference": "a11a6141b5715162b933c405379765d817891c5d",
                 "shasum": ""
             },
             "type": "library",
@@ -595,7 +595,7 @@
             ],
             "description": "lessphp is a compiler for LESS written in PHP.",
             "homepage": "http://leafo.net/lessphp/",
-            "time": "2013-09-11 20:11:27"
+            "time": "2013-03-02 16:13:31"
         },
         {
             "name": "monolog/monolog",
@@ -1324,8 +1324,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "doctrine/doctrine-migrations-bundle": 20,
-        "doctrine/migrations": 20,
-        "leafo/lessphp": 20
+        "doctrine/migrations": 20
     },
     "platform": {
         "php": ">=5.3.3"
