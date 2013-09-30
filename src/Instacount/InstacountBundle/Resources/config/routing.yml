@@ -124,6 +124,13 @@ InstacountInstacountBundle_campaign_json:
         _method:  GET
         id: \d+
 
+InstacountInstacountBundle_counter_test:
+    pattern:  /counter/json
+    defaults: { _controller: InstacountInstacountBundle:Counter:test }
+    requirements:
+        _method:  POST
+       
+
 InstacountInstacountBundle_admin:
     pattern:  /admin
     defaults: { _controller: InstacountInstacountBundle:Campaign:index }

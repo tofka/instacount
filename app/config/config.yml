@@ -19,6 +19,7 @@ framework:
     trusted_proxies: ~
     session:         ~
     fragments:       ~
+   
 
 # Twig Configuration
 twig:
@@ -55,3 +56,9 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+
+services:
+    Instacount.Instacountbundle.listener.request:
+        class: Instacount\InstacountBundle\RequestListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }

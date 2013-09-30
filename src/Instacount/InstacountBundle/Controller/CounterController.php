@@ -49,7 +49,24 @@ class CounterController extends Controller {
     }
     
     public function createAction(Request $request) {
-        $counter  = new Counter();
+        $params = array();
+        $content = $this->get("request")->getContent();
+        $params = json_decode($content, true); // 2nd param to get as array   
+        $test = json_last_error();
+
+        return $this->render('InstacountInstacountBundle:Counter:test.html.twig', array(
+            'params' => $params, // Null
+            'test' => $test, // json_last_error() = 4 = "syntax error"
+            )); 
+
+
+
+
+// Gamla funktionen:
+
+
+
+        /*$counter  = new Counter();
         $counter->setTimestamp(new \DateTime('now'));
         $form = $this->createForm(new CounterType(), $counter);
         $form->bind($request);      
@@ -89,7 +106,7 @@ class CounterController extends Controller {
                 'id' => $counter->getId()))
                 );
             }
-        }
+        }*/
     }
 
     public function jsonAction($campaign_id) {
