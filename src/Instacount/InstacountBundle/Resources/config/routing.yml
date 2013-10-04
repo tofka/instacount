@@ -137,7 +137,12 @@ InstacountInstacountBundle_admin:
     requirements:
         _method:  GET
 
-
+InstacountInstacountBundle_campaign_count:
+    pattern:  /campaign/count
+    defaults: { _controller: InstacountInstacountBundle:Campaign:count }
+    requirements:
+        _method:  POST
+      
 
 
 

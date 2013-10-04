@@ -1,25 +1,25 @@
 {% extends 'InstacountInstacountBundle::layout2.html.twig' %}
 {% block body %}
-    <div data-role="page" data-add-back-btn="true">
-        <header data-position="fixed" data-role="header">
-        	<a data-ajax="false" data-transition="flip" href=" {{ path('InstacountInstacountBundle_homepage') }}" data-role="button" data-icon="arrow-l" class="ui-btn-left" data-iconpos="notext"></a>
-            <h1>Instacount</h1>
-        </header>
-    <div class="content" data-theme="b" data-role="content">			
+    <div>
+        
+    <div>			
 		<h2>Översikt</h2>
         <p>
         {{ limit }} </p>
         
 		<div class="row-fluid box-container">
+
             {% for count in counts %}
             <a href="{{ path('InstacountInstacountBundle_campaign_chart', {'campaign_id': count.campaign.id }) }}">
-            <div class="span2 campaign-box">
-                <p>#{{ count.campaign.tag }}:</p>
-                <p class="count">{{ count.count }}</p>
-                <p>{{ count.timestamp|date('Y-m-d')}}</p>
-                <p>{{ count.id }}</p>
-            </div>   
-        </a>
+                <div class="span2 campaign-box">
+                    <div class="span12 inner">
+                        <p>#{{ count.campaign.tag }}:</p>
+                        <p class="count">{{ count.count }}</p>
+                        <p>{{ count.timestamp|date('Y-m-d')}}</p>
+                        <p>{{ count.id }}</p>
+                    </div>
+                </div>   
+            </a>
             {% endfor %}
             
         </div>            

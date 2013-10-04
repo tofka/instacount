@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <head>
+    <head>        
         <meta charset="utf-8" />
         <meta name=viewport content="user-scalable=no,width=device-width" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <title>{% block title %}Instacount{% endblock %}</title>
         {% block stylesheets %}
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
-               
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />        
         {% endblock %}
-        <link rel="apple-touch-startup-image" href="start.jpg" />
-        <link rel="apple-touch-icon" href="icon.jpg" />
-                {% block javascripts %}
-            <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-            <!--<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>-->
-        {% endblock %}
+        <link rel="apple-touch-startup-image" href="{{ asset('images/logo_start.png')}}" />
+        <link rel="apple-touch-icon" href="{{ asset('images/logo_screen.png')}}" />      
     </head>
     <body>  
         {% block body %}
         {% endblock %}
-   
-
+        {% block javascripts %}
+            <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+            <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+            <script src="{{ asset('js/instacount.js') }}"></script>
+            <script src="https://www.google.com/jsapi"></script>
+            <script src="{{ asset('js/googlechart.js') }}"></script>
+        {% endblock %}
     </body>
 </html>

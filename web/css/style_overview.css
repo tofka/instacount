@@ -1,0 +1,60 @@
+@font-face {
+ font-family: 'Berthold City Medium';
+  src: url('Berthold_City_Medium.ttf');
+}
+html {
+	font-size: 125%;
+}
+
+body {
+	font-size: 50%;
+	font-family: 'Berthold City';
+	background: url('../images/background.jpg');
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.clearfix {
+	clear: both;
+}
+
+.row-fluid [class*="span"] {
+	margin-left: 0;
+}
+
+.box-container {
+	width: 95%;
+	margin: auto;
+}
+
+.campaign-box {
+	background: transparent;
+}
+.campaign-box .inner {
+	margin: 20px;	
+	box-shadow: 2px 2px 2px;
+	border-radius: 20px;
+	width: 75%;
+	text-align: center;
+	background: #f6ac1d;	
+}
+
+.box-container a {
+	color: #666;
+	text-decoration: none;
+}
+
+h2 {
+	text-align: center;
+	font-size: 5em;
+}
+
+.campaign-box .count {
+	font-size: 5em;
+}
+.campaign-box p {
+	font-size: 2em;
+}

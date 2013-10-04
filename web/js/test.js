@@ -1,6 +1,12 @@
- $(function() {
-          $('a').click(function() {
-            document.location = $(this).attr('href');
-            return false;
-          });
+$(document).ready(function(){  
+
+
+    alert('Hej från Test!'); 
+        $('#chart').hide();
+        $('.byt').click(function(e) {
+            alert('Nu byter vi!');
+            $('#count-div').hide();
+            $('#chart').show();
+            e.preventDefault();
         });
+    });

@@ -2,13 +2,16 @@
 {% block body %}
 	<div data-role="page">
     	<header data-position="fixed" data-role="header">
-    		<a href=" {{ path('InstacountInstacountBundle_counter_show', { 'id': counter }) }}" data-role="button" data-icon="arrow-l" class="ui-btn-left" data-iconpos="notext"></a>
-            <h1>Instacount</h1>
+    		<a data-transition="flip" href=" {{ path('InstacountInstacountBundle_counter_show', { 'id': counter }) }}" data-role="button" data-icon="arrow-l" class="ui-btn-left" data-iconpos="notext"></a>
+            
         </header>	
-        <div class="content" data-theme="b" data-role="content">	
-        	<h2>Diagram över {{ campaign.name }} (#{{ campaign.tag }}): </h2>
+        <div class="content" data-role="content">	
+        	<h2>#{{ campaign.tag }}</h2>
         	  <div id="chart_div"></div>        	
-        </div>				
+        </div>	
+        <footer>
+        </footer>
+    </div>			
 <script>
 var url = "{{ path('InstacountInstacountBundle_campaign_json', {'campaign_id': campaign_id }) }}";
 var tag = "{{ campaign.tag }}";

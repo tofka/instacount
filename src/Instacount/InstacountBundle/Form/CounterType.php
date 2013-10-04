@@ -18,7 +18,7 @@ class CounterType extends AbstractType
             ->add('campaign', 'entity', array(
                 'class' => 'InstacountInstacountBundle:Campaign',
                 'property' => 'tag',
-                'empty_value' => 'Välj en kampanj i listan!')
+                'empty_value' => 'Välj en kampanj!')
             );
     }
     

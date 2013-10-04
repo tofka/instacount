@@ -1,7 +1,8 @@
 
+
 google.load('visualization', '1', {'packages':['corechart']});
 google.setOnLoadCallback(drawChart);
-function drawChart() {   	
+function drawChart() { 
 	var jsonData = $.ajax({
 		url: url,
 		dataType:"json",
@@ -9,34 +10,47 @@ function drawChart() {
 	}).responseText;
 	var data = new google.visualization.DataTable(jsonData);
 	var options = {		
-		lineWidth: 10,
-		pointSize: 50,
+		lineWidth: 6,
+		
 		vAxis: {
-			baselineColor: '#eeee00', gridlines: {
-				color: 'purple', count: 4}
+			baselineColor: '#666', gridlines: {
+				color: '#666', count: 6},
+				textStyle: {
+					fontName: 'Berthold City Medium',
+  					fontSize: 12
+  				}
 			},
 		hAxis: {
-			baselineColor: '#eeee00', format:'dd MMM', gridlines: {
-				color: 'purple', count: -1}
+			baselineColor: '#666', format:'dd MMM', gridlines: {
+				color: '#666', count: 10},
+				textStyle: {
+					fontName: 'Berthold City Medium',
+  					fontSize: 12
+  				}
 			},
+		interpolateNulls: true,
 		backgroundColor: {
 			strokeWidth: 10, 
-			fill: '#ccc', 
+			fill: '#000', 
 			stroke: '#000'
 		},
-		curveType: 'function',
-		fontName: 'monospace',
-		colors: ['#e0440e'],	
+		legend: {
+			position: 'none'
+		},
+		
+		colors: ['#f6ac1d'],	
 		titleTextStyle: { 
-			color: '#00ff00',
-  			fontName: 'Arial',
-  			fontSize: 30,
-  			bold: true,
-  			italic: true 
-  		},	
-		title: "Antal tags för #" + tag +" under perioden " + startDate + " - " + now
+			color: '#666',
+  			fontName: 'berthold city',
+  			fontSize: 20,
+  			
+  		}
 	};
-	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-	chart.draw(data, options);
-}
 
+           
+	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+	
+	chart.draw(data, options);
+
+}
+       

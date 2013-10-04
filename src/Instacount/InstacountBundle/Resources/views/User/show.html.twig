@@ -3,7 +3,7 @@
 {% block body %}
     <div data-role="page" data-add-back-btn="true">
 	    <header data-position="fixed" data-role="header">
-	        <h1>Instacount</h1>
+	        
 	        <a href="{{ path('InstacountInstacountBundle_homepage')}}" data-transition="flip" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right">Logga ut</a>
 	    </header>
     	<div class="content" data-theme="b" data-role="content">				
@@ -14,7 +14,7 @@
 			<a href="{{path('InstacountInstacountBundle_user_delete', { 'id' : user.id }) }}" data-transition="flip" data-theme="del" data-role="button" class="ui-btn-right" >Radera</a>
 		</div>
 	<footer data-role="footer" data-position="fixed">
-        <h2>&copy Karin Toft</h2>
+        
     </footer>
 </div>	
 {% endblock %}

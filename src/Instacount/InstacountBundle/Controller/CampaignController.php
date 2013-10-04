@@ -9,9 +9,28 @@ use Instacount\InstacountBundle\Entity\Campaign;
 use Instacount\InstacountBundle\Entity\Counter;
 use Instacount\InstacountBundle\Entity\User;
 use Instacount\InstacountBundle\Form\CampaignType;
+use Instacount\InstacountBundle\Form\CounterType;
+use Doctrine\ORM\EntityRepository;
 
 class CampaignController extends Controller
 {
+    public function countAction(Request $request) {
+        $form = $this->createForm(new CounterType());
+        $form->bind($request);      
+        $campaign = $form->get('campaign')->getData();
+        $id = $campaign->getId();
+        $repository = $this->getDoctrine()->getRepository('InstacountInstacountBundle:Counter');
+        $counter = $repository->findOneByCampaign(
+            array('campaign_id' => $id),
+            array('id' => 'DESC')
+        );
+        
+        return $this->render('InstacountInstacountBundle:Counter:show.html.twig', array(
+            'id' => $counter->getId(),
+            'counter' => $counter
+        ));
+    }
+
     public function indexAction() {
         $em = $this->getDoctrine()
                    ->getEntityManager();
