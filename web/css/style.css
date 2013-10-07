@@ -1,15 +1,17 @@
 @font-face {
- font-family: 'Berthold City Medium';
-  src: url('Berthold_City_Medium.ttf');
-  
+	font-family: 'Berthold City Medium';
+	src: url('Berthold_City_Medium.ttf');
 }
+
 @font-face {
-font-family: 'Berthold City Bold';
-  src: url('Berthold_City_Bold.ttf');
+	font-family: 'Berthold City Bold';
+  	src: url('Berthold_City_Bold.ttf');
 }
+
 * {
 	margin: 0;
 }
+
 html {
 	font-size: 125%;
 }
@@ -19,58 +21,90 @@ body {
 	font-family: 'Berthold City Medium';
 }
 
-/* Admin */
+div.nav>a.ui-btn>span.ui-btn-inner {
+	border: none;
+	font-size: 2em;
+	color: #fff;
+}
 
+.nav a {
+	background: url('../images/btn.png');
+	padding: 0;
+	line-height: 44px;
+	height: 44px;
+	margin: 15px;
+	border-radius: 10px;
+	text-shadow: 0 0 0;
+	font-family: 'Berthold City Medium';
+}
 
+#flip {
+	background: url('../images/orientation.png');
+	width: 43px;
+	height: 60px;
+	margin-left: 20px;
+}
 
-header.show {
+/* Logout-btn */
+header.admin>a.ui-btn-right {
+	right: 20px;
+	background: url('../images/fwd-btn.png');
+}
+
+header.show, header.admin {
 	width: 100%;
 	height: 60px;
 	background: #050000;
 }
 
-#count-div {
-	height: 500px;
+.toggle {
+	height: 400px;
 }
+
 form {
 	width: 278px;
 	margin: auto;	
 }
 
-
-/* Back-btn */
-.ui-btn-up-a, .ui-bar-a .ui-shadow {
+/* Back-btn, logout-btn */
+header.show>a.ui-btn-left, header.admin>a.ui-btn-left, header.admin>a.ui-btn-right {
 	width: 77px;
 	height: 32px;
-	font-family: arial;	
 	line-height: 30px;
-	background: url('../images/back-btn.png');
 	border: none;
 	box-shadow: 0 0 0;
 	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
 	border-radius: 0;
 	top: 15px;
+}
+
+/* Back-btn */
+header.show>a.ui-btn-left, header.admin>a.ui-btn-left {
 	left: 20px;
+	background: url('../images/back-btn.png');
 }
 
 /* Adm-btn */
 a#admin-button {
 	background: transparent;
-	position: absolute;
+	height: 30px;
+	border-radius: 0;
+	border: none;
+	line-height: 30px;
 	left: auto;
-	box-shadow: 0 0 1px rgba(0,0,0,0.5);
-	
+	text-shadow: 0 0 0;
+	box-shadow: 0 0 1px rgba(0,0,0,0.5);	
 }
 
-.ui-header .ui-btn-inner {
-	font-size: 1.0em;	
+header span.ui-btn-text, .ui-header .ui-btn-inner {
 	padding: 0;
 	border: none;
 }
+
+/* Form */
 .ui-submit {
 	width: 182px;
 	margin: 45px auto;
-
 }
 
 form.start>div.ui-input-text>input, .ui-select .ui-btn, .ui-btn .ui-shadow .ui-btn-corner-all .ui-btn-up-c {
@@ -79,15 +113,16 @@ form.start>div.ui-input-text>input, .ui-select .ui-btn, .ui-btn .ui-shadow .ui-b
 
 .ui-btn-inner, div.ui-input-text {
 	padding: 0;
-
 }
-.ui-btn-up-c, .ui-body-c, .ui-overlay-c  {
+
+.ui-btn-up-c, .ui-btn-up-a, .ui-body-c, .ui-overlay-c  {
 	background: transparent;
 	border: none;
 	box-shadow: 0 0 0;
 	border-radius: 0;
 }
-form.start>div.ui-submit>.ui-btn-inner {
+
+form.start>div.ui-submit>.ui-btn-inner, div.ui-submit>.ui-btn-inner {
 	height: 44px;
 	width: 180px;
 	line-height: 44px;
@@ -100,23 +135,31 @@ form.start>div.ui-submit>.ui-btn-inner {
 	text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.45);
 	font-family: 'Berthold City Bold';
 }
+
 ::-webkit-input-placeholder {
    color: #fff;
 }
-.ui-listview-inset .ui-li {
-	border: none;
-}
-.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li {
-	background-image: url('../images/text.png');
+
+div.ui-btn-inner>div.ui-btn-text>a.ui-link-inherit {
+	background: url('../images/text.png');
 	height: 44px;
 	padding: 0 15px;
+	font-size: 1.6em;
 	line-height: 44px;
 	color: #fff;
 	text-shadow: 0 0 0;
-
 	font-family: 'Berthold City Medium';
 }
-form.start>div.ui-input-text>input {
+
+label.ui-input-text {
+	display: none;
+} 
+
+div.ui-input-text>input#username, div.ui-input-text>input#password {
+	padding: 0;
+}
+
+form.start>div.ui-input-text>input, div.ui-input-text>input#username, div.ui-input-text>input#password {
 	height: 45px;
 	width: 263px;
 	border-radius: 0;
@@ -127,10 +170,9 @@ form.start>div.ui-input-text>input {
 	color: #fff;
 	text-shadow: 0 0 0;
 	font-family: 'Berthold City Medium';
-	
 }
 
-.ui-btn-text {
+form .ui-btn-text {
 	background: transparent;
 	font-size: 1.5em;
 	font-weight: normal;
@@ -149,6 +191,12 @@ form.start>div.ui-input-text>input {
 	background-image: url('../images/choose.png');	
 }
 
+/* ul */
+.ui-content .ui-listview-inset, .ui-panel-inner .ui-listview-inset{
+	border: none;
+	margin: 5em 1.5em;
+}
+
 .logo {
 	background-image: url('../images/logo.png');	
 	background-repeat: no-repeat;
@@ -162,6 +210,7 @@ form.start>div.ui-input-text>input {
 	background: #ccc;
 	width: 100%;
 }
+
 .ui-header, .ui-footer {
  	background: transparent;
  	border: 0; 	
@@ -170,7 +219,7 @@ form.start>div.ui-input-text>input {
  
 .ui-page {
 	background-image: url('../images/background.jpg');
-	}
+}
 
 div.ui-content {
 	padding: 0;
@@ -192,15 +241,10 @@ div.ui-content {
       text-decoration: none;    
 }
 
-.blue .ui-btn-inner{
-      background-color : blue;
-      color: #fff;
-      text-decoration: none;
-}
-
 .ui-body-b  {
 	text-shadow: 0 0 0;
 }
+
 .tag {
 	margin-top: 100px;
 	text-align: center;	
@@ -227,7 +271,6 @@ div.ui-content {
 	font-size: 12em;
 	text-shadow: -1px -2px 2px rgba(0, 0, 0, 0.75);
 }
-
 
 .list-item p {
 	font-size: 2em;
@@ -265,13 +308,12 @@ p {
 	font-size: 2em;
 }
 	
-label {
-	font-size: 1.8em;
-	text-align: left;
-}
-
 .plus {
 	float: right;
+}
+
+div.content>a.plus {
+	margin-right: 3em;
 }
 
 

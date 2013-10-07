@@ -1,18 +1,15 @@
-$(document).ready(function(){  
-	if(window.orientation == 0) {
-	    $('.toggle.landscape').hide();			
-	}
-	else {
-		$('.toggle.portrait').hide();	
-	}	
-	$( window ).on( "orientationchange", function( event ) {
-		$('.toggle').toggle();		
-	});
-});     
+$(document).ready(function() {
+	$('.toggle.hide').hide();
+	$('.change').click(function() {
+		$('.toggle').toggle();
+	})
+})
 
 google.load('visualization', '1', {'packages':['corechart']});
 google.setOnLoadCallback(drawChart);
 function drawChart() { 
+for (i = 0; i < count.length; i++){
+	var url = count[i];
 	var jsonData = $.ajax({
 		url: url,
 		dataType:"json",
@@ -52,10 +49,16 @@ function drawChart() {
   			fontName: 'berthold city',
   			fontSize: 20,  			
   		}
-	}; 
-	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-	$(window).resize(function () {
-   		chart.draw(data, options);
-	});
+	};
+
+    var id = count[i];
+   
+	var chart = new google.visualization.LineChart(document.getElementById(id));
+	//$(window).resize(function () {
+   
+   chart.draw(data, options);
+//});
+	
+}
 }
        

@@ -4,17 +4,15 @@
 {% block body %}
 <div data-role="page">    
     <header data-position="fixed" data-role="header">
-        <a id="admin-button" data-ajax="true" href="{{ path('InstacountInstacountBundle_admin')}}" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right" data-transition="flip">Admin</a>
+        <a id="admin-button" data-rel="external" data-ajax="true" href="{{ path('InstacountInstacountBundle_admin')}}" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right" data-transition="flip">Admin</a>
     </header>
     <div class="content" data-role="content">
-        <div class="logo">
-           
+        <div class="logo">           
             <script>var tags = [];</script>
             {% for campaign in campaigns %}
             <script>tags.push( "{{ campaign.tag }}")</script>
             {% endfor %}
-            <script>var save_url = "{{ path('InstacountInstacountBundle_counter_create')}}"</script>
-            
+            <script>var save_url = "{{ path('InstacountInstacountBundle_counter_create')}}"</script>            
             <form class="start" data-ajax="false" data-transition="flip" action="{{ path('InstacountInstacountBundle_campaign_count') }}" method="post" {{ form_enctype(form) }} >
                 {% form_theme form _self %}
                 {{ form_errors(form) }}         
@@ -31,14 +29,13 @@
     </footer>  
 </div>    
 <div id="search-result" data-role="page">
-    <header data-position="fixed" data-role="header">
-        <a data-ajax="false" data-transition="flip" href=" {{ path('InstacountInstacountBundle_homepage') }}" data-role="button" data-icon="arrow-l" class="ui-btn-left" data-iconpos="notext"></a>
-    </header>
+    <header class="show" data-position="fixed" data-role="header">
+            <a href="#" data-transition="flip" data-rel="back" data-icon="">Välj</a>         
+        </header>
     <div class="content" data-role="content">         
         <h2 class="tag"></h2>
-        <div class="instagram"> 
-            <p>Taggar på Instagram:</p>     
-            <p><span class="count"></span></p>
+        <div class="count">      
+            <p></p>
         </div>                           
     </div>        
     <footer data-role="footer" data-position="fixed">       

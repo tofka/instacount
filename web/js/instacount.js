@@ -11,7 +11,6 @@ $(document).ready(function(){
 			alert('Välj en kampanj i listan eller skriv in valfri tag!');
 			e.preventDefault();
 		}
-
 		else if (search) {
 			e.preventDefault();
 			var search_tagname = $('.search').val();
@@ -23,9 +22,19 @@ $(document).ready(function(){
 				cache: false,
 				url: url,
 				success: function (res) {
+					$('.count p').text('');
+					$('.tag').text('');
 					$.mobile.changePage('#search-result');	
 					$('.tag').append('#' + res.data.name);
-					$('.count').append(res.data.media_count);
+					var length = String(res.data.media_count).length;
+					if (length > 3) {
+						$('.count p').css('font-size','5em').append(res.data.media_count);
+					}
+					else {						
+						$('.count p').append(res.data.media_count);
+					}
+					$('.search').val('');
+					search_tagname = '';
 				}
 			});
 		}
@@ -48,6 +57,7 @@ $(document).ready(function(){
 				}
 			});	
 		}
+		
 	});
 
 		/*for (var i = 0; i < 1; i++) {

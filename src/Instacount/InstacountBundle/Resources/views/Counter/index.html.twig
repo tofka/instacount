@@ -1,15 +1,11 @@
 {% extends 'InstacountInstacountBundle::layout2.html.twig' %}
 {% block body %}
-    <div>
-        
-    <div>			
-		<h2>Översikt</h2>
-        <p>
-        {{ limit }} </p>
-        
-		<div class="row-fluid box-container">
+    <h2>Översikt</h2>
+    <p>{{ limit }} </p>
+    <button class="change">Byt innehåll!</button>
+		<div class="toggle row-fluid box-container">
 
-            {% for count in counts %}
+        {% for count in counts %} 
             <a href="{{ path('InstacountInstacountBundle_campaign_chart', {'campaign_id': count.campaign.id }) }}">
                 <div class="span2 campaign-box">
                     <div class="span12 inner">
@@ -17,12 +13,28 @@
                         <p class="count">{{ count.count }}</p>
                         <p>{{ count.timestamp|date('Y-m-d')}}</p>
                         <p>{{ count.id }}</p>
-                    </div>
+                    </div>                  
                 </div>   
             </a>
-            {% endfor %}
-            
-        </div>            
-    </div>	
+        {% endfor %}            
+        </div>  
+        <div class="toggle hide row-fluid box-container">
+<script>var count = [];</script>
+         {% for count in counts %}
+<script>  
+    var url = "{{ path('InstacountInstacountBundle_campaign_json', {'campaign_id':count.campaign.id } )}}";
+    count.push(url);
+</script>            
+            <a href="{{ path('InstacountInstacountBundle_campaign_chart', {'campaign_id': count.campaign.id }) }}">
+                <div class="span12 campaign-box">
+                    <p>{{ count.campaign.tag }}</p>
+                    <div class="span12 diagram" id="{{ path('InstacountInstacountBundle_campaign_json', {'campaign_id':count.campaign.id } )}}">
+                        
+                    </div>                   
+                </div>   
+            </a>
+            {% endfor %} 
+        </div>         
+    	
 		
 {% endblock %}

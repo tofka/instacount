@@ -2,11 +2,15 @@
 
 {% block body %}
 	<div data-role="page">
-    	<header class="show" data-position="fixed" data-role="header">
-    		<a href=" {{ path('InstacountInstacountBundle_campaign_show', {'id': campaign.id }) }}" data-role="button" data-icon="" class="ui-btn-left" data-iconpos="notext"></a>
-            <a href="{{ path('InstacountInstacountBundle_homepage')}}" data-transition="flip" data-ajax="true" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right">Logga ut</a>
-        </header>	
-        <div class="content" data-theme="b" data-role="content">		
+    	<header class="admin" data-position="fixed" data-role="header">
+        	<a data-ajax="false" data-transition="flip" href="#" data-rel="back" data-role="button" data-icon="" class="ui-btn-left" data-iconpos="">Tillbaka</a>       
+        	<a data-ajax="false" href="{{ path('logout')}}" data-transition="flip" class="ui-btn-right logout" data-role="button" data-icon="" data-iconpos="">Logga ut</a>
+    	</header>	
+        <div class="content" data-role="content">	
+           	<div class="nav">
+		        <a data-role="button" href="{{ path('InstacountInstacountBundle_user')}}">Hantera användare</a>
+		        <a data-role="button" href="{{ path('InstacountInstacountBundle_user')}}">Hantera kampanjer</a>
+		    </div>	
 			<h2>Edit {{ campaign.name }} med id {{ campaign.id }}</h2>
 			<form action="{{ path('InstacountInstacountBundle_campaign_update', { 'id' : campaign.id }) }}" method="post" {{ form_enctype(form) }}>
 	    	{{ form_widget(form) }}

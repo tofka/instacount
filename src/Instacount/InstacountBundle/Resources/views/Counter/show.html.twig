@@ -1,45 +1,32 @@
 {% extends 'InstacountInstacountBundle::layout.html.twig' %}
 {% block body %}
 <script>
-        var url = "{{ path('InstacountInstacountBundle_campaign_json', {'campaign_id':counter.campaign.id } )}}";
-        </script>
-        <!--<script>
-$(document).ready(function(){  
-        $('#chart').hide();
-        /*$('.byt').click(function() {
-            alert('Nu byter vi!');
-            $('#count-div').hide();
-            $('#chart').show();          
-        });  */
-});
-</script>-->
-    <div data-role="page" data-add-back-btn="true">
+    var url = "{{ path('InstacountInstacountBundle_campaign_json', {'campaign_id':counter.campaign.id } )}}";
+</script>
+    <div data-role="page" data-add-back-btn="true">            
         <header class="show" data-position="fixed" data-role="header">
-            <a href="#" data-transition="flip" data-rel="back" data-icon="">Välj</a>            
+            <a href="#" data-transition="flip" data-rel="back" data-icon="">Välj</a>         
         </header>
-        <div id="count-div" class="content" data-role="content">    
+        <div class="toggle portrait" class="content" data-role="content">    
             <h2 class="tag">#{{ counter.campaign.tag }} </h2>
             <div class="count"> 
                 <p>{{ counter.count }}</p>
+                <script>var figures = "{{ counter.count|length }}";</script>
                 {#{{ counter.id }}#}
             </div>  
-            <a data-role="button" href="{{ path('InstacountInstacountBundle_campaign_chart', {'campaign_id': counter.campaign.id })}}">Se diagram</a>
-        </div>
-   
-        <div id="chart">
-       
-       
+            <a data-role="button" data-ajax="false" href="{{ path('InstacountInstacountBundle_campaign_chart', {'campaign_id': counter.campaign.id })}}">Diagram-sidan</a>
+            <div id="flip"></div>
+        </div>   
+        <div class="toggle landscape">       
             <h2 class="tag">#{{ counter.campaign.tag }}</h2>
-            <div id="chart_div"></div>    
-               
+            <div id="chart_div"></div>     
         </div>  
         <footer>
-        </footer>
-
+        </footer>        
     </div> 
     <script>
         var tag = "{{ counter.campaign.tag }}";
-    </script>  
- 
+      
+    </script>   
 {% endblock %}
 

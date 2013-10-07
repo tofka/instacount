@@ -8,7 +8,7 @@ html {
 
 body {
 	font-size: 50%;
-	font-family: 'Berthold City';
+	font-family: 'Berthold City Medium';
 	background: url('../images/background.jpg');
 }
 
@@ -23,6 +23,9 @@ body {
 
 .row-fluid [class*="span"] {
 	margin-left: 0;
+	background: transparent;
+	border-radius: 0;
+	box-shadow: 0 0 0;
 }
 
 .box-container {
@@ -36,10 +39,10 @@ body {
 .campaign-box .inner {
 	margin: 20px;	
 	box-shadow: 2px 2px 2px;
-	border-radius: 20px;
+	border-radius: 15px;
 	width: 75%;
 	text-align: center;
-	background: #f6ac1d;	
+	background: url('../images/count.png');	
 }
 
 .box-container a {
@@ -50,11 +53,26 @@ body {
 h2 {
 	text-align: center;
 	font-size: 5em;
+	text-shadow: 0 1px 3px rgb(0,0,0,0,5);
 }
 
+.diagram {
+	background: transparent;
+	margin: 20px;	
+	box-shadow: 2px 2px 2px;
+	border-radius: 15px;
+	
+	text-align: center;
+	
+}
 .campaign-box .count {
 	font-size: 5em;
+	text-shadow: -1px -2px 2px rgba(0, 0, 0, 0.75);
+	color: #fff;
 }
 .campaign-box p {
+	text-shadow: 0 1px 1px rgb(0,0,0,0,5);
 	font-size: 2em;
+	color: #000;
+
 }

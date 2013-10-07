@@ -2,19 +2,24 @@
 
 {% block body %}
     <div data-role="page" data-add-back-btn="true">
-	    <header data-position="fixed" data-role="header">
-	       
-	        <a href="{{ path('InstacountInstacountBundle_homepage')}}" data-transition="flip" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right">Logga ut</a>
-	    </header>
-    	<div class="content" data-theme="b" data-role="content">				
-			<h2>User-index</h2>
-			{% for user in users %}        
+	    <header class="admin" data-position="fixed" data-role="header">
+            <a data-ajax="false" data-transition="flip" href="#" data-rel="back" data-role="button" data-icon="" class="ui-btn-left" data-iconpos="">Tillbaka</a>       
+            <a data-ajax="false" href="{{ path('logout')}}" data-transition="flip" class="ui-btn-right logout" data-role="button" data-icon="" data-iconpos="">Logga ut</a>
+        </header>
+    	<div class="content" data-role="content">				
+			<div class="nav">
+                <a data-role="button" data-ajax="false" href="{{ path('InstacountInstacountBundle_user')}}">Hantera användare</a>
+                <a data-role="button" data-ajax="false" href="{{ path('InstacountInstacountBundle_campaign')}}">Hantera kampanjer</a>
+            </div>  
+            <h2>Användare</h2>
+            <a href="{{path('InstacountInstacountBundle_user_new')}}" class="plus ui-btn-right" data-role="button" data-icon="plus" data-iconpos="notext"></a>
     			<ul data-role="listview" data-inset="true">
+            {% for user in users %}        
     				<li>
     					<a href=" {{ path('InstacountInstacountBundle_user_show', { 'id' : user.id }) }} ">{{ user.id }} {{ user.username }}  </a>
     				</li>
-    			</ul>  
-    		{% endfor %}
+            {% endfor %}
+    			</ul> 
 		</div>	
        <footer data-role="footer" data-position="fixed">
        

@@ -2,18 +2,21 @@
 
 {% block body %}
 <div data-role="page">
-    <header class="show" data-position="fixed" data-role="header">
-        <a data-ajax="false" data-transition="flip" href=" {{ path('InstacountInstacountBundle_homepage') }}" data-role="button" data-icon="" class="ui-btn-left" data-iconpos="notext"></a>
-       
-        <a data-ajax="true" href="{{ path('logout')}}" data-transition="flip" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right">Logga ut</a>
+    <header class="admin" data-position="fixed" data-role="header">
+        <a data-ajax="false" data-transition="flip" href=" {{ path('InstacountInstacountBundle_homepage') }}" data-role="button" data-icon="" class="ui-btn-left" data-iconpos="">Tillbaka</a>       
+        <a data-ajax="false" href="{{ path('logout')}}" data-transition="flip" class="ui-btn-right logout" data-role="button" data-icon="" data-iconpos="">Logga ut</a>
     </header>
-    <div class="content" data-role="content">			
+    <div class="content" data-role="content">           
+    <div class="nav">
+        <a data-role="button" data-ajax="false" href="{{ path('InstacountInstacountBundle_user')}}">Hantera användare</a>
+        <a data-role="button" data-ajax="false" href="{{ path('InstacountInstacountBundle_campaign')}}">Hantera kampanjer</a>
+    </div>
 		<h2>Kampanjer</h2>		
 		<a href="{{path('InstacountInstacountBundle_campaign_new')}}" class="plus ui-btn-right" data-role="button" data-icon="plus" data-iconpos="notext"></a>
 			<ul data-role="listview" data-inset="true">      
         {% for campaign in campaigns %}  
                 <li>
-                    <a data-icon="arrow-r" href=" {{ path('InstacountInstacountBundle_campaign_show', { 'id' : campaign.id }) }} ">{{ campaign.id }} {{ campaign.name }} {{ campaign.user }} </a>
+                    <a data-icon="" href=" {{ path('InstacountInstacountBundle_campaign_show', { 'id' : campaign.id }) }} ">{{ campaign.name }} </a>
                 </li>
         {% endfor %}
     		</ul>        
