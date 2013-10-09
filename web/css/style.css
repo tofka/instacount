@@ -245,8 +245,8 @@ div.ui-content {
 	text-shadow: 0 0 0;
 }
 
-.tag {
-	margin-top: 100px;
+.tag, .landscape .tag {
+	
 	text-align: center;	
 	font-size: 3em;
 	color: #000;
@@ -254,7 +254,12 @@ div.ui-content {
 	text-shadow: 0 1px 3px rgb(0,0,0,0,5);
 	text-transform: uppercase;
 }
-
+.tag {
+	margin-top: 100px;
+}
+.landscape .tag {
+margin-top: 20px;
+}
 .count {
 	width: 85%;
 	height: 134px;

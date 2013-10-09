@@ -47,25 +47,69 @@ class CounterController extends Controller {
         return $this->render('InstacountInstacountBundle:Counter:show.html.twig', array(
             'counter' => $counter));
     }
-    
+
+    public function showLastCountAction(Request $request) {
+        $counter  = new Counter();
+        $form = $this->createForm(new CounterType(), $counter);
+        $form->bind($request); 
+        $campaign_id = $form->get('campaign')->getData(); 
+        $repository = $this->getDoctrine()->getRepository('InstacountInstacountBundle:Counter');
+        $counter = $repository->findOneByCampaign(
+            array('campaign_id' => $campaign_id),
+            array('id' => 'DESC')
+        );
+        return $this->redirect($this->generateUrl('InstacountInstacountBundle_counter_show', array(
+            'id' => $counter->getId()))
+        );
+    }
     public function createAction(Request $request) {
-       /* $params = array();
-        $content = $this->get("request")->getContent();
-        $params = json_decode($content, true); // 2nd param to get as array   
-        $test = json_last_error();
-
-        return $this->render('InstacountInstacountBundle:Counter:test.html.twig', array(
-            'params' => $params, // Null
-            'test' => $test, // json_last_error() = 4 = "syntax error"
-            )); */
-
+        $form = $this->createFormBuilder()
+        ->add('data', 'textarea')        
+        ->getForm();
+        $form->handleRequest($request);
+        $counts = $form->get('data')->getData();
+        $json = json_decode($counts, true); 
+// Spara counters till databas
+        foreach ($json as $value) {                      
+            $counter = new Counter();
+            $tag = $value["tag"]; 
+            $count = $value["count"];       
+            $em = $this->getDoctrine()->getEntityManager();            
+            $campaign = $em->getRepository('InstacountInstacountBundle:Campaign')->findOneByTag($tag);
+            $counter->setCampaign($campaign);
+            $counter->setTimestamp(new \DateTime('now'));
+            $counter->setCount($count);
+// Kolla om detta kampanj-id redan finns sparat i count inom visst intervall.
+            $campaign_id = $counter->getCampaign();
+            $today = new \DateTime();
+            $now_sub = $today->format("Y-m-d 00:00:00");
+            $query = $em->createQuery(
+                'SELECT c
+                FROM InstacountInstacountBundle:Counter c
+                WHERE c.campaign = :campaign
+                AND c.timestamp > :time')
+                ->setParameters(array(
+                    'campaign' => $campaign_id,
+                    'time'  => $now_sub
+                )); 
+// Om $check är tom så sparas en ny count.               
+            $check = $query->getResult();
+            if (empty($check)) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($counter);
+                $em->flush();                
+            }
+        }
+        
+        return $this->redirect($this->generateUrl('InstacountInstacountBundle:Page:index.html.twig')); 
+ 
 
 
 
 // Gamla funktionen:
 
 
-
+/*
         $counter  = new Counter();
         $counter->setTimestamp(new \DateTime('now'));
         $form = $this->createForm(new CounterType(), $counter);
@@ -106,7 +150,7 @@ class CounterController extends Controller {
                 'id' => $counter->getId()))
                 );
             }
-        }
+        }*/
     }
 
     public function jsonAction($campaign_id) {

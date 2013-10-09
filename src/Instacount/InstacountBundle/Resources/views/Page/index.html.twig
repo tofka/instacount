@@ -12,17 +12,22 @@
             {% for campaign in campaigns %}
             <script>tags.push( "{{ campaign.tag }}")</script>
             {% endfor %}
-            <script>var save_url = "{{ path('InstacountInstacountBundle_counter_create')}}"</script>            
-            <form class="start" data-ajax="false" data-transition="flip" action="{{ path('InstacountInstacountBundle_campaign_count') }}" method="post" {{ form_enctype(form) }} >
+            <script>var save_url = "{{ path('InstacountInstacountBundle_counter_create')}}"</script>      
+            <div id="append">[</div>
+            <form data-ajax="false" data-transition="flip" action="{{ path('InstacountInstacountBundle_counter_create') }}" method="post" {{ form_enctype(form) }} >
                 {% form_theme form _self %}
-                {{ form_errors(form) }}         
-               
-                {{ form_row(form.campaign, {'attr':{'data-icon':''}}) }}
+                {{ form_errors(form) }}                 
                 {{ form_rest(form) }} 
+                <input type="submit" class="save" value="spara" />
+            </form>
+            <form class="start" data-ajax="false" data-transition="flip" action="{{ path('InstacountInstacountBundle_counter_last') }}" method="post" {{ form_enctype(form_select) }} >               
+                {% form_theme form _self %}
+                {{ form_errors(form_select) }}                 
+                {{ form_row(form_select.campaign, {'attr':{'data-icon':''}}) }}
+                {{ form_rest(form_select) }} 
                 <input class="search" type="text" placeholder="Skriv valfri tag" />
                 <input class="submit" type="submit" value="Testa!" />
             </form>     
-
         </div>
     </div>
     <footer data-role="footer" data-position="fixed">        

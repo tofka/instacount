@@ -1,11 +1,14 @@
 {% extends 'InstacountInstacountBundle::layout.html.twig' %}
 {% block body %}
 <h2>Tags: </h2>
+<p>params:</p> 
 
-<p>params: {{ params }}
+	<p>Data har sparats!
 </p>
-<p>error: {{ test }}
-</p>
+{% for item in json %}
+<p> {{ item.tag }} {{ item.count}} </p>
+
+{% endfor %}
 
 
 {% endblock %}
