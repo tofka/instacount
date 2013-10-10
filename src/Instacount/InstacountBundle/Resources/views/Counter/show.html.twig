@@ -11,10 +11,9 @@
             <h2 class="tag">#{{ counter.campaign.tag }} </h2>
             <div class="count"> 
                 <p>{{ counter.count }}</p>
-                <script>var figures = "{{ counter.count|length }}";</script>
+<script>var figures = "{{ counter.count|length }}";</script>
                 {#{{ counter.id }}#}
             </div>  
-            <a data-role="button" data-ajax="false" href="{{ path('InstacountInstacountBundle_campaign_chart', {'campaign_id': counter.campaign.id })}}">Diagram-sidan</a>
             <div id="flip"></div>
         </div>   
         <div class="toggle landscape">       
@@ -24,9 +23,7 @@
         <footer>
         </footer>        
     </div> 
-    <script>
-        var tag = "{{ counter.campaign.tag }}";
-      
+<script>var tag = "{{ counter.campaign.tag }}";      
     </script>   
 {% endblock %}
 

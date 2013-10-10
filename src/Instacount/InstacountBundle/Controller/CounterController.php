@@ -63,6 +63,11 @@ class CounterController extends Controller {
         );
     }
     public function createAction(Request $request) {
+        $em = $this->getDoctrine()->getEntityManager();
+        $campaigns = $em->getRepository('InstacountInstacountBundle:Campaign')->findAll();
+       
+        $counter_form = new Counter();
+        $form_select = $this->createForm(new CounterType(), $counter_form);
         $form = $this->createFormBuilder()
         ->add('data', 'textarea')        
         ->getForm();
@@ -78,32 +83,19 @@ class CounterController extends Controller {
             $campaign = $em->getRepository('InstacountInstacountBundle:Campaign')->findOneByTag($tag);
             $counter->setCampaign($campaign);
             $counter->setTimestamp(new \DateTime('now'));
-            $counter->setCount($count);
-// Kolla om detta kampanj-id redan finns sparat i count inom visst intervall.
-            $campaign_id = $counter->getCampaign();
-            $today = new \DateTime();
-            $now_sub = $today->format("Y-m-d 00:00:00");
-            $query = $em->createQuery(
-                'SELECT c
-                FROM InstacountInstacountBundle:Counter c
-                WHERE c.campaign = :campaign
-                AND c.timestamp > :time')
-                ->setParameters(array(
-                    'campaign' => $campaign_id,
-                    'time'  => $now_sub
-                )); 
-// Om $check är tom så sparas en ny count.               
-            $check = $query->getResult();
-            if (empty($check)) {
+            $counter->setCount($count);     
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($counter);
                 $em->flush();                
-            }
         }
         
-        return $this->redirect($this->generateUrl('InstacountInstacountBundle:Page:index.html.twig')); 
+        return $this->render('InstacountInstacountBundle:Page:index.html.twig', array(
+            'counter_form' => $counter_form,
+            'campaigns' => $campaigns,
+            'form_select' => $form_select->createView()   
+            )); 
  
-
+ 
 
 
 // Gamla funktionen:

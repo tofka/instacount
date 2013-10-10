@@ -27,6 +27,12 @@ div.nav>a.ui-btn>span.ui-btn-inner {
 	color: #fff;
 }
 
+.dialog {
+	text-align: center;
+	font-size: 3em;
+	color: #999;
+	text-shadow: 0 0 0;
+}
 .nav a {
 	background: url('../images/btn.png');
 	padding: 0;

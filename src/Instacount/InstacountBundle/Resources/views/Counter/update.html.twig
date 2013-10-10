@@ -1,0 +1,19 @@
+{% extends 'InstacountInstacountBundle::layout.html.twig' %}
+
+{% block body %}<div id="update" data-role="dialog">
+    <script>var tags = [];</script>
+            {% for campaign in campaigns %}
+            <script>tags.push( "{{ campaign.tag }}")</script>
+            {% endfor %}
+            <script>var save_url = "{{ path('InstacountInstacountBundle_counter_create')}}"</script>      
+            <div id="append">[</div>
+            <p class="dialog">Hämta uppgifter från Instagram</p>
+            <form data-ajax="false" data-transition="flip" action="{{ path('InstacountInstacountBundle_counter_create') }}" method="post" {{ form_enctype(form) }} >
+                {% form_theme form _self %}
+                {{ form_errors(form) }}                 
+                {{ form_rest(form) }} 
+                <input type="submit" class="save" value="OK" />
+            </form>
+</div>
+
+{% endblock %}

@@ -7,21 +7,13 @@
         <a id="admin-button" data-rel="external" data-ajax="true" href="{{ path('InstacountInstacountBundle_admin')}}" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right" data-transition="flip">Admin</a>
     </header>
     <div class="content" data-role="content">
-        <div class="logo">           
-            <script>var tags = [];</script>
-            {% for campaign in campaigns %}
-            <script>tags.push( "{{ campaign.tag }}")</script>
-            {% endfor %}
-            <script>var save_url = "{{ path('InstacountInstacountBundle_counter_create')}}"</script>      
-            <div id="append">[</div>
-            <form data-ajax="false" data-transition="flip" action="{{ path('InstacountInstacountBundle_counter_create') }}" method="post" {{ form_enctype(form) }} >
-                {% form_theme form _self %}
-                {{ form_errors(form) }}                 
-                {{ form_rest(form) }} 
-                <input type="submit" class="save" value="spara" />
-            </form>
+        <div class="logo">   
+<script>var tags = [];</script>
+    {% for campaign in campaigns %}
+<script>tags.push( "{{ campaign.tag }}")</script>
+    {% endfor %}
             <form class="start" data-ajax="false" data-transition="flip" action="{{ path('InstacountInstacountBundle_counter_last') }}" method="post" {{ form_enctype(form_select) }} >               
-                {% form_theme form _self %}
+                {% form_theme form_select _self %}
                 {{ form_errors(form_select) }}                 
                 {{ form_row(form_select.campaign, {'attr':{'data-icon':''}}) }}
                 {{ form_rest(form_select) }} 
