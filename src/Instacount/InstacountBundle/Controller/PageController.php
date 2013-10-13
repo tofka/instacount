@@ -9,7 +9,8 @@ use Instacount\InstacountBundle\Entity\Counter;
 class PageController extends Controller {
     public function indexAction() {
         $form = $this->createFormBuilder()
-            ->add('data', 'textarea')        
+            ->add('data', 'textarea')
+            ->add('position', 'textarea')        
             ->getForm();
         $today = new \DateTime();
         $now_sub = $today->format("Y-m-d 00:00:00");

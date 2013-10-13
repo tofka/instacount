@@ -40,6 +40,11 @@ class Campaign
  	* @ORM\JoinColumn(name="user_id", referencedColumnName="id")
  	*/
 	protected $user;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $positions=null;
     /**
      * Get id
      *
@@ -164,4 +169,10 @@ class Campaign
     {
         return $this->tag;
     }
+    
+        public function __toString()
+{
+    return $this->getName();
+}
+
 }

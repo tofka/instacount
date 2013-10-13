@@ -40,6 +40,11 @@ class Campaign
  	* @ORM\JoinColumn(name="user_id", referencedColumnName="id")
  	*/
 	protected $user;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $positions=null;
     /**
      * Get id
      *
@@ -170,4 +175,27 @@ class Campaign
     return $this->getName();
 }
 
+
+    /**
+     * Set positions
+     *
+     * @param string $positions
+     * @return Campaign
+     */
+    public function setPositions($positions)
+    {
+        $this->positions = $positions;
+    
+        return $this;
+    }
+
+    /**
+     * Get positions
+     *
+     * @return string 
+     */
+    public function getPositions()
+    {
+        return $this->positions;
+    }
 }

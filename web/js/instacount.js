@@ -1,6 +1,7 @@
 $(document).ready(function(){	
 	var clientID = "8e9859334c044b19aaa2ee526a57fa64";
 	$('#append').hide();
+	$('#position').hide();
 	$('#form_data').hide();
 	$('form label').hide();
 	if(typeof tags != 'undefined') {
@@ -12,24 +13,22 @@ $(document).ready(function(){
 			    dataType: "jsonp",
 			    cache: false,
 			    url: url,
-			    success: function (res) { 			    	
-			    	$('#append').append('{"tag":"' + res.data.name + '","count":' +  res.data.media_count + '},' );
-			    	
-			    	// Ajax för att skicka alla counts till controller, kan inte tas emot
-			    	/*$.ajax({  
-						type: "POST",  
-		 				url: save_url,  
-		 				data: ,
-		 				success: function(response) {
-	    				}
-					});	*/	    	
-				}
+			    success: function (res) { 
+			    	$('#append').append('{"tag":"' + res.data.name + '","count":' +  res.data.media_count + '},' );	
+				}   					
 			}); 	
-		}	
+		}
+
+		for (var i = 0; i < tags.length; i++) {
+			storePositions(i);
+		}
+
 		$('.save').click(function() {			
 			var json = $('#append').text().slice(0,-1);
 			$('#append').text(json);
-			var data = $('#append').append(']').text();
+			var data = $('#append').append(']').text();			
+			var position = $('#position').text();
+			$('#form_position').val(position);
 			$('#form_data').val(data);
 		});
 
@@ -67,5 +66,31 @@ $(document).ready(function(){
 				});
 			}
 		});
+	}	
+	function storePositions(i){
+		var tag = tags[i];
+		var url_recent = "https://api.instagram.com/v1/tags/" + tag + "/media/recent?client_id=8e9859334c044b19aaa2ee526a57fa64&count=50"
+	   	$('#position').append('<span class="slice ' + tag + '">|---' + tag + '</span>');		   
+	   	    $.ajax({
+		    type: "GET",
+		    dataType: "jsonp",
+		    cache: false,
+		    url: url_recent,
+		    success: function (r) { 
+		    	append(tag, r.data);			   		
+		    }
+		});
 	}
 });
+
+function append(tag, photo) {	
+	for (var i = 0; i < photo.length; i++){
+	   	if (photo[i].location == null){
+  			$('#position .'+tag).append('---null,null');
+   		}
+   		else {
+  			$('#position .'+tag).append('---' + photo[i].location.latitude + ',' + photo[i].location.longitude);
+  		}
+    }
+}
+

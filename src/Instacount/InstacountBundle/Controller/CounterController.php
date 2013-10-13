@@ -64,16 +64,17 @@ class CounterController extends Controller {
     }
     public function createAction(Request $request) {
         $em = $this->getDoctrine()->getEntityManager();
-        $campaigns = $em->getRepository('InstacountInstacountBundle:Campaign')->findAll();
-       
+        $campaigns = $em->getRepository('InstacountInstacountBundle:Campaign')->findAll();       
         $counter_form = new Counter();
         $form_select = $this->createForm(new CounterType(), $counter_form);
         $form = $this->createFormBuilder()
-        ->add('data', 'textarea')        
+        ->add('data', 'textarea') 
+        ->add('position', 'textarea')       
         ->getForm();
         $form->handleRequest($request);
         $counts = $form->get('data')->getData();
         $json = json_decode($counts, true); 
+              
 // Spara counters till databas
         foreach ($json as $value) {                      
             $counter = new Counter();
@@ -83,66 +84,75 @@ class CounterController extends Controller {
             $campaign = $em->getRepository('InstacountInstacountBundle:Campaign')->findOneByTag($tag);
             $counter->setCampaign($campaign);
             $counter->setTimestamp(new \DateTime('now'));
-            $counter->setCount($count);     
-                $em = $this->getDoctrine()->getManager();
+            $counter->setCount($count);
+            $em = $this->getDoctrine()->getManager();
                 $em->persist($counter);
-                $em->flush();                
+                $em->flush();   
         }
-        
+                
+// Spara position till databas
+        $positions = $form->get('position')->getData();
+        $parts = explode('|', $positions);
+        unset($parts[0]);
+        foreach($parts as $value){
+            $array = explode('---', $value);
+            $tag = $array[1];           
+            $positions = array();
+            foreach ($array as $value) {                
+                array_push($positions,$value);
+                unset($positions[0]);
+                unset($positions[1]);                
+            }
+            $save_positions = json_encode($positions);
+            $em = $this->getDoctrine()->getEntityManager();            
+            $campaign = $em->getRepository('InstacountInstacountBundle:Campaign')->findOneByTag($tag);
+            $campaign->setPositions($save_positions);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($campaign);
+            $em->flush();
+        }
+ 
         return $this->render('InstacountInstacountBundle:Page:index.html.twig', array(
             'counter_form' => $counter_form,
             'campaigns' => $campaigns,
-            'form_select' => $form_select->createView()   
-            )); 
- 
- 
+            'form_select' => $form_select->createView()
+        ));  
+    }
 
+public function jsonMapAction($campaign_id) {
+        $repository = $this->getDoctrine()
+        ->getRepository('InstacountInstacountBundle:Campaign');
+        $query = $repository->createQueryBuilder('c')
+            ->where('c.id = :campaign_id')
+            ->setParameter('campaign_id', $campaign_id)            
+            ->getQuery();
+        $result = $query->getResult();
+        $rows = array();
+        $table_map = array();
+        $table_map['cols'] = array(
+            array('label' => 'latitude', 'type' => 'number'),
+            array('label' => 'longitude', 'type' => 'number')
+        );
+        foreach($result as $r) {
+            $saved_positions = $r->getPositions();
+            $positions = json_decode($saved_positions, true);
+            foreach($positions as $value) {
+                $split = explode(',', $value);   
+                if(isset($split[1]) && isset($split[0])) {             
+                    $latitude = $split[0]; 
+                    $longitude = $split[1];  
+                }
+            $temp = array();
+            $temp[] = array('v' => $latitude); 
+            $temp[] = array('v' => $longitude); 
+            $rows[] = array('c' => $temp);
+            }            
+        }
+        $table_map['rows'] = $rows;
 
-// Gamla funktionen:
-
-
-/*
-        $counter  = new Counter();
-        $counter->setTimestamp(new \DateTime('now'));
-        $form = $this->createForm(new CounterType(), $counter);
-        $form->bind($request);      
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();       
-// Kolla om detta kampanj-id redan finns sparat i count inom visst intervall.
-            $campaign_id = $form->get('campaign')->getData();
-            $today = new \DateTime();
-            $now_sub = $today->format("Y-m-d 00:00:00");
-            $query = $em->createQuery(
-                'SELECT c
-                FROM InstacountInstacountBundle:Counter c
-                WHERE c.campaign = :campaign
-                AND c.timestamp > :time')
-                ->setParameters(array(
-                    'campaign' => $campaign_id,
-                    'time'  => $now_sub
-                )); 
-// Om $check är tom så sparas en ny count, annars visas den senaste.               
-            $check = $query->getResult();
-            if (empty($check)) {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($counter);
-                $em->flush();
-            
-                return $this->redirect($this->generateUrl('InstacountInstacountBundle_counter_show', array(
-                'id' => $counter->getId()))
-                );            
-            }
-            else {
-                $repository = $this->getDoctrine()->getRepository('InstacountInstacountBundle:Counter');
-                $counter = $repository->findOneByCampaign(
-                    array('campaign_id' => $campaign_id),
-                    array('id' => 'DESC')
-                );
-                return $this->redirect($this->generateUrl('InstacountInstacountBundle_counter_show', array(
-                'id' => $counter->getId()))
-                );
-            }
-        }*/
+        return $this->render('InstacountInstacountBundle:Counter:json_map.json.twig', array(
+            'table_map' => $table_map     
+          ));
     }
 
     public function jsonAction($campaign_id) {
@@ -170,23 +180,8 @@ class CounterController extends Controller {
             $rows[] = array('c' => $temp);
         }
         $table['rows'] = $rows;
-        
+
         return $this->render('InstacountInstacountBundle:Counter:json.json.twig', array(
             'table' => $table));        
-    }
-
-    public function chartAction($campaign_id) {
-        $em = $this->getDoctrine()->getEntityManager();
-        $campaign = $em->getRepository('InstacountInstacountBundle:Campaign')->find($campaign_id);
-        $repository = $this->getDoctrine()->getRepository('InstacountInstacountBundle:Counter');
-        $counter = $repository->findOneByCampaign(
-                    array('campaign_id' => $campaign_id),
-                    array('id' => 'DESC')
-                );
-        return $this->render('InstacountInstacountBundle:Counter:chart.html.twig', array(
-            'campaign_id' => $campaign_id,
-            'campaign' => $campaign,
-            'counter' => $counter->getId()
-            ));  
-    }
+    }   
 }

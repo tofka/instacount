@@ -5,9 +5,11 @@
             {% for campaign in campaigns %}
             <script>tags.push( "{{ campaign.tag }}")</script>
             {% endfor %}
-            <script>var save_url = "{{ path('InstacountInstacountBundle_counter_create')}}"</script>      
-            <div id="append">[</div>
+            <script>var save_url = "{{ path('InstacountInstacountBundle_counter_create')}}"</script>    
+            <div style="font-size: 2em; text-shadow: 0 0 0;" id="append">[</div>
             <p class="dialog">Hämta uppgifter från Instagram</p>
+            <div style="font-size: 2em; text-shadow: 0 0 0;" id="position"></div>  
+
             <form data-ajax="false" data-transition="flip" action="{{ path('InstacountInstacountBundle_counter_create') }}" method="post" {{ form_enctype(form) }} >
                 {% form_theme form _self %}
                 {{ form_errors(form) }}                 

@@ -13,9 +13,10 @@ $(document).ready(function(){
 google.load('visualization', '1', {'packages':['corechart']});
 google.setOnLoadCallback(drawChart);
 function drawChart() { 
-	if (typeof url != 'undefined'){
+	if (typeof url_chart != 'undefined'){
+		console.log(url_map);
 		var jsonData = $.ajax({
-			url: url,
+			url: url_chart,
 			dataType:"json",
 			async: false
 		}).responseText;
@@ -60,4 +61,5 @@ function drawChart() {
 		});
 	}
 }
+
        

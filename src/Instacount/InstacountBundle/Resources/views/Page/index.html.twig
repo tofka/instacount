@@ -12,6 +12,7 @@
     {% for campaign in campaigns %}
 <script>tags.push( "{{ campaign.tag }}")</script>
     {% endfor %}
+    
             <form class="start" data-ajax="false" data-transition="flip" action="{{ path('InstacountInstacountBundle_counter_last') }}" method="post" {{ form_enctype(form_select) }} >               
                 {% form_theme form_select _self %}
                 {{ form_errors(form_select) }}                 

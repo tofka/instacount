@@ -236,23 +236,23 @@ div.ui-content {
 	clear: both;
 }
 
-#chart_div {
-	width: 80%;
+#chart_div, #map_div {
+	width: 45%;
+	float: left;
 	margin: auto;
 }
 
 .red .ui-btn-inner {
-      background-color : red;
-      color: #fff;
-      text-decoration: none;    
+    background-color : red;
+    color: #fff;
+    text-decoration: none;    
 }
 
 .ui-body-b  {
 	text-shadow: 0 0 0;
 }
 
-.tag, .landscape .tag {
-	
+.tag, .landscape .tag {	
 	text-align: center;	
 	font-size: 3em;
 	color: #000;
@@ -260,12 +260,15 @@ div.ui-content {
 	text-shadow: 0 1px 3px rgb(0,0,0,0,5);
 	text-transform: uppercase;
 }
+
 .tag {
 	margin-top: 100px;
 }
+
 .landscape .tag {
-margin-top: 20px;
+	margin-top: 20px;
 }
+
 .count {
 	width: 85%;
 	height: 134px;

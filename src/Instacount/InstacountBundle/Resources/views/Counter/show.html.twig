@@ -1,7 +1,8 @@
 {% extends 'InstacountInstacountBundle::layout.html.twig' %}
 {% block body %}
 <script>
-    var url = "{{ path('InstacountInstacountBundle_campaign_json', {'campaign_id':counter.campaign.id } )}}";
+    var url_chart = "{{ path('InstacountInstacountBundle_campaign_json', {'campaign_id':counter.campaign.id } )}}";
+    var url_map = "{{ path('InstacountInstacountBundle_campaign_json_map', {'campaign_id':counter.campaign.id } )}}";
 </script>
     <div data-role="page" data-add-back-btn="true">            
         <header class="show" data-position="fixed" data-role="header">
@@ -12,13 +13,13 @@
             <div class="count"> 
                 <p>{{ counter.count }}</p>
 <script>var figures = "{{ counter.count|length }}";</script>
-                {#{{ counter.id }}#}
             </div>  
             <div id="flip"></div>
         </div>   
         <div class="toggle landscape">       
             <h2 class="tag">#{{ counter.campaign.tag }}</h2>
-            <div id="chart_div"></div>     
+            <div id="chart_div"></div>   
+            <div id="map_div"></div>  
         </div>  
         <footer>
         </footer>        
