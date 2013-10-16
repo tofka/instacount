@@ -237,14 +237,27 @@ div.ui-content {
 }
 
 #chart_div, #map_div {
-	width: 45%;
-	float: left;
-	margin: auto;
+	width: 100%;	
+	margin-left: 8px;
 }
 
 .red .ui-btn-inner {
-    background-color : red;
+	background: url('../images/btn_red.png');
+}
+.blue .ui-btn-inner {
+	background: url('../images/btn_blue.png');
+}
+
+
+.red .ui-btn-inner, .blue .ui-btn-inner {
+    
+    padding: 0 3px;
+    margin: 15px 0 0 15px;
+    line-height: 44px;
+    font-size: 1.6em;
+    border-radius: 5px;
     color: #fff;
+    height: 44px;
     text-decoration: none;    
 }
 
@@ -291,8 +304,10 @@ div.ui-content {
 	text-align: left;	
 }
 
-.admin {
+.admin-list {
 	clear: both;
+	
+	margin: 0 15px;
 	background-color: #f2f2f2;
 	font-size: 1.6em;
 	text-align: left;	
@@ -300,7 +315,7 @@ div.ui-content {
 	line-height: 42px;
 }
 
-.admin:nth-child(even) {
+.admin-list:nth-child(even) {
 	background-color: #fff;
 }
 

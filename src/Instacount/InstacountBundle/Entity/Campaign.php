@@ -45,6 +45,12 @@ class Campaign
      * @ORM\Column(type="text", nullable=true)
      */
     protected $positions=null;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $facebook_url=null;
+
     /**
      * Get id
      *
@@ -197,5 +203,28 @@ class Campaign
     public function getPositions()
     {
         return $this->positions;
+    }
+
+    /**
+     * Set facebook_url
+     *
+     * @param string $facebookUrl
+     * @return Campaign
+     */
+    public function setFacebookUrl($facebookUrl)
+    {
+        $this->facebook_url = $facebookUrl;
+    
+        return $this;
+    }
+
+    /**
+     * Get facebook_url
+     *
+     * @return string 
+     */
+    public function getFacebookUrl()
+    {
+        return $this->facebook_url;
     }
 }

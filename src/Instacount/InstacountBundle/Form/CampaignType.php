@@ -20,6 +20,7 @@ class CampaignType extends AbstractType
             ->add('end_date')
             ->add('name')   
             ->add('tag')
+            ->add('facebook_url')
         ;
     }
     

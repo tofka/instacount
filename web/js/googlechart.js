@@ -6,8 +6,14 @@ $(document).ready(function(){
 		$('.toggle.portrait').hide();	
 	}	
 	$( window ).on( "orientationchange", function( event ) {
+		$('#chart_div').show();
+		$('#map_div').hide();
 		$('.toggle').toggle();		
-	});
+		$('#chart_div').click(function(){
+			$('#map_div').show();
+			$('#chart_div').hide();
+		});
+	})
 });     
 
 google.load('visualization', '1', {'packages':['corechart']});

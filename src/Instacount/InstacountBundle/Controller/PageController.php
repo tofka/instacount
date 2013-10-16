@@ -20,8 +20,7 @@ class PageController extends Controller {
         $query = $em->createQuery(
                 'SELECT c
                 FROM InstacountInstacountBundle:Counter c
-                WHERE c.timestamp > :time'
-                )
+                WHERE c.timestamp > :time')
                 ->setParameters(array(
                     'time'  => $now_sub
                 ));     
@@ -30,7 +29,8 @@ class PageController extends Controller {
         if(!$time_check) {
             return $this->render('InstacountInstacountBundle:Counter:update.html.twig', array(
                 'campaigns' => $campaigns,
-                'form'   => $form->createView(),));
+                'form'   => $form->createView()
+                ));
         }
         else {     
             $counters = $em->getRepository('InstacountInstacountBundle:Counter')->findAll();
@@ -40,7 +40,7 @@ class PageController extends Controller {
             return $this->render('InstacountInstacountBundle:Page:index.html.twig', array(
                 'campaigns' => $campaigns,
                 'counter' => $counter,                
-                'form_select' => $form_select->createView(),                        
+                'form_select' => $form_select->createView()      
             ));
         }
     }
