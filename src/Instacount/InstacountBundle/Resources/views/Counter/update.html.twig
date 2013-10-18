@@ -11,8 +11,9 @@ tags.push( "{{ campaign.tag }}" );
 facebook_urls.push( "{{ campaign.facebookUrl }}" );</script>
     {% endfor %}
     <div style="font-size: 2em; text-shadow: 0 0 0;" id="append">[</div>
-    <p class="dialog">Hämta uppgifter</p>
+    <div style="font-size: 2em; text-shadow: 0 0 0;" id="fb"></div>
     <div style="font-size: 2em; text-shadow: 0 0 0;" id="position"></div>
+    <p class="dialog">Hämta uppgifter</p>
     <form data-ajax="false" data-transition="flip" action="{{ path('InstacountInstacountBundle_counter_create') }}" method="post" {{ form_enctype(form) }} >
         {% form_theme form _self %}
         {{ form_errors(form) }}                 

@@ -157,12 +157,18 @@ div.ui-btn-inner>div.ui-btn-text>a.ui-link-inherit {
 	font-family: 'Berthold City Medium';
 }
 
-label.ui-input-text {
-	display: none;
-} 
 
-div.ui-input-text>input#username, div.ui-input-text>input#password {
+
+input#instacount_instacountbundle_user_email.ui-input-text, input#instacount_instacountbundle_user_password.ui-input-text, input#instacount_instacountbundle_user_username.ui-input-text, input#instacount_instacountbundle_campaign_tag.ui-input-text, input#instacount_instacountbundle_campaign_name.ui-input-text, input#instacount_instacountbundle_campaign_end_date.ui-input-text, input#instacount_instacountbundle_campaign_start_date.ui-input-text, input#username, input#password {
 	padding: 0;
+	background: url('../images/text.png');
+	height: 44px;
+	width: 100%;
+	font-size: 1.6em;
+	line-height: 44px;
+	color: #fff;
+	text-shadow: 0 0 0;
+	font-family: 'Berthold City Medium';
 }
 
 form.start>div.ui-input-text>input, div.ui-input-text>input#username, div.ui-input-text>input#password {

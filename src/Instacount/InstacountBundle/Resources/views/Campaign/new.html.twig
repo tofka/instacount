@@ -12,7 +12,7 @@
 		        <a data-role="button" href="{{ path('InstacountInstacountBundle_campaign')}}">Hantera kampanjer</a>
 		    </div>	
 		    <h2>Skapa ny kampanj</h2>
-			<form action="{{ path('InstacountInstacountBundle_campaign_create') }}" method="post" {{ form_enctype(form) }}>
+			<form class="new" action="{{ path('InstacountInstacountBundle_campaign_create') }}" method="post" {{ form_enctype(form) }}>
 	    		{{ form_widget(form) }}
 	    		<input type="submit" value="Spara">        
 			</form>

@@ -16,11 +16,23 @@ class CampaignType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('start_date')
-            ->add('end_date')
-            ->add('name')   
-            ->add('tag')
-            ->add('facebook_url')
+            ->add('start_date', 'date', array(
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'label' => 'Startdatum (åååå-mm-dd)'
+                ))
+            ->add('end_date', 'date', array(
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'label' => 'Enddatum (åååå-mm-dd)'
+                ))
+            ->add('name', null, array(
+                'label' => 'Namn'
+                ))   
+            ->add('tag', null, array(
+                'label' => 'Tag'
+                )) 
+            //->add('facebook_url')
         ;
     }
     
