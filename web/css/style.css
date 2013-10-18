@@ -247,8 +247,8 @@ div.ui-content {
 	
 }
 #chart_div {
-	width: 90%;	
-	margin: auto;
+	display: none;
+	
 }
 
 .red .ui-btn-inner {

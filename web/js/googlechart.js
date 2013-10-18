@@ -6,19 +6,47 @@ $(document).ready(function(){
 		$('.toggle.portrait').hide();	
 	}	
 	$( window ).on( "orientationchange", function( event ) {
-		$('.toggle').toggle();		
-			displayMap();
-		
 		$('#chart_div').hide();
+		$('.toggle').toggle();		
+			displayMap();		
 	});
-		$('html').click(function(){
-			$('.div_toggle').toggle();	
-		});	
+	$('html').click(function(){
+		checkVisibility();
+		
+		$('.div_toggle').toggle();	
+			
+			
+		
+		
+		
+	});	
 });     
+function checkVisibility() {
+	 if ($("#map_div").is(":visible") == true) {
+	 		$('#map_div').hide();
+	 		$('#chart_div').show();
+	 		displayChart();
+	 
+	 }
+	 else if ($('#chart_div').is(':visible') == true) {
+	 	$('#chart_div').hide();
+	 	$('#map_div').show();
+	 		displayMap();
+	 
+	 }
+}
 function displayMap() {
-                    document.getElementById('map_div').style.display="block";
-                    drawMap();
-                }
+    document.getElementById('map_div').style.display="block";
+    document.getElementById('map_div').style.width="100%";
+    document.getElementById('map_div').style.height="500px";
+    drawMap();
+}
+function displayChart() {
+    document.getElementById('chart_div').style.display="block";
+    document.getElementById('chart_div').style.width="100%";
+    document.getElementById('chart_div').style.height="500px";
+    drawChart();
+}
 google.load("visualization", "1", {packages:["map"]});
 google.setOnLoadCallback(drawMap);
 google.load('visualization', '1', {'packages':['corechart']});
