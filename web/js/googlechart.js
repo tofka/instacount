@@ -13,7 +13,7 @@ $(document).ready(function(){
 	$('html').click(function(){
 		checkVisibility();
 		
-		$('.div_toggle').toggle();	
+		
 			
 			
 		
