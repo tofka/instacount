@@ -12,11 +12,8 @@ $(document).ready(function(){
 		$('#chart_div').hide();
 	});
 		$('html').click(function(){
-			$('#map_div').hide();
-			$('#chart_div').show();
-			
-		});
-	
+			$('.div_toggle').toggle();	
+		});	
 });     
 function displayMap() {
                     document.getElementById('map_div').style.display="block";
