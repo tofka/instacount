@@ -6,13 +6,14 @@ $(document).ready(function(){
 		$('.toggle.portrait').hide();	
 	}	
 	$( window ).on( "orientationchange", function( event ) {
-		
-		$('#chart_div').show();
 		$('.toggle').toggle();		
-	});
-		$('#chart_div').click(function(){
-			$(this).hide();
 			displayMap();
+		
+		$('#chart_div').hide();
+	});
+		$('html').click(function(){
+			$('#map_div').hide();
+			$('#chart_div').show();
 			
 		});
 	
@@ -89,8 +90,8 @@ function drawMap() {
       showTip: true
     }
     var map = new google.visualization.Map(document.getElementById('map_div'));
-    $(window).resize(function () {
+    
 		  map.draw(data, options);
-		});
+	
   }
 }  
