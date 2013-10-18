@@ -242,9 +242,13 @@ div.ui-content {
 	clear: both;
 }
 
-#chart_div, #map_div {
-	width: 100%;	
-	margin-left: 8px;
+#map_div {
+	display: none;
+	
+}
+#chart_div {
+	width: 90%;	
+	margin: auto;
 }
 
 .red .ui-btn-inner {

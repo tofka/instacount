@@ -6,16 +6,23 @@ $(document).ready(function(){
 		$('.toggle.portrait').hide();	
 	}	
 	$( window ).on( "orientationchange", function( event ) {
+		
 		$('#chart_div').show();
-		$('#map_div').hide();
 		$('.toggle').toggle();		
+	});
 		$('#chart_div').click(function(){
-			$('#map_div').show();
-			$('#chart_div').hide();
+			$(this).hide();
+			displayMap();
+			
 		});
-	})
+	
 });     
-
+function displayMap() {
+                    document.getElementById('map_div').style.display="block";
+                    drawMap();
+                }
+google.load("visualization", "1", {packages:["map"]});
+google.setOnLoadCallback(drawMap);
 google.load('visualization', '1', {'packages':['corechart']});
 google.setOnLoadCallback(drawChart);
 function drawChart() { 
@@ -62,10 +69,28 @@ function drawChart() {
 	  		}
 		}; 
 		var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-		$(window).resize(function () {
+		
    			chart.draw(data, options);
-		});
+	
 	}
 }
 
-       
+    
+function drawMap() {
+  if (typeof url_map != 'undefined'){
+    var jsonData = $.ajax({
+	    url: url_map,
+	    dataType:"json",
+	    async: false
+    }).responseText;
+    var data = new google.visualization.DataTable(jsonData);
+    var options = { 
+      mapType: 'normal',
+      showTip: true
+    }
+    var map = new google.visualization.Map(document.getElementById('map_div'));
+    $(window).resize(function () {
+		  map.draw(data, options);
+		});
+  }
+}  
