@@ -125,8 +125,8 @@ header span.ui-btn-text, .ui-header .ui-btn-inner {
 	margin: 45px auto;
 }
 
-form.start>div.ui-input-text>input, .ui-select .ui-btn, .ui-btn .ui-shadow .ui-btn-corner-all .ui-btn-up-c {
-	padding: 0 0 0 15px;
+form.start>div.ui-submit>span.ui-btn-inner>span.ui-btn-text{
+	padding: 0;
 }
 
 .ui-btn-inner, div.ui-input-text {
@@ -144,7 +144,7 @@ form.start>div.ui-submit>.ui-btn-inner, div.ui-submit>.ui-btn-inner {
 	height: 44px;
 	width: 180px;
 	line-height: 44px;
-	font-size: 1.8em;
+	padding: 0;
 	background: url('../images/search.png');
 	border: 0;
 	border-radius: 8px;
@@ -158,52 +158,30 @@ form.start>div.ui-submit>.ui-btn-inner, div.ui-submit>.ui-btn-inner {
    color: #fff;
 }
 
-div.ui-btn-inner>div.ui-btn-text>a.ui-link-inherit {
-	background: url('../images/text.png');
-	height: 44px;
-	padding: 0 15px;
+div.ui-btn>span.ui-btn-inner>span.ui-btn-text {
 	font-size: 1.6em;
-	line-height: 44px;
-	color: #fff;
-	text-shadow: 0 0 0;
-	font-family: 'Berthold City Medium';
+	padding-left: 15px;
+
 }
 
 
-
-input#instacount_instacountbundle_user_email.ui-input-text, input#instacount_instacountbundle_user_password.ui-input-text, input#instacount_instacountbundle_user_username.ui-input-text, input#instacount_instacountbundle_campaign_tag.ui-input-text, input#instacount_instacountbundle_campaign_name.ui-input-text, input#instacount_instacountbundle_campaign_end_date.ui-input-text, input#instacount_instacountbundle_campaign_start_date.ui-input-text, input#username, input#password {
-	padding: 0;
+form.start>div.ui-input-text>input.search, input#instacount_instacountbundle_user_email.ui-input-text, input#instacount_instacountbundle_user_password.ui-input-text, input#instacount_instacountbundle_user_username.ui-input-text, input#instacount_instacountbundle_campaign_tag.ui-input-text, input#instacount_instacountbundle_campaign_name.ui-input-text, input#instacount_instacountbundle_campaign_end_date.ui-input-text, input#instacount_instacountbundle_campaign_start_date.ui-input-text, input#username, input#password {
+	padding: 0 0 0 15px;
 	background: url('../images/text.png');
 	height: 44px;
 	width: 100%;
-	font-size: 1.6em;
+	font-size: 2.6em;
 	line-height: 44px;
 	color: #fff;
 	text-shadow: 0 0 0;
 	font-family: 'Berthold City Medium';
 }
-
-form.start>div.ui-input-text>input, div.ui-input-text>input#username, div.ui-input-text>input#password {
-	height: 45px;
-	width: 263px;
-	border-radius: 0;
-	font-size: 2.3em;
-	line-height: 45px;
-	background: url('../images/text.png');
-	border: 0;
-	color: #fff;
-	text-shadow: 0 0 0;
-	font-family: 'Berthold City Medium';
-}
-
-form .ui-btn-text {
-	background: transparent;
-	font-size: 1.5em;
-	font-weight: normal;
-
+form.start>div.ui-input-text>input.search {
+	width: 264px;
 }
 .ui-select .ui-btn {
 	height: 45px;
+	width: 279px;
 	line-height: 45px;
 	margin-bottom: 15px;
 	text-align: left;

@@ -1,5 +1,9 @@
 $(document).ready(function(){	
 	var clientID = "8e9859334c044b19aaa2ee526a57fa64";
+	// KOLLA!
+	$('form.start>div.ui-input-text>input.search').click(function() {
+		$(this).val('');
+	})
 	$('#append').hide();
 	$('#position').hide();
 	$('#form_data').hide();

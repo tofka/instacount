@@ -4,7 +4,7 @@
 {% block body %}
 <div data-role="page">    
     <header data-position="fixed" data-role="header">
-        <a id="admin-button" data-rel="external" data-ajax="true" href="{{ path('InstacountInstacountBundle_admin')}}" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right" data-transition="flip">Admin</a>
+        <a id="admin-button" data-ajax="false" data-ajax="true" href="{{ path('InstacountInstacountBundle_admin')}}" class="ui-btn-right" data-role="button" data-icon="arrow-r" data-iconpos="right" data-transition="flip">Admin</a>
     </header>
     <div class="content" data-role="content">
         <div class="logo">   
@@ -13,7 +13,7 @@
                 {{ form_errors(form_select) }}                 
                 {{ form_row(form_select.campaign, {'attr':{'data-icon':''}}) }}
                 {{ form_rest(form_select) }} 
-                <input class="search" type="text" placeholder="Skriv valfri tag" />
+                <input class="search" type="text" value="Skriv valfri tag" />
                 <input class="submit" type="submit" value="Testa!" />
             </form>     
         </div>
