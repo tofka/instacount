@@ -6,9 +6,10 @@
 </script>
     <div data-role="page" data-add-back-btn="true">            
         <header class="show" data-position="fixed" data-role="header">
-            <a href="#" data-transition="flip" data-rel="back" data-icon="">Välj</a>         
+            <a href="{{ path('InstacountInstacountBundle_homepage')}}" data-transition="flip" data-rel="back" data-icon="">Välj</a>         
         </header>
-        <div class="toggle portrait" class="content" data-role="content">    
+       
+        <div class="toggle portrait content">    
             <h2 class="tag">#{{ counter.campaign.tag }} </h2>
             <div class="count"> 
                 <p>{{ counter.count }}</p>
@@ -16,14 +17,17 @@
             </div>  
             <div id="flip"></div>
         </div>   
-        <div class="toggle landscape">       
+        <div class="toggle landscape content">       
             <h2 class="tag chart">#{{ counter.campaign.tag }}</h2>
             <div style="position: absolute; top: 125px; left: auto;  
     margin: auto;" id="chart_div" class="div_toggle"></div>  
-            <h2 class="tag map">Här taggades #{{ counter.campaign.tag }} senast:
+            <h2 class="tag map">Här taggades #{{ counter.campaign.tag }} senast:</h2>
             <div style="position: absolute; top: 125px; left: auto;
     margin: auto;" id="map_div" class="div_toggle"></div>  
+            <div id="flip"></div>
+            <div id="tap"></div>
         </div>  
+   
         <footer>
         </footer>        
     </div> 

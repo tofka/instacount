@@ -11,7 +11,7 @@ $(document).ready(function(){
 		$('.toggle').toggle();		
 			displayMap();		
 	});
-	$('html').click(function(){
+	$('.content').click(function(){
 
 		checkVisibility();
 	});	
@@ -40,7 +40,7 @@ function displayMap() {
 function displayChart() {
     document.getElementById('chart_div').style.display="block";
     document.getElementById('chart_div').style.width="100%";
-    document.getElementById('chart_div').style.height="75%";
+    document.getElementById('chart_div').style.height="60%";
     drawChart();
 }
 google.load("visualization", "1", {packages:["map"]});

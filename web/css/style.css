@@ -45,10 +45,22 @@ div.nav>a.ui-btn>span.ui-btn-inner {
 }
 
 #flip {
-	background: url('../images/orientation.png');
-	width: 43px;
-	height: 60px;
-	margin-left: 20px;
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	background: url('../images/flip.png');
+	width: 107px;
+	height: 80px;	
+}
+
+#tap {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	background: url('../images/tap.png');
+	width: 107px;
+	height: 80px;
+
 }
 
 /* Logout-btn */
