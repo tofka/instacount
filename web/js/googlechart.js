@@ -7,44 +7,40 @@ $(document).ready(function(){
 	}	
 	$( window ).on( "orientationchange", function( event ) {
 		$('#chart_div').hide();
+		$('h2.tag.chart').hide();
 		$('.toggle').toggle();		
 			displayMap();		
 	});
 	$('html').click(function(){
+
 		checkVisibility();
-		
-		
-			
-			
-		
-		
-		
 	});	
 });     
 function checkVisibility() {
-	 if ($("#map_div").is(":visible") == true) {
-	 		$('#map_div').hide();
-	 		$('#chart_div').show();
-	 		displayChart();
-	 
-	 }
-	 else if ($('#chart_div').is(':visible') == true) {
-	 	$('#chart_div').hide();
-	 	$('#map_div').show();
-	 		displayMap();
-	 
-	 }
+	if ($("#map_div").is(":visible") == true) {
+			$('#map_div').hide();
+			$('h2.tag.map').hide();
+			$('h2.tag.chart').show();
+			$('#chart_div').show();
+			displayChart();	 
+	}
+	else if ($('#chart_div').is(':visible') == true) {
+		$('#chart_div').hide();
+		$('h2.tag.chart').hide();
+		$('h2.tag.map').show();
+		$('#map_div').show();
+			displayMap();	 
+	}
 }
 function displayMap() {
     document.getElementById('map_div').style.display="block";
     document.getElementById('map_div').style.width="100%";
-    document.getElementById('map_div').style.height="500px";
     drawMap();
 }
 function displayChart() {
     document.getElementById('chart_div').style.display="block";
     document.getElementById('chart_div').style.width="100%";
-    document.getElementById('chart_div').style.height="500px";
+    document.getElementById('chart_div').style.height="75%";
     drawChart();
 }
 google.load("visualization", "1", {packages:["map"]});
@@ -66,16 +62,16 @@ function drawChart() {
 				baselineColor: '#666', gridlines: {
 					color: '#666', count: 6},
 					textStyle: {
-						fontName: 'Berthold City Medium',
-	  					fontSize: 12
+						fontName: 'Berthold City Bold',
+	  					fontSize: 20
 	  				}
 				},
 			hAxis: {
 				baselineColor: '#666', format:'dd MMM', gridlines: {
 					color: '#666', count: 10},
 					textStyle: {
-						fontName: 'Berthold City Medium',
-	  					fontSize: 12
+						fontName: 'Berthold City Bold',
+	  					fontSize: 20
 	  				}
 				},
 			interpolateNulls: true,
@@ -89,9 +85,9 @@ function drawChart() {
 			},		
 			colors: ['#f6ac1d'],	
 			titleTextStyle: { 
+				textShadow: 'none',
 				color: '#666',
-	  			fontName: 'berthold city',
-	  			fontSize: 20,  			
+	  			fontName: 'berthold city'
 	  		}
 		}; 
 		var chart = new google.visualization.LineChart(document.getElementById('chart_div'));

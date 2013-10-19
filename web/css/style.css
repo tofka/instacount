@@ -242,14 +242,11 @@ div.ui-content {
 	clear: both;
 }
 
-#map_div {
+#map_div, #chart_div {
 	display: none;
 	
 }
-#chart_div {
-	display: none;
-	
-}
+
 
 .red .ui-btn-inner {
 	background: url('../images/btn_red.png');
