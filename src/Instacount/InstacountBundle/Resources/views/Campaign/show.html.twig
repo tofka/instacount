@@ -11,17 +11,18 @@
 		        <a data-role="button" href="{{ path('InstacountInstacountBundle_user')}}">Hantera användare</a>
 		        <a data-role="button" href="{{ path('InstacountInstacountBundle_campaign')}}">Hantera kampanjer</a>
 			</div>	
-		<h2>{{ campaign.name }}</h2>
-		<div class="admin-list">Kampanj-id: {{ campaign.id }} </div>
-		<div class="admin-list">Namn: {{ campaign.name }} </div>
-		<div class="admin-list">Tag: #{{ campaign.tag }} </div>
-		<div class="admin-list">Startdatum: {{ campaign.startDate|date('Y-m-d') }}</div>
-		<div class="admin-list">Slutdatum: {{ campaign.endDate|date('Y-m-d') }}</div>
-		<a data-ajax="false" href="{{path('InstacountInstacountBundle_campaign_edit', { 'id' : campaign.id }) }}" data-transition="flip" data-role="button" class="ui-btn-right blue" >Redigera</a>
-		<a href="{{path('InstacountInstacountBundle_campaign_delete', { 'id' : campaign.id }) }}" data-transition="flip" data-role="button" class="ui-btn-right red" >Radera</a>
-	</div>		
-	   <footer data-role="footer" data-position="fixed">
-     
-    </footer>
-</div>					
+			<h2>{{ campaign.name }}</h2>
+			<div class="admin-list">Kampanj-id: {{ campaign.id }} </div>
+			<div class="admin-list">Namn: {{ campaign.name }} </div>
+			<div class="admin-list">Tag: #{{ campaign.tag }} </div>
+			<div class="admin-list">Startdatum: {{ campaign.startDate|date('Y-m-d') }}</div>
+			<div class="admin-list">Slutdatum: {{ campaign.endDate|date('Y-m-d') }}</div>
+			<div class="btns">
+				<a data-ajax="false" href="{{path('InstacountInstacountBundle_campaign_edit', { 'id' : campaign.id }) }}" data-transition="flip" data-role="button" class="ui-btn-right blue" >Redigera</a>
+				<a href="{{path('InstacountInstacountBundle_campaign_delete', { 'id' : campaign.id }) }}" data-transition="flip" data-role="button" class="ui-btn-right red" >Radera</a>
+			</div>		
+		</div>
+	   	<footer data-role="footer" data-position="fixed">     
+    	</footer>
+	</div>					
 {% endblock %}

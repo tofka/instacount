@@ -207,9 +207,9 @@ form.start>div.ui-input-text>input.search {
 	padding: 0;
 	font-size: 1.6em;
 	height: 45px;
-	line-height: 45px;
-	
+	line-height: 45px;	
 }
+
 ul.ui-listview>li.ui-btn {
 	padding: 0;
 	background: url('../images/text.png');
@@ -251,23 +251,30 @@ div.ui-content {
 }
 
 #map_div, #chart_div {
-	display: none;
-	
+	display: none;	
 }
-
 
 .red .ui-btn-inner {
 	background: url('../images/btn_red.png');
+	margin-left: 35px;	
 }
+
 .blue .ui-btn-inner {
 	background: url('../images/btn_blue.png');
 }
 
+.btns {
+	width: 180px;
+	margin: 25px auto;
+}
 
-.red .ui-btn-inner, .blue .ui-btn-inner {
-    
+div.btns>a.ui-btn-right {
+    margin: 0;	
+    box-shadow: 0 0 0;
+}
+
+.red .ui-btn-inner, .blue .ui-btn-inner {    
     padding: 0 3px;
-    margin: 15px 0 0 15px;
     line-height: 44px;
     font-size: 1.6em;
     border-radius: 5px;
