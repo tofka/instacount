@@ -256,7 +256,7 @@ div.ui-content {
 
 .red .ui-btn-inner {
 	background: url('../images/btn_red.png');
-	margin-left: 35px;	
+	margin-left: 35px;
 }
 
 .blue .ui-btn-inner {
@@ -268,9 +268,12 @@ div.ui-content {
 	margin: 25px auto;
 }
 
+
 div.btns>a.ui-btn-right {
-    margin: 0;	
-    box-shadow: 0 0 0;
+	background: transparent;
+	border:0;
+	border-radius: 0 0 0;
+	box-shadow: 0 0 0;
 }
 
 .red .ui-btn-inner, .blue .ui-btn-inner {    
