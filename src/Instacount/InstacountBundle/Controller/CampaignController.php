@@ -33,7 +33,7 @@ class CampaignController extends Controller
 
     public function indexAction() {
         $em = $this->getDoctrine()
-                   ->getEntityManager();
+                   ->getManager();
         $campaigns = $em->getRepository('InstacountInstacountBundle:campaign')
                     ->findAll();
         return $this->render('InstacountInstacountBundle:Campaign:index.html.twig', array(
@@ -70,7 +70,7 @@ class CampaignController extends Controller
     }
 
     public function showAction($id) {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $campaign = $em->getRepository('InstacountInstacountBundle:Campaign')->find($id);
         if (!$campaign) {
             throw $this->createNotFoundException('Unable to find campaign.');

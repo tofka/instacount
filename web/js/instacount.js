@@ -7,6 +7,7 @@ $(document).ready(function(){
 	$('#append').hide();
 	$('#position').hide();
 	$('#form_data').hide();
+	$('#form_position').hide();
 	$('form label').hide();
 	if(typeof tags != 'undefined') {
 		for (var i = 0; i < tags.length; i++) {
@@ -39,7 +40,10 @@ $(document).ready(function(){
 
 // Fritext-sök:
 	$('.submit').click(function(e) {
-		var search = $('.search').val();
+		var search;
+		if($('.search').val() == 'Skriv valfri tag') {
+			search = '';
+		}
 		var select = $('#instacount_instacountbundle_counter_campaign').val();			
 		if ( (!select) & (!search) ) {
 			alert('Välj en kampanj i listan eller skriv in valfri tag!');

@@ -17,7 +17,7 @@ class CounterController extends Controller {
         // Denna plockar ut campaign_id som unika värden med det senaste id:t. Men jag kan inte skriva den
         // i doctrine, så istället plockar jag ut hur många unika värden det finns för campaign_id och sätter
         // den siffran som limit för hur många counts som ska plockas ut.
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         // mySql, måste joina för att campaign_id är fk i counter: SELECT DISTINCT campaign_id FROM counter INNER JOIN campaign ON counter.campaign_id = campaign.id  
         $query = $em->createQuery('SELECT DISTINCT x.id FROM InstacountInstacountBundle:Campaign x 
             join InstacountInstacountBundle:Counter c WHERE x.id = c.campaign');
@@ -38,7 +38,7 @@ class CounterController extends Controller {
         );
     }
     public function showAction($id) {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $counter = $em->getRepository('InstacountInstacountBundle:Counter')->find($id);
         if (!$counter) {
             throw $this->createNotFoundException('Kunde inte hitta räknare nr' . $id);
@@ -63,7 +63,7 @@ class CounterController extends Controller {
         );
     }
     public function createAction(Request $request) {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $campaigns = $em->getRepository('InstacountInstacountBundle:Campaign')->findAll();       
         $counter_form = new Counter();
         $form_select = $this->createForm(new CounterType(), $counter_form);
@@ -80,7 +80,7 @@ class CounterController extends Controller {
             $counter = new Counter();
             $tag = $value["tag"]; 
             $count = $value["count"];       
-            $em = $this->getDoctrine()->getEntityManager();            
+            $em = $this->getDoctrine()->getManager();            
             $campaign = $em->getRepository('InstacountInstacountBundle:Campaign')->findOneByTag($tag);
             $counter->setCampaign($campaign);
             $counter->setTimestamp(new \DateTime('now'));
@@ -104,7 +104,7 @@ class CounterController extends Controller {
                 unset($positions[1]);                
             }
             $save_positions = json_encode($positions);
-            $em = $this->getDoctrine()->getEntityManager();            
+            $em = $this->getDoctrine()->getManager();            
             $campaign = $em->getRepository('InstacountInstacountBundle:Campaign')->findOneByTag($tag);
             $campaign->setPositions($save_positions);
             $em = $this->getDoctrine()->getManager();

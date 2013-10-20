@@ -194,9 +194,27 @@ form.start>div.ui-input-text>input.search {
 }
 
 /* ul */
-.ui-content .ui-listview-inset, .ui-panel-inner .ui-listview-inset{
-	border: none;
-	margin: 5em 1.5em;
+.ui-content .ui-listview {
+	width: 98%;
+	margin: auto;
+	margin-top: 50px;
+}
+.ui-li .ui-btn-inner a.ui-link-inherit {
+	padding: 0  0 0 15px;
+}
+.ui-btn-text>a.ui-link-inherit{
+	color: #fff;
+	padding: 0;
+	font-size: 1.6em;
+	height: 45px;
+	line-height: 45px;
+	
+}
+ul.ui-listview>li.ui-btn {
+	padding: 0;
+	background: url('../images/text.png');
+	font-family: 'Berthold City Medium';
+	text-shadow: 0 0 0;
 }
 
 .logo {
@@ -340,6 +358,7 @@ p {
 
 div.content>a.plus {
 	margin-right: 3em;
+
 }
 
 

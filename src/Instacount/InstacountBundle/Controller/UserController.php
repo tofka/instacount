@@ -12,7 +12,7 @@ class UserController extends Controller {
 
     public function indexAction() {
         $em = $this->getDoctrine()
-                   ->getEntityManager();
+                   ->getManager();
         $users = $em->getRepository('InstacountInstacountBundle:User')
                     ->findAll();
         return $this->render('InstacountInstacountBundle:User:index.html.twig', array(
@@ -50,7 +50,7 @@ class UserController extends Controller {
     }
 
     public function showAction($id) {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('InstacountInstacountBundle:User')->find($id);
         if (!$user) {
             throw $this->createNotFoundException('Unable to find User.');

@@ -14,7 +14,7 @@ class PageController extends Controller {
             ->getForm();
         $today = new \DateTime();
         $now_sub = $today->format("Y-m-d 00:00:00");
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $campaigns = $em->getRepository('InstacountInstacountBundle:Campaign')->findAll();
 // Kolla om det finns någon rad sparad idag:
         $query = $em->createQuery(
