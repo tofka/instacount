@@ -9,6 +9,7 @@ $(document).ready(function(){
 	$('#form_data').hide();
 	$('#form_position').hide();
 	$('form label').hide();
+	$('.new label').show();
 	if(typeof tags != 'undefined') {
 		for (var i = 0; i < tags.length; i++) {
 			var tagname = tags[i];

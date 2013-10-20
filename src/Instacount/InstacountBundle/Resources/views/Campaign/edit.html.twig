@@ -11,15 +11,11 @@
 		        <a data-role="button" href="{{ path('InstacountInstacountBundle_user')}}">Hantera användare</a>
 		        <a data-role="button" href="{{ path('InstacountInstacountBundle_user')}}">Hantera kampanjer</a>
 		    </div>	
-			<h2>Edit {{ campaign.name }} med id {{ campaign.id }}</h2>
-			<form action="{{ path('InstacountInstacountBundle_campaign_update', { 'id' : campaign.id }) }}" method="post" {{ form_enctype(form) }}>
+			<h2>Redigera {{ campaign.name }} </h2>
+			<form class="new" action="{{ path('InstacountInstacountBundle_campaign_update', { 'id' : campaign.id }) }}" method="post" {{ form_enctype(form) }}>
 	    	{{ form_widget(form) }}
 	    	<input type="submit" value="Spara">
-        	<a href=" {{ path('InstacountInstacountBundle_campaign_delete', { 'id' : campaign.id }) }} ">
-				<button>
-					Radera
-				</button>
-			</a>
+        	
 			</form>
 		</div>		
 	   <footer data-role="footer" data-position="fixed">

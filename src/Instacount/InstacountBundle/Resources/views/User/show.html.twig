@@ -9,13 +9,15 @@
     	<div class="content" data-role="content">				
 			<div class="nav">
 		        <a data-role="button" href="{{ path('InstacountInstacountBundle_user')}}">Hantera användare</a>
-		        <a data-role="button" href="{{ path('InstacountInstacountBundle_user')}}">Hantera kampanjer</a>
+		        <a data-role="button" href="{{ path('InstacountInstacountBundle_campaign')}}">Hantera kampanjer</a>
 		    </div>	
 		    <h2>{{ user.username }}</h2>
 			<div class="admin-list">Användar-id: {{ user.id }} </div>
 			<div class="admin-list">Namn: {{ user.username }} </div>				
-			<a href="{{path('InstacountInstacountBundle_user_edit', { 'id' : user.id }) }}" data-transition="flip" data-theme="red" data-role="button" class="ui-btn-right" >Redigera</a>
-			<a href="{{path('InstacountInstacountBundle_user_delete', { 'id' : user.id }) }}" data-transition="flip" data-theme="del" data-role="button" class="ui-btn-right" >Radera</a>
+			<div class="btns">
+				<a data-ajax="false" href="{{path('InstacountInstacountBundle_user_edit', { 'id' : user.id }) }}" data-transition="flip" data-role="button" class="ui-btn-right blue" >Redigera</a>
+				<a href="{{path('InstacountInstacountBundle_user_delete', { 'id' : user.id }) }}" data-transition="flip" data-role="button" class="ui-btn-right red" >Radera</a>
+			</div>	
 		</div>
 	<footer data-role="footer" data-position="fixed">
         
