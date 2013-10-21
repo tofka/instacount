@@ -3,16 +3,19 @@ $(document).ready(function(){
 	    $('.toggle.landscape').hide();			
 	}
 	else {
-		$('.toggle.portrait').hide();	
+		$('.toggle.portrait').hide();
+		$('.toggle.landscape').show();	
+		$('h2.tag.chart').hide();
+		$('#map_div').show();
+		displayMap();
 	}	
 	$( window ).on( "orientationchange", function( event ) {
 		$('#chart_div').hide();
 		$('h2.tag.chart').hide();
 		$('.toggle').toggle();		
-			displayMap();		
+		displayMap();		
 	});
 	$('.content').click(function(){
-
 		checkVisibility();
 	});	
 });     
@@ -35,12 +38,13 @@ function checkVisibility() {
 function displayMap() {
     document.getElementById('map_div').style.display="block";
     document.getElementById('map_div').style.width="100%";
+    document.getElementById('map_div').style.height="100%";
     drawMap();
 }
 function displayChart() {
     document.getElementById('chart_div').style.display="block";
     document.getElementById('chart_div').style.width="100%";
-    document.getElementById('chart_div').style.height="60%";
+    document.getElementById('chart_div').style.height="90%";
     drawChart();
 }
 google.load("visualization", "1", {packages:["map"]});

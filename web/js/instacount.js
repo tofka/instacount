@@ -45,12 +45,16 @@ $(document).ready(function(){
 		if($('.search').val() == 'Skriv valfri tag') {
 			search = '';
 		}
+		else {
+			search = $('.search').val();
+		}
+		
 		var select = $('#instacount_instacountbundle_counter_campaign').val();			
 		if ( (!select) & (!search) ) {
 			alert('Välj en kampanj i listan eller skriv in valfri tag!');
 			e.preventDefault();
 		}
-		else if (search) {
+		else if (search != '') {
 			e.preventDefault();
 			var search_tagname = $('.search').val();
 			var url = "https://api.instagram.com/v1/tags/" + search_tagname + "?client_id=" + clientID;

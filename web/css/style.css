@@ -49,8 +49,8 @@ div.nav>a.ui-btn>span.ui-btn-inner {
 	bottom: 20px;
 	left: 20px;
 	background: url('../images/flip.png');
-	width: 107px;
-	height: 80px;	
+	width: 50px;
+	height: 50px;	
 }
 
 #tap {
@@ -291,6 +291,7 @@ div.btns>a.ui-btn-right {
 
 .tag, .landscape .tag {	
 	text-align: center;	
+	padding-top: 5px;
 	font-size: 3em;
 	color: #000;
 	font-family: 'Berthold City Bold';
@@ -299,7 +300,7 @@ div.btns>a.ui-btn-right {
 }
 
 .tag {
-	margin-top: 100px;
+	margin-top: 120px;
 }
 
 .landscape .tag {
