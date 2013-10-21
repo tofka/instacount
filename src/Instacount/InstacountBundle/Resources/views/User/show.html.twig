@@ -1,5 +1,4 @@
 {% extends 'InstacountInstacountBundle::layout.html.twig' %}
-
 {% block body %}
     <div data-role="page" data-add-back-btn="true">
 	    <header class="admin" data-position="fixed" data-role="header">
@@ -19,8 +18,7 @@
 				<a href="{{path('InstacountInstacountBundle_user_delete', { 'id' : user.id }) }}" data-transition="flip" data-role="button" class="ui-btn-right red" >Radera</a>
 			</div>	
 		</div>
-	<footer data-role="footer" data-position="fixed">
-        
+	<footer data-role="footer" data-position="fixed">        
     </footer>
 </div>	
 {% endblock %}

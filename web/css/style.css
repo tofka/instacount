@@ -60,7 +60,6 @@ div.nav>a.ui-btn>span.ui-btn-inner {
 	background: url('../images/tap.png');
 	width: 115px;
 	height: 66px;
-
 }
 
 /* Logout-btn */
@@ -161,9 +160,7 @@ form.start>div.ui-submit>.ui-btn-inner, div.ui-submit>.ui-btn-inner {
 div.ui-btn>span.ui-btn-inner>span.ui-btn-text {
 	font-size: 1.6em;
 	padding-left: 15px;
-
 }
-
 
 form.start>div.ui-input-text>input.search, input#instacount_instacountbundle_user_email.ui-input-text, input#instacount_instacountbundle_user_password.ui-input-text, input#instacount_instacountbundle_user_username.ui-input-text, input#instacount_instacountbundle_campaign_tag.ui-input-text, input#instacount_instacountbundle_campaign_name.ui-input-text, input#instacount_instacountbundle_campaign_end_date.ui-input-text, input#instacount_instacountbundle_campaign_start_date.ui-input-text, input#username, input#password {
 	padding: 0 0 0 15px;
@@ -330,8 +327,7 @@ div.btns>a.ui-btn-right {
 }
 
 .admin-list {
-	clear: both;
-	
+	clear: both;	
 	margin: 0 15px;
 	background-color: #f2f2f2;
 	font-size: 1.6em;
@@ -368,7 +364,6 @@ p {
 
 div.content>a.plus {
 	margin-right: 3em;
-
 }
 
 

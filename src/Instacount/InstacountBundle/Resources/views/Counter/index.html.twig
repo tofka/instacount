@@ -1,8 +1,7 @@
 {% extends 'InstacountInstacountBundle::layout2.html.twig' %}
 {% block body %}
     <h2>Översikt</h2>
-    <p>{{ limit }} </p>
-    <button class="change">Byt innehåll!</button>
+
 		<div class="toggle row-fluid box-container">
 
         {% for count in counts %} 
@@ -11,14 +10,13 @@
                     <div class="span12 inner">
                         <p>#{{ count.campaign.tag }}:</p>
                         <p class="count">{{ count.count }}</p>
-                        <p>{{ count.timestamp|date('Y-m-d')}}</p>
-                        <p>{{ count.id }}</p>
+                        <p>{{ count.timestamp|date('Y-m-d')}}</p>                      
                     </div>                  
                 </div>   
             </a>
         {% endfor %}            
         </div>  
-        <div class="toggle hide row-fluid box-container">
+        {#<!--<div class="toggle hide row-fluid box-container">
 <script>var count = [];</script>
          {% for count in counts %}
 <script>  
@@ -34,7 +32,7 @@
                 </div>   
             </a>
             {% endfor %} 
-        </div>         
+        </div>  -->#}
     	
 		
 {% endblock %}
