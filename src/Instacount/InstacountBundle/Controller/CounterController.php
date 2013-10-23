@@ -69,7 +69,8 @@ class CounterController extends Controller {
         $form_select = $this->createForm(new CounterType(), $counter_form);
         $form = $this->createFormBuilder()
         ->add('data', 'textarea') 
-        ->add('position', 'textarea')       
+        ->add('position', 'textarea') 
+        ->add('fb', 'textarea')      
         ->getForm();
         $form->handleRequest($request);
         $counts = $form->get('data')->getData();
@@ -90,6 +91,36 @@ class CounterController extends Controller {
                 $em->flush();   
         }
                 
+// Spara fb-grejor till databas:
+            $fb = $form->get('fb')->getData();
+            $fb_array = explode('---', $fb);
+          
+            foreach($fb_array as $value){
+                $fb = explode('--', $value);
+                if ( isset($fb[1]) && isset($fb[2]) && isset($fb[3]) ) {                    
+                    $url = $fb[0];
+                    $were_here = $fb[1];
+                    $likes = $fb[2];
+                    $talking = $fb[3];
+                }
+                $campaign = $em->getRepository('InstacountInstacountBundle:Campaign')->findOneBy(array('facebook_url' => $url));
+                $campaign_id = $campaign->getId();
+                $repository = $this->getDoctrine()->getRepository('InstacountInstacountBundle:Counter');
+                $counter = $repository->findOneByCampaign(
+                    array('campaign_id' => $campaign_id),
+                    array('id' => 'DESC')
+                );
+                $counter->setFbWereHere($were_here);
+                $counter->setFbLike($likes);        
+                $counter->setFbTalking($talking);    
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($counter);
+                $em->flush();  
+                
+                
+            }
+
+
 // Spara position till databas
         $positions = $form->get('position')->getData();
         $parts = explode('|', $positions);
@@ -111,6 +142,8 @@ class CounterController extends Controller {
             $em->persist($campaign);
             $em->flush();
         }
+
+
  
         return $this->render('InstacountInstacountBundle:Page:index.html.twig', array(
             'counter_form' => $counter_form,

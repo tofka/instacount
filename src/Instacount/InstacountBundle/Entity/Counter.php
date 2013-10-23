@@ -22,6 +22,25 @@ class Counter
      * @ORM\Column(type="integer")
      */
     protected $count;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $fb_like;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $fb_were_here;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $fb_talking;
+
+
+
+
        /**
      * @ORM\Column(type="datetime")
      */
@@ -109,5 +128,74 @@ class Counter
     public function getCampaign()
     {
         return $this->campaign;
+    }
+
+    /**
+     * Set fb_like
+     *
+     * @param integer $fbLike
+     * @return Counter
+     */
+    public function setFbLike($fbLike)
+    {
+        $this->fb_like = $fbLike;
+    
+        return $this;
+    }
+
+    /**
+     * Get fb_like
+     *
+     * @return integer 
+     */
+    public function getFbLike()
+    {
+        return $this->fb_like;
+    }
+
+    /**
+     * Set fb_were_here
+     *
+     * @param integer $fbWereHere
+     * @return Counter
+     */
+    public function setFbWereHere($fbWereHere)
+    {
+        $this->fb_were_here = $fbWereHere;
+    
+        return $this;
+    }
+
+    /**
+     * Get fb_were_here
+     *
+     * @return integer 
+     */
+    public function getFbWereHere()
+    {
+        return $this->fb_were_here;
+    }
+
+    /**
+     * Set fb_talking
+     *
+     * @param integer $fbTalking
+     * @return Counter
+     */
+    public function setFbTalking($fbTalking)
+    {
+        $this->fb_talking = $fbTalking;
+    
+        return $this;
+    }
+
+    /**
+     * Get fb_talking
+     *
+     * @return integer 
+     */
+    public function getFbTalking()
+    {
+        return $this->fb_talking;
     }
 }

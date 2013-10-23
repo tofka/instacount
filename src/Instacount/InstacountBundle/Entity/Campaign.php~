@@ -204,4 +204,27 @@ class Campaign
     {
         return $this->positions;
     }
+
+    /**
+     * Set facebook_url
+     *
+     * @param string $facebookUrl
+     * @return Campaign
+     */
+    public function setFacebookUrl($facebookUrl)
+    {
+        $this->facebook_url = $facebookUrl;
+    
+        return $this;
+    }
+
+    /**
+     * Get facebook_url
+     *
+     * @return string 
+     */
+    public function getFacebookUrl()
+    {
+        return $this->facebook_url;
+    }
 }

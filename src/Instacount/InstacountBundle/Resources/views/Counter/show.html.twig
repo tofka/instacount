@@ -11,10 +11,25 @@
        
         <div class="toggle portrait content">    
             <h2 class="tag">#{{ counter.campaign.tag }} </h2>
-            <div class="count"> 
+            <div class="count insta"> 
                 <p>{{ counter.count }}</p>
+                
 <script>var figures = "{{ counter.count|length }}";</script>
             </div>  
+            <div class="count like"> 
+                <p>{{ counter.FbLike }}</p>
+            </div>  
+        
+         <div class="count here"> 
+                <p>{{ counter.FbWereHere }}</p>
+            </div>  
+            <div class="count talking"> 
+                <p>{{ counter.FbTalking }}</p>
+            </div>  
+
+
+
+
             <div id="flip"></div>
         </div>   
         <div class="toggle landscape content">       

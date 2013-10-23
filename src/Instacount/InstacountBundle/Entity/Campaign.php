@@ -49,7 +49,7 @@ class Campaign
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    protected $facebook_url=null;
+    protected $facebook_url;
 
     /**
      * Get id

@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * Instacount\InstacountBundle\Entity\User
  *
- * @ORM\Table(name="users")
+ * @ORM\Table(name="acme_users")
  * @ORM\Entity(repositoryClass="Instacount\InstacountBundle\Entity\UserRepository")
  */
 class User implements UserInterface, \Serializable

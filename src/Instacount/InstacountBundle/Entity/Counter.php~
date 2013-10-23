@@ -22,6 +22,25 @@ class Counter
      * @ORM\Column(type="integer")
      */
     protected $count;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $fb_like;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $fb_were_here;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $fb_talking;
+
+
+
+
        /**
      * @ORM\Column(type="datetime")
      */

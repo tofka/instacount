@@ -1,13 +1,30 @@
 $(document).ready(function(){	
 	var clientID = "8e9859334c044b19aaa2ee526a57fa64";
-	// KOLLA!
+	$('.like').hide();
+	$('.here').hide();
+	$('.talking').hide();
+	$('.count').click(function() {
+		$(this).hide();
+		$(this).next().show();
+		$('.talking').click(function() {
+			$(this).hide();
+			$('.insta').show();
+		})
+	})
+
+
+
+
+
 	$('form.start>div.ui-input-text>input.search').click(function() {
 		$(this).val('');
 	})
 	$('#append').hide();
 	$('#position').hide();
+	$('#fb').hide();
 	$('#form_data').hide();
 	$('#form_position').hide();
+	$('#form_fb').hide();
 	$('form label').hide();
 	$('.new label').show();
 	if(typeof tags != 'undefined') {
@@ -34,10 +51,40 @@ $(document).ready(function(){
 			$('#append').text(json);
 			var data = $('#append').append(']').text();			
 			var position = $('#position').text();
+			var fb = $('#fb').text();
 			$('#form_position').val(position);
 			$('#form_data').val(data);
+			$('#form_fb').val(fb);
 		});
+
+// Facebook:
+
+// Kör funktionen () för varje tag:
+		for (var i = 0; i < facebook_urls.length; i++) {
+			storeFb(i);
+		}
 	}	
+
+
+	function storeFb(i) {
+		if(typeof facebook_urls != 'undefined') {
+			
+				var url = facebook_urls[i];
+				$.ajax({
+				    type: "GET",
+				    dataType: "jsonp",
+				    cache: false,
+				    url: url,
+				    success: function (res) { 
+				    	console.log(tagname);
+				    	$('#fb').append(url + '--' + res.were_here_count + '--' + res.likes + '--' + res.talking_about_count + '---');
+				    }   					
+				}); 	
+			
+		}
+	}
+
+
 
 // Fritext-sök:
 	$('.submit').click(function(e) {

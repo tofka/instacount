@@ -10,7 +10,8 @@ class PageController extends Controller {
     public function indexAction() {
         $form = $this->createFormBuilder()
             ->add('data', 'textarea')
-            ->add('position', 'textarea')        
+            ->add('position', 'textarea')  
+            ->add('fb', 'textarea')      
             ->getForm();
         $today = new \DateTime();
         $now_sub = $today->format("Y-m-d 00:00:00");
@@ -32,7 +33,7 @@ class PageController extends Controller {
                 'form'   => $form->createView()
                 ));
         }
-        else {     
+        else {   
             $counters = $em->getRepository('InstacountInstacountBundle:Counter')->findAll();
             $counter = new Counter();
             $form_select = $this->createForm(new CounterType(), $counter);

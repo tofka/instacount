@@ -32,6 +32,9 @@ class CampaignType extends AbstractType
             ->add('tag', null, array(
                 'label' => 'Tag'
                 )) 
+            ->add('facebook_url', null, array(
+                'label' => 'Facebook-url'
+                )) 
             //->add('facebook_url')
         ;
     }
