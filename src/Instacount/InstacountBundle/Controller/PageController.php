@@ -5,6 +5,8 @@ namespace Instacount\InstacountBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Instacount\InstacountBundle\Form\CounterType;
 use Instacount\InstacountBundle\Entity\Counter;
+use Instacount\InstacountBundle\Form\UserType;
+use Instacount\InstacountBundle\Entity\User;
 
 class PageController extends Controller {
     public function indexAction() {

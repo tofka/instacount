@@ -3,7 +3,6 @@
 <div id="login" data-role="page" data-add-back-btn="true">
     <header class="admin" data-position="fixed" data-role="header">
         <a data-ajax="false" data-transition="flip" href="{{ path('InstacountInstacountBundle_homepage')}}" data-role="button" data-icon="" class="ui-btn-left" data-iconpos="">Tillbaka</a>       
-        <a data-ajax="false" href="{{ path('logout')}}" data-transition="flip" class="ui-btn-right logout" data-role="button" data-icon="" data-iconpos="">Logga ut</a>
     </header>
     <div class="content" data-role="content">            
         <form data-ajax="false" action="{{ path('login_check') }}" method="post">

@@ -5,7 +5,7 @@
 		<div class="toggle row-fluid box-container">
 
         {% for count in counts %} 
-            <a href="{{ path('InstacountInstacountBundle_campaign_chart', {'campaign_id': count.campaign.id }) }}">
+            
                 <div class="span2 campaign-box">
                     <div class="span12 inner">
                         <p>#{{ count.campaign.tag }}:</p>
@@ -13,7 +13,7 @@
                         <p>{{ count.timestamp|date('Y-m-d')}}</p>                      
                     </div>                  
                 </div>   
-            </a>
+            
         {% endfor %}            
         </div>  
         {#<!--<div class="toggle hide row-fluid box-container">
