@@ -34,7 +34,7 @@ class CampaignController extends Controller
     public function indexAction() {
         $em = $this->getDoctrine()
                    ->getManager();
-        $campaigns = $em->getRepository('InstacountInstacountBundle:campaign')
+        $campaigns = $em->getRepository('InstacountInstacountBundle:Campaign')
                     ->findAll();
         return $this->render('InstacountInstacountBundle:Campaign:index.html.twig', array(
             'campaigns' => $campaigns
