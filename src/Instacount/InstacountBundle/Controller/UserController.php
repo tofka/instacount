@@ -49,6 +49,26 @@ class UserController extends Controller {
         }
     }
 
+    public function create_firstAction(Request $request) {
+        $user  = new User();
+        $form_first = $this->createForm(new UserType(), $user);
+        $form_first->bind($request);      
+        if ($form_first->isValid()) {
+            $factory = $this->get('security.encoder_factory');
+            $encoder = $factory->getEncoder($user);
+            $password_from_form = $form_first->get('password')->getData();
+            $password = $encoder->encodePassword($password_from_form, $user->getSalt());
+            $user->setPassword($password);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+                   
+            return $this->redirect($this->generateUrl('InstacountInstacountBundle_user_show', array(
+                'id' => $user->getId()))
+            );
+        }
+    }
+
     public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('InstacountInstacountBundle:User')->find($id);

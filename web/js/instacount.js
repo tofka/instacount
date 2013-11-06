@@ -9,16 +9,11 @@ $(document).ready(function(){
 		$('.talking').click(function() {
 			$(this).hide();
 			$('.insta').show();
-		})
-	})
-
-
-
-
-
+		});
+	});
 	$('form.start>div.ui-input-text>input.search').click(function() {
 		$(this).val('');
-	})
+	});
 	$('#append').hide();
 	$('#position').hide();
 	$('#fb').hide();
@@ -64,27 +59,21 @@ $(document).ready(function(){
 			storeFb(i);
 		}
 	}	
-
-
 	function storeFb(i) {
-		if(typeof facebook_urls != 'undefined') {
-			
-				var url = facebook_urls[i];
-				$.ajax({
-				    type: "GET",
-				    dataType: "jsonp",
-				    cache: false,
-				    url: url,
-				    success: function (res) { 
-				    	console.log(tagname);
-				    	$('#fb').append(url + '--' + res.were_here_count + '--' + res.likes + '--' + res.talking_about_count + '---');
-				    }   					
-				}); 	
-			
+		if(typeof facebook_urls != 'undefined') {			
+			var url = facebook_urls[i];
+			$.ajax({
+			    type: "GET",
+			    dataType: "jsonp",
+			    cache: false,
+			    url: url,
+			    success: function (res) { 
+			    	console.log(tagname);
+			    	$('#fb').append(url + '--' + res.were_here_count + '--' + res.likes + '--' + res.talking_about_count + '---');
+			    }   					
+			}); 				
 		}
 	}
-
-
 
 // Fritext-sök:
 	$('.submit').click(function(e) {

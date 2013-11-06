@@ -103,16 +103,18 @@ class CounterController extends Controller {
                     $likes = $fb[2];
                     $talking = $fb[3];
                 }
-                $campaign = $em->getRepository('InstacountInstacountBundle:Campaign')->findOneBy(array('facebook_url' => $url));
-                $campaign_id = $campaign->getId();
-                $repository = $this->getDoctrine()->getRepository('InstacountInstacountBundle:Counter');
-                $counter = $repository->findOneByCampaign(
-                    array('campaign_id' => $campaign_id),
-                    array('id' => 'DESC')
-                );
-                $counter->setFbWereHere($were_here);
-                $counter->setFbLike($likes);        
-                $counter->setFbTalking($talking);    
+                if(isset($url) ){
+                    $campaign = $em->getRepository('InstacountInstacountBundle:Campaign')->findOneBy(array('facebook_url' => $url));
+                    $campaign_id = $campaign->getId();
+                    $repository = $this->getDoctrine()->getRepository('InstacountInstacountBundle:Counter');
+                    $counter = $repository->findOneByCampaign(
+                        array('campaign_id' => $campaign_id),
+                        array('id' => 'DESC')
+                    );
+                    $counter->setFbWereHere($were_here);
+                    $counter->setFbLike($likes);        
+                    $counter->setFbTalking($talking);    
+                }
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($counter);
                 $em->flush();  

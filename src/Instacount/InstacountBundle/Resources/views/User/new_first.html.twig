@@ -1,0 +1,20 @@
+{% extends 'InstacountInstacountBundle::layout.html.twig' %}
+
+{% block body %}
+<div data-role="page" data-add-back-btn="true">
+	    <header class="admin" data-position="fixed" data-role="header">
+    	</header>
+    	<div class="content" data-role="content">	
+			
+		    <h2>Skapa en användare</h2>
+	<form data-ajax="false" class="new" action="{{ path('InstacountInstacountBundle_user_create_first') }}" method="post" {{ form_enctype(form) }}>
+	    {{ form_widget(form) }}
+	    <input type="submit" value="Spara">
+        
+	</form>
+</div>	
+	   <footer data-role="footer" data-position="fixed">
+       
+    </footer>
+</div>				
+{% endblock %}

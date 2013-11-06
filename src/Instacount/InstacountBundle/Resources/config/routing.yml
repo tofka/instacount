@@ -70,6 +70,12 @@ InstacountInstacountBundle_user_create:
     pattern:  /admin/user/create
     defaults: { _controller: InstacountInstacountBundle:User:create }
     requirements:
+        _method:  POST 
+
+InstacountInstacountBundle_user_create_first:
+    pattern:  /user/create_first
+    defaults: { _controller: InstacountInstacountBundle:User:create_first }
+    requirements:
         _method:  POST        
 
 InstacountInstacountBundle_user_update:
