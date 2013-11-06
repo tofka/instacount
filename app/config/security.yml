@@ -1,7 +1,10 @@
 security:
     encoders:
-        Instacount\InstacountBundle\Entity\User: plaintext
-            
+        Instacount\InstacountBundle\Entity\User:
+            algorithm: sha512
+            encode-as-base64: true
+            iterations: 10
+   
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: [ ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
