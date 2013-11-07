@@ -8,30 +8,33 @@
         <header class="show" data-position="fixed" data-role="header">
             <a href="{{ path('InstacountInstacountBundle_homepage')}}" data-transition="flip" data-rel="back" data-icon="">Välj</a>         
         </header>
-       
+<!-- ======================================== Siffror ====================================-->       
         <div class="toggle portrait content">    
             <h2 class="tag">#{{ counter.campaign.tag }} </h2>
-            <div class="count insta"> 
-                <p>{{ counter.count }}</p>
-                
 <script>var figures = "{{ counter.count|length }}";</script>
+            <div class="count insta"> 
+                <p class="label">Instagram #:</p>
+                <p>{{ counter.count }}</p>                
             </div>  
             <div class="count like"> 
+                <p class="label">Facebook "gilla":</p>
                 <p>{{ counter.FbLike }}</p>
-            </div>  
-        
-         <div class="count here"> 
+            </div>          
+            <div class="count here"> 
+                <p class="label">Facebook "varit här":</p>
                 <p>{{ counter.FbWereHere }}</p>
             </div>  
-            <div class="count talking"> 
+            <div class="count talking">
+            <p class="label">Facebook "pratar om":</p> 
                 <p>{{ counter.FbTalking }}</p>
             </div>  
-
-
-
-
             <div id="flip"></div>
+            <div id="tap"></div>
         </div>   
+
+
+<!--==================================== Karta/diagram ======================================-->
+
         <div class="toggle landscape content">       
             <h2 class="tag chart">#{{ counter.campaign.tag }}</h2>
             <div style="position: absolute; top: 125px; left: auto;  
