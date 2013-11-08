@@ -1,3 +1,4 @@
+
 @font-face {
 	font-family: 'Berthold City Medium';
 	src: url('Berthold_City_Medium.ttf');
@@ -161,6 +162,7 @@ div.ui-btn>span.ui-btn-inner>span.ui-btn-text {
 	font-size: 1.6em;
 	padding-left: 15px;
 }
+
 
 form.start>div.ui-input-text>input.search, input#instacount_instacountbundle_campaign_facebook_url, input#instacount_instacountbundle_user_email.ui-input-text, input#instacount_instacountbundle_user_password.ui-input-text, input#instacount_instacountbundle_user_username.ui-input-text, input#instacount_instacountbundle_campaign_tag.ui-input-text, input#instacount_instacountbundle_campaign_name.ui-input-text, input#instacount_instacountbundle_campaign_end_date.ui-input-text, input#instacount_instacountbundle_campaign_start_date.ui-input-text, input#username, input#password {
 	padding: 0 0 0 15px;

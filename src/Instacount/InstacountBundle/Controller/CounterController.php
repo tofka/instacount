@@ -115,6 +115,7 @@ class CounterController extends Controller {
                     $counter->setFbLike($likes);        
                     $counter->setFbTalking($talking);    
                 }
+
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($counter);
                 $em->flush();  

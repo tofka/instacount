@@ -18,15 +18,29 @@
             </div>  
             <div class="count like"> 
                 <p class="label">Facebook "gilla":</p>
-                <p>{{ counter.FbLike }}</p>
+                {% if counter.FbLike == null %}
+                    <p class="label">Ingen uppgift </p>
+                {% else %}
+                    <p>{{ counter.FbLike }}</p>
+                {% endif %}
             </div>          
             <div class="count here"> 
                 <p class="label">Facebook "varit här":</p>
-                <p>{{ counter.FbWereHere }}</p>
+                {% if counter.FbWereHere == null %}
+                    <p class="label">Ingen uppgift </p>
+                {% else %}
+                   <p>{{ counter.FbWereHere }}</p>
+                {% endif %}
+                
             </div>  
             <div class="count talking">
-            <p class="label">Facebook "pratar om":</p> 
-                <p>{{ counter.FbTalking }}</p>
+                <p class="label">Facebook "pratar om":</p> 
+                {% if counter.FbTalking == null %}
+                    <p class="label">Ingen uppgift </p>
+                {% else %}
+                   <p>{{ counter.FbTalking }}</p>
+                {% endif %}
+             
             </div>  
             <div id="flip"></div>
             <div id="tap"></div>

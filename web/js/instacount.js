@@ -100,16 +100,16 @@ $(document).ready(function(){
 				cache: false,
 				url: url,
 				success: function (res) {
-					$('.count p').text('');
+					$('.count p.figure').text('');
 					$('.tag').text('');
 					$.mobile.changePage('#search-result');	
 					$('.tag').append('#' + res.data.name);
 					var length = String(res.data.media_count).length;
 					if (length > 3) {
-						$('.count p').css('font-size','5em').append(res.data.media_count);
+						$('.count p.figure').css('font-size','5em').append(res.data.media_count);
 					}
 					else {						
-						$('.count p').append(res.data.media_count);
+						$('.count p.figure').append(res.data.media_count);
 					}
 					$('.search').val('');
 					search_tagname = '';
