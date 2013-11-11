@@ -14,14 +14,14 @@
 <script>var figures = "{{ counter.count|length }}";</script>
             <div class="count insta"> 
                 <p class="label">Instagram #:</p>
-                <p>{{ counter.count }}</p>                
+                <p class="figure" style="font-size: 12em;">{{ counter.count }}</p>                
             </div>  
             <div class="count like"> 
                 <p class="label">Facebook "gilla":</p>
                 {% if counter.FbLike == null %}
                     <p class="label">Ingen uppgift </p>
                 {% else %}
-                    <p>{{ counter.FbLike }}</p>
+                    <p class="figure">{{ counter.FbLike }}</p>
                 {% endif %}
             </div>          
             <div class="count here"> 
@@ -29,7 +29,7 @@
                 {% if counter.FbWereHere == null %}
                     <p class="label">Ingen uppgift </p>
                 {% else %}
-                   <p>{{ counter.FbWereHere }}</p>
+                   <p class="figure">{{ counter.FbWereHere }}</p>
                 {% endif %}
                 
             </div>  
@@ -38,7 +38,7 @@
                 {% if counter.FbTalking == null %}
                     <p class="label">Ingen uppgift </p>
                 {% else %}
-                   <p>{{ counter.FbTalking }}</p>
+                   <p class="figure">{{ counter.FbTalking }}</p>
                 {% endif %}
              
             </div>  
